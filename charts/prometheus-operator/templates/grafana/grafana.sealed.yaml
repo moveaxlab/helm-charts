@@ -1,0 +1,26 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/namespace-wide: "true"
+  creationTimestamp: null
+  name: prometheus-secrets
+  namespace: monitoring
+spec:
+  encryptedData:
+    grafana-admin: {{ .Values.grafanaSecrets.grafanaUser }}
+    grafana-admin-password: {{ .Values.grafanaSecrets.grafanaPass }}
+  {{ if .Values.grafanaSecrets.googleClientId }}
+    GF_AUTH_GOOGLE_CLIENT_ID: {{ .Values.grafanaSecrets.googleClientId }}
+    GF_AUTH_GOOGLE_CLIENT_SECRET: {{ .Values.grafanaSecrets.googleClientSecret }}
+  {{- end }}
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/namespace-wide: "true"
+      creationTimestamp: null
+      name: prometheus-secrets
+      namespace: monitoring
+    type: Opaque
+status: {}
+
