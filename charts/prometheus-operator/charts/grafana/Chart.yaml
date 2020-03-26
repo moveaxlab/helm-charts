@@ -12,6 +12,8 @@ maintainers:
   name: rtluckie
 - email: maor.friedman@redhat.com
   name: maorfr
+- email: hersi.sa@gmail.com
+  name: somaliz  
 name: grafana
 sources:
 - https://github.com/grafana/grafana

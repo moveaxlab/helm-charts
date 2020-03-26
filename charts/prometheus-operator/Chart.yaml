@@ -12,6 +12,8 @@ maintainers:
 - email: gianrubio@gmail.com
   name: gianrubio
 - name: vsliouniaev
+- email: hersi.sa@gmail.com
+  name: somaliz
 name: prometheus-operator
 sources:
 - https://github.com/coreos/prometheus-operator

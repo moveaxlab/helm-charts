@@ -1454,9 +1454,7 @@ alertmanager:
     ##
     additionalPeers: []
 
-grafanaSecrets:    
- grafanaUser: AgC4TmLuL88CFkY1npoe59MB8zW3PgiYxzWymzgnvPCyOi2XvGhnC/0Rf6etfLj1MKBxBO4nJ1xcYqpUAR4NVjkEes6tnhRfE9EDz0W74M/oz8/gqmZFP9e+7d+J705EmBySWpHw9B91T6FCG+G4rhA1XZPykmPHcJE7sPTxj+qR3YgRljcxfw80R9Otmfvg3G2ovsTWWO2nxqhEyvnx2QelvTri3a3KbonkeUwF911yWQF1aNldCAujPzFn30+1KrIUERzUao9WVPSyf7Y9obnbyC0UdYPqzmifSNXpRigom4X/SRF5pWYSg0Vbvh+J7S5R79jFiAwFMK3/k0R7hrJGHTDjnnLFUmmu3vo8eTh+2tU9e2OEIKtJN06Wb9scH5fZKgrGnN70g7GEqDvrWp5nT7dSISUyZB/HnmlDENPX93wBQPRVthFeUcoxfflgtaXhX4MLyIDQ8sGUAa2tdQ3pysu4AkVoSGKr8lewOHW/xlKtS8SMeJc+g48sURwojCfFRXsKgYx68RXfwN0h7UGmI/8ZxQbj8b5QTySnzrnmqf8UubCtqcqOEnlgmNpstQ7zDm+rcBYUp3555lcE5wkI4wXuYnee013WVS4lDv+y7SOV89gR5sDxqyV9Ord5PCWuaLWxO7UC7mNpBNn8t/VRHMqMV1UNwjcWLMvDcq7RqFF3ipmdWTDqM686rKsgZ5FWifVycw==
- grafanaPass: AgBkngcwxxtSQuex1LCIXfxFFeBbMN9rXp52CMQnq+AJyW4Fhrhlg9zNuBZhH3yqt5KcazG40lJH8DCenUZnNfJ+YcA/0ZItPhWaVrOBulcqa/cniGVVzs453XWqldY9uUs1iqALGfodItWnfzHlQdmIk9HvOWNSDUL0N7Iu+YYnfxCb7xeN3iCc5w/MP18O8M4S7a8erExQ7yYkpNqMbTAjyfJoajs+5O6Cyk2beG7yBWj2262wE0BZG7zZ599gIff1zVwNxdIL4DES0SzkREy5SEQc+jhYnGseLqmkt+GhM0WIwqpADcP69TeDeOVQ3yNSgHjgtyf8xV7oXRQwE18N1fQ1dk3mK3RD/1Y/8A9AOVuH1AxY01tFJXeGoJD2XAuwPe8RMKjXOPmcI465VMgiLTxY61Nr0nMWSAxIKKFvCSTv6mPaWbf3rgTJgm40xdQygGa/f/QRmMoAemGHEoqKQ/k+K6HsAKYdSXVzbJTnc0RJHIOZwCKiiAADQylGA7pnr22xFtxhs3t/LRItlIl3amddF1asgdWYXCveP/x3EMFQwfWrKLmgwXCBcDVLy+/lb+CiZ2tm7tLeVN5HDWV8zF0QqmPS3SUBKCLquRrGM4LBXNw4mUPkId27e/aI1AGE34+Yrkpde80l5rAaKH3g+9mB2Sc+u80uvzM/HH1wDXWpxKG/SYYAx5i2cYk+/vk3fBGuS5Egb+toWpLP6VjQ05ADCJI=
+
 grafana:
   enabled: true
   grafana.ini:
@@ -1477,10 +1475,10 @@ grafana:
   ##
   defaultDashboardsEnabled: true
 
-  admin:
-    existingSecret: "prometheus-secrets"
-    userKey: grafana-admin
-    passwordKey: grafana-admin-password
+  # admin:
+  #   existingSecret: "prometheus-secrets"
+  #   userKey: grafana-admin
+  #   passwordKey: grafana-admin-password
 
   service:
     name: http-grafana
