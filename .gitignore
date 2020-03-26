@@ -1,0 +1,5 @@
+.deploy
+tmp.yml
+values-prod.yaml
+values-staging.yaml
+index.yaml
