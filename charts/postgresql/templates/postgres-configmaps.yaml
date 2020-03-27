@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: postgres-configmap
-  labels:
-    app: postgres-configmap
-data:
-  ALLOW_IP_RANGE: "0.0.0.0/0"
