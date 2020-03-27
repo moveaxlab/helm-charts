@@ -1,0 +1,221 @@
+# Default values for sonarqube.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+ # This will use the default deployment strategy unless it is overriden
+deploymentStrategy: {}
+
+image:
+  repository: sonarqube
+  tag: 7.9.1-community
+  pullPolicy: IfNotPresent
+  # If using a private repository, the name of the imagePullSecret to use
+  # pullSecret: my-repo-secret
+
+# Set security context for sonarqube pod
+securityContext:
+  fsGroup: 999
+
+service:
+  name: http-sonarqube
+  type: ClusterIP
+  externalPort: 9000
+  internalPort: 9000
+  hostname: sonar.dev.example.com
+  istioIngressName: ingressgateway
+  labels:
+  annotations: {}
+  # May be used in example for internal load balancing in GCP:
+  # cloud.google.com/load-balancer-type: Internal
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
+  # loadBalancerIP: 1.2.3.4
+ingress:
+  enabled: true
+  namespace: istio-system
+  paths:
+    - path: /*
+      serviceName: ssl-redirect 
+      servicePort: use-annotation
+    - path: /*
+      serviceName: istio-ingressgateway
+      servicePort: 80
+  # Used to create an Ingress record.
+  annotations:
+    #definition for inbound CIDRs are defined in Ops/ingress-merge
+    merge.ingress.kubernetes.io/config: merge-ingress
+    alb.ingress.kubernetes.io/tags: environment=dev
+
+# Additional labels for Ingress manifest file
+  # labels:
+  #  traffic-type: external
+  #  traffic-type: internal
+  #tls: []
+  # Secrets must be manually created in the namespace.
+  # - secretName: chart-example-tls
+  #   hosts:
+  #     - chart-example.local
+
+# Affinity for pod assignment
+# Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+affinity: {}
+
+# Tolerations for pod assignment
+# Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+tolerations: []
+
+# Node labels for pod assignment
+# Ref: https://kubernetes.io/docs/user-guide/node-selection/
+nodeSelector: {}
+
+# hostAliases allows the modification of the hosts file inside a container
+hostAliases: []
+# - ip: "192.168.1.10"
+#   hostnames:
+#   - "example.com"
+#   - "www.example.com"
+
+readinessProbe:
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  failureThreshold: 6
+  # If an ingress *path* other than the root (/) is defined, it should be reflected here
+  # A trailing "/" must be included
+  sonarWebContext: /
+  # sonarWebContext: /sonarqube/
+livenessProbe:
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  # If an ingress *path* other than the root (/) is defined, it should be reflected here
+  # A trailing "/" must be included
+  sonarWebContext: /
+  # sonarWebContext: /sonarqube/
+
+# Set extra env variables. Like proxy settings.
+extraEnv: {}
+  # If an ingress *path* is defined, it should be reflected here
+  # sonar.web.context: /sonarqube
+
+# Set annotations for pods
+annotations: {}
+
+resources: {}
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#  cpu: 100m
+#  memory: 128Mi
+# requests:
+#  cpu: 100m
+#  memory: 128Mi
+persistence:
+  enabled: false
+  ## Set annotations on pvc
+  annotations: {}
+
+  ## Specify an existing volume claim instead of creating a new one.
+  ## When using this option all following options like storageClass, accessMode and size are ignored.
+  # existingClaim:
+
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # storageClass: "-"
+  # accessMode: ReadWriteOnce
+  # size: 10Gi
+
+# List of plugins to install.
+# For example:
+# plugins:
+#  install:
+#    - "https://github.com/AmadeusITGroup/sonar-stash/releases/download/1.3.0/sonar-stash-plugin-1.3.0.jar"
+#    - "https://github.com/SonarSource/sonar-ldap/releases/download/2.2-RC3/sonar-ldap-plugin-2.2.0.601.jar"
+plugins:
+  install:
+    - "https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.0.1.20589.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/sonar-javascript-plugin-6.1.0.11503.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar"
+    - "https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.3.0.5351.jar"
+  # initContainerImage: alpine:3.9
+  # deleteDefaultPlugins: true
+  resources: {}
+  # We allow the plugins init container to have a separate resources declaration because
+  # the initContainer does not take as much resources.
+
+# A custom sonar.properties file can be provided via dictionary.
+# For example:
+# sonarProperties:
+#   sonar.forceAuthentication: true
+#   sonar.security.realm: LDAP
+#   ldap.url: ldaps://organization.com
+
+sonarProperties:
+  sonar.core.serverBaseURL: "https://sonar.dev.example.com"
+
+# Kubernetes secret that contains the encryption key for the sonarqube instance.
+# The secret must contain the key 'sonar-secret.txt'.
+# The 'sonar.secretKeyPath' property will be set automatically.
+# sonarSecretKey: 
+
+customCerts:
+  ## Enable to override the default cacerts with your own one
+  enabled: false
+  secretName: my-cacerts
+
+## Configuration value to select database type
+## Option to use "postgresql" or "mysql" database type, by default "postgresql" is chosen
+## Set the "enable" field to true of the database type you select (if you want to use internal database) and false of the one you don't select
+database:
+  type: "postgresql"
+
+## Configuration values for postgresql dependency
+## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
+postgresql:
+  # Enable to deploy the PostgreSQL chart
+  enabled: true
+  imagePullPolicy: IfNotPresent
+  # To use an external PostgreSQL instance, set enabled to false and uncomment
+  # the line below:
+  # postgresServer: ""
+  # To use an external secret for the password for an external PostgreSQL
+  # instance, set enabled to false and provide the name of the secret on the
+  # line below:
+  # postgresPasswordSecret: ""
+  postgresUser: "sonar"
+  postgresPassword: AgB4tvzCznl8hFVkq7R0lu/MvMl7ftc3cLTSgyfhcgbuT5E95DUooHb56oqY/l28DOzJ1nWgUTMWpKpsijWvdN8q73jBY+ZMy+mCVgi1JnnaoROMzxQPRnrebeJ82ESkTnaEkQqWRnMxY5eJTBOAD2UjTljK1caQfevWh4w835biqm8o6PP7e9Pku88p/gNqjTPjanvg52OhqIa2kMtYQk5+V1rUNWWLlV3Z2dsmL/x6cWaWM3vvKuBoI22FezJRYNKExONDg8j7L0WPgHHUWfMnToT9qt03bhYoE9oOwx62sMOEtOLo9bIy2LwmIC/T8PAeMMWHOjpt9ijk9xGTPnRSlzJz2+6Eh1u19HfjWtPmHt04jhlxBJnngMqgWVZpDlEifAEIWWgW78X2hGcd3X4Yk3N3jcvCAf5YcFSx+3tSy1BdiRtrczCaFbSdE7HxECyknzxpCjsE9CV4IkDhA+8Jl9owT099jddonXTJIjQuzf2cuJmuNkMOoBwbtzB1XdkRKNUrZ9yPFoMR55a+0395yM1usWeriJzZPMpG/5GQS6IHzjmuM7ZreJT0wvO428QE3MzkApyg+UNp1rJ2Hqd9uFNl/fBxp8BqDpG1ig+0Q0dnAOr5X6wQHu6BDKkSjznfz0FJWSCq7Gkrt632pQifoeF20/5dpPSGR0CXL4v9b1IS/cDPddMJmHCky98Yd7C3HB/LBPpye9yjsVgbS8pX6cbyxn8d
+  postgresDatabase: "sonarDB"
+  # Specify the TCP port that PostgreSQL should use
+  service:
+    port: 5432
+
+## Configuration values for the mysql dependency
+## ref: https://github.com/kubernetes/charts/blob/master/stable/mysql/README.md
+##
+mysql:
+  # Enable to deploy the mySQL chart
+  enabled: false
+  # To use an external mySQL instance, set enabled to false and uncomment
+  # the line below:
+  # mysqlServer: ""
+  # To use an external secret for the password for an external mySQL instance,
+  # set enabled to false and provide the name of the secret on the line below:
+  # mysqlPasswordSecret: ""
+  mysqlUser: "sonarUser"
+  mysqlPassword: "sonarPass"
+  mysqlDatabase: "sonarDB"
+  # mysqlParams:
+  #   useSSL: "true"
+  # Specify the TCP port that mySQL should use
+  service:
+    port: 3306
+#
+# Additional labels to add to the pods:
+# podLabels:
+#   key: value
+podLabels: {}

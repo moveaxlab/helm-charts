@@ -1,0 +1,59 @@
+replicaCount: 1
+
+image:
+  repository: obsidiandynamics/kafdrop
+  tag: latest
+  pullPolicy: Always
+
+kafka:
+  brokerConnect: kafka-headless:9092
+  properties: ""
+  truststore: ""
+  keystore: ""
+  propertiesFile: "kafka.properties"
+  truststoreFile: "kafka.truststore.jks"
+  keystoreFile: "kafka.keystore.jks"
+
+host:
+
+
+jvm:
+  opts: ""
+jmx:
+  port: 8686
+
+nameOverride: ""
+fullnameOverride: ""
+
+server:
+  port: 9000
+  servlet:
+    contextPath: /
+
+service:
+  type: ClusterIP
+  port: 9000
+
+ingress:
+  enabled: false
+  annotations: {}
+  path: /
+  hosts: []
+  tls: []
+
+resources:
+  # limits:
+  #   cpu: 100m
+  #  memory: 512Mi
+  requests:
+    cpu: 300m
+    memory: 1Gi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"

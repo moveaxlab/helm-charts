@@ -1,0 +1,18 @@
+{{- range $key, $val := .Values.conf }}
+apiVersion: v1                                                                                  
+kind: ConfigMap                                                                                 
+metadata:
+  name: {{ $key }}
+  namespace: {{ $.Values.configNamespace }}
+  labels:
+    app: {{ include "ingress-merge.name" $ }}
+    chart: {{ include "ingress-merge.chart" $ }}
+    merge.ingress.kubernetes.io: owned
+    release: {{ $.Release.Name }}                                                                    
+data:                                                                          
+  annotations: |
+    {{- range $key, $val := . }}
+    {{ $key }}: '{{ $val }}'
+    {{- end }}
+---
+  {{- end -}}
