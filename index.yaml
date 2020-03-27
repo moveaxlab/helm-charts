@@ -308,6 +308,23 @@ entries:
     version: 6.11.0
   proxyinjector:
   - apiVersion: v1
+    appVersion: v0.0.23
+    created: "2020-03-27T14:20:21.569246978+01:00"
+    description: ProxyInjector chart that runs on kubernetes
+    digest: 332469d054a2d246ddcab1071dcc9f6ba9b629fca871ad850d1a45da2a64744f
+    home: https://github.com/stakater/ProxyInjector
+    keywords:
+    - Proxy
+    - Authentication
+    - kubernetes
+    maintainers:
+    - email: hello@stakater.com
+      name: Stakater
+    name: proxyinjector
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/proxyinjector-0.1.0/proxyinjector-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v1
     created: "2020-03-27T10:52:21.367132099+01:00"
     description: ProxyInjector chart that runs on kubernetes
     digest: 047d4f5e8d7650c7ad7b03946d8db80b941a63233744814268baaa0865a29037
