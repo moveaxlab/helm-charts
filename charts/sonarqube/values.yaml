@@ -194,8 +194,7 @@ postgresql:
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
-secrets:
-  postgresPassword: "aaaaa"
+
 ## Configuration values for the mysql dependency
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/mysql/README.md
 ##
