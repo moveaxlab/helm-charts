@@ -158,10 +158,9 @@ plugins:
 sonarProperties:
   sonar.core.serverBaseURL: "https://sonar.dev.example.com"
 
-# Kubernetes secret that contains the encryption key for the sonarqube instance.
-# The secret must contain the key 'sonar-secret.txt'.
-# The 'sonar.secretKeyPath' property will be set automatically.
-# sonarSecretKey: 
+# Enable if you want a secret key made for sonarqube. The key is set to {{ include "sonarqube.name" . }}-encryption-secret
+sonarSecretKey: false
+
 
 customCerts:
   ## Enable to override the default cacerts with your own one
@@ -186,9 +185,9 @@ postgresql:
   # To use an external secret for the password for an external PostgreSQL
   # instance, set enabled to false and provide the name of the secret on the
   # line below:
-  # postgresPasswordSecret: ""
+  postgresqlPasswordSecret: ""
   postgresUser: "sonar"
-  postgresPassword: 
+  # postgresPassword: ""
   postgresDatabase: "sonarDB"
   # Specify the TCP port that PostgreSQL should use
   service:
