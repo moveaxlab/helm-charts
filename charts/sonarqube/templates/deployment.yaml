@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "sonarqube.fullname" . }}
@@ -13,6 +13,9 @@ spec:
   strategy:
 {{ toYaml .Values.deploymentStrategy | indent 4 }}
 {{- end }}
+  selector:
+    matchLabels:
+      app: {{ include "sonarqube.fullname" . }}
   template:
     metadata:
       labels:
