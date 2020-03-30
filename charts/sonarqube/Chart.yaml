@@ -16,4 +16,4 @@ maintainers:
 name: sonarqube
 sources:
 - https://github.com/SonarSource/docker-sonarqube
-version: 2.2.2
+version: 2.2.1
