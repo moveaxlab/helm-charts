@@ -161,6 +161,7 @@ sonarProperties:
 # Kubernetes secret that contains the encryption key for the sonarqube instance.
 # The secret must contain the key 'sonar-secret.txt'.
 # The 'sonar.secretKeyPath' property will be set automatically.
+# The secret is {{ include "sonarqube.name" . }}-encryption-secret, and generated from the secret value  .Values.secrets.sonarSecret 
 # sonarSecretKey: 
 
 customCerts:
@@ -178,7 +179,7 @@ database:
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
 postgresql:
   # Enable to deploy the PostgreSQL chart
-  enabled: true
+  enabled: false
   imagePullPolicy: IfNotPresent
   # To use an external PostgreSQL instance, set enabled to false and uncomment
   # the line below:
@@ -186,14 +187,15 @@ postgresql:
   # To use an external secret for the password for an external PostgreSQL
   # instance, set enabled to false and provide the name of the secret on the
   # line below:
-  # postgresPasswordSecret: ""
+  postgresqlPasswordSecret: "sonarqube-postgres-secret"
   postgresUser: "sonar"
-  postgresPassword: 
+  # postgresPassword: ""
   postgresDatabase: "sonarDB"
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
-
+secrets:
+  postgresPassword: "aaaaa"
 ## Configuration values for the mysql dependency
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/mysql/README.md
 ##
