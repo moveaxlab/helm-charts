@@ -47,6 +47,21 @@ entries:
     - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
     version: 0.1-alpha4
   - apiVersion: v1
+    created: "2020-04-02T12:00:58.488869133+02:00"
+    description: Merge Ingress Controller combines multiple ingress resorces into
+      a new one.
+    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
+    home: https://github.com/jakubkulhan/ingress-merge
+    keywords:
+    - ingress
+    maintainers:
+    - email: jakub.kulhan@gmail.com
+      name: Jakub Kulhan
+    name: ingress-merge
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
+    version: 0.1-alpha4
+  - apiVersion: v1
     created: "2020-03-18T11:08:43.446769166+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
@@ -63,21 +78,6 @@ entries:
     version: 0.1-alpha2
   - apiVersion: v1
     created: "2020-03-26T11:57:36.514458615+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-27T10:52:18.705219376+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
     digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
@@ -153,6 +153,21 @@ entries:
     version: 0.1-alpha2
   - apiVersion: v1
     created: "2020-03-26T23:08:45.503745558+01:00"
+    description: Merge Ingress Controller combines multiple ingress resorces into
+      a new one.
+    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
+    home: https://github.com/jakubkulhan/ingress-merge
+    keywords:
+    - ingress
+    maintainers:
+    - email: jakub.kulhan@gmail.com
+      name: Jakub Kulhan
+    name: ingress-merge
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
+    version: 0.1-alpha2
+  - apiVersion: v1
+    created: "2020-03-27T10:52:18.705219376+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
     digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
@@ -246,6 +261,21 @@ entries:
     description: Helm chart to initialize Istio CRDs
     digest: 1ec796c37b72d0e323113e9526cbc2dca392ad6c188377e6bd475a5b21f8d316
     icon: https://istio.io/favicons/android-192x192.png
+    name: istio-init
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/istio-init-1.3.3-init/istio-init-1.3.3-init.tgz
+    version: 1.3.3-init
+  - apiVersion: v1
+    appVersion: 1.3.3-init
+    created: "2020-04-02T12:00:59.511251434+02:00"
+    description: Helm chart to initialize Istio CRDs
+    digest: cbfb4552175de1cb927d4e5166ea5c5895f6d587e38dcbe1eb8d33c84b7dc43e
+    icon: https://istio.io/favicons/android-192x192.png
+    keywords:
+    - istio
+    - crd
     name: istio-init
     sources:
     - http://github.com/istio/istio
@@ -421,6 +451,17 @@ entries:
     urls:
     - https://github.com/moveaxlab/helm-charts/releases/download/proxyinjector-v0.0.23/proxyinjector-v0.0.23.tgz
     version: v0.0.23
+  secrets:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-02T12:01:04.733933183+02:00"
+    description: Chart for templating secrets
+    digest: e99668fab0b39e31127852a81619635e241163351514fccda82a844b9120fa29
+    name: secrets
+    type: application
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/secrets-0.1.0/secrets-0.1.0.tgz
+    version: 0.1.0
   sonarqube:
   - apiVersion: v1
     appVersion: "8.1"
