@@ -40,7 +40,7 @@ spec:
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: sonar-postgres-sealed-secret
+              name: sonarqube-postgres-secret
               key: postgres-password
         - name: POD_IP
           valueFrom: { fieldRef: { fieldPath: status.podIP } }
