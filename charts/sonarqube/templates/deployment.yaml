@@ -15,7 +15,7 @@ spec:
 {{- end }}
   selector:
     matchLabels:
-      app: {{ include "sonarqube.fullname" . }}
+      app: {{ include "sonarqube.name" . }}
   template:
     metadata:
       labels:
