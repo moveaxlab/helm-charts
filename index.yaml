@@ -62,10 +62,10 @@ entries:
     - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
     version: 0.1-alpha4
   - apiVersion: v1
-    created: "2020-04-03T16:24:21.140001377+02:00"
+    created: "2020-03-18T11:08:43.446769166+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
-    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
+    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
     home: https://github.com/jakubkulhan/ingress-merge
     keywords:
     - ingress
@@ -74,8 +74,8 @@ entries:
       name: Jakub Kulhan
     name: ingress-merge
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
-    version: 0.1-alpha4
+    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
+    version: 0.1-alpha2
   - apiVersion: v1
     created: "2020-03-26T11:57:36.514458615+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
@@ -92,10 +92,10 @@ entries:
     - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
     version: 0.1-alpha2
   - apiVersion: v1
-    created: "2020-03-18T11:08:43.446769166+01:00"
+    created: "2020-03-27T11:03:40.19180975+01:00"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
+    digest: 84aa079ac2e5f0cbfd706aa79b85a2ed6c74f7dad115f4ce16ab47ab72b2f5b6
     home: https://github.com/jakubkulhan/ingress-merge
     keywords:
     - ingress
@@ -383,43 +383,6 @@ entries:
     version: 0.1.0
   prometheus-operator:
   - apiVersion: v1
-    appVersion: 0.37.0
-    created: "2020-04-03T16:24:24.033728644+02:00"
-    dependencies:
-    - condition: kubeStateMetrics.enabled
-      name: kube-state-metrics
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 2.6.*
-    - condition: nodeExporter.enabled
-      name: prometheus-node-exporter
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.9.*
-    - condition: grafana.enabled
-      name: grafana
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 5.0.*
-    description: Provides easy monitoring definitions for Kubernetes services, and
-      deployment and management of Prometheus instances.
-    digest: ebf8c04d1f817f862450b25bacb124a1c12a1637d5ebe8abfc05fde56d8c31b4
-    home: https://github.com/coreos/prometheus-operator
-    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
-    keywords:
-    - operator
-    - prometheus
-    maintainers:
-    - name: vsliouniaev
-    - name: bismarck
-    - email: gianrubio@gmail.com
-      name: gianrubio
-    name: prometheus-operator
-    sources:
-    - https://github.com/coreos/kube-prometheus
-    - https://github.com/coreos/prometheus-operator
-    - https://coreos.com/operators/prometheus
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/prometheus-operator-8.12.4/prometheus-operator-8.12.4.tgz
-    version: 8.12.4
-  - apiVersion: v1
     appVersion: 0.32.0
     created: "2020-03-18T11:08:44.328838924+01:00"
     dependencies:
@@ -489,6 +452,16 @@ entries:
     - https://github.com/moveaxlab/helm-charts/releases/download/proxyinjector-v0.0.23/proxyinjector-v0.0.23.tgz
     version: v0.0.23
   secrets:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-03T16:33:24.728016251+02:00"
+    description: Chart for templating secrets
+    digest: a2a0b7c8f09dad2019b0cee57127fe462e64734512e62d7acef28fbccfcb3c5e
+    name: secrets
+    type: application
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/secrets-0.1.1/secrets-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2020-04-02T12:01:04.733933183+02:00"
