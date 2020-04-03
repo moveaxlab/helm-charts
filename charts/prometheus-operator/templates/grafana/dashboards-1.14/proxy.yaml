@@ -1,11 +1,14 @@
-# Generated from 'proxy' from https://raw.githubusercontent.com/coreos/kube-prometheus/master/manifests/grafana-dashboardDefinitions.yaml
-# Do not change in-place! In order to change this file first read following link:
-# https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
+{{- /*
+Generated from 'proxy' from https://raw.githubusercontent.com/coreos/kube-prometheus/master/manifests/grafana-dashboardDefinitions.yaml
+Do not change in-place! In order to change this file first read following link:
+https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
+*/ -}}
 {{- $kubeTargetVersion := default .Capabilities.KubeVersion.GitVersion .Values.kubeTargetVersionOverride }}
-{{- if and (semverCompare ">=1.14.0-0" $kubeTargetVersion) (semverCompare "<1.16.0-0" $kubeTargetVersion) .Values.grafana.enabled .Values.grafana.defaultDashboardsEnabled .Values.kubeProxy.enabled }}
+{{- if and (semverCompare ">=1.14.0-0" $kubeTargetVersion) (semverCompare "<9.9.9-9" $kubeTargetVersion) .Values.grafana.enabled .Values.grafana.defaultDashboardsEnabled .Values.kubeProxy.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: {{ $.Release.Namespace }}
   name: {{ printf "%s-%s" (include "prometheus-operator.fullname" $) "proxy" | trunc 63 | trimSuffix "-" }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -230,15 +233,15 @@ data:
                         },
                         "id": 4,
                         "legend": {
-                            "alignAsTable": true,
+                            "alignAsTable": "true",
                             "avg": false,
-                            "current": true,
+                            "current": "true",
                             "max": false,
                             "min": false,
-                            "rightSide": true,
-                            "show": true,
+                            "rightSide": "true",
+                            "show": "true",
                             "total": false,
-                            "values": true
+                            "values": "true"
                         },
                         "lines": true,
                         "linewidth": 1,
@@ -425,15 +428,15 @@ data:
                         },
                         "id": 6,
                         "legend": {
-                            "alignAsTable": true,
+                            "alignAsTable": "true",
                             "avg": false,
-                            "current": true,
+                            "current": "true",
                             "max": false,
                             "min": false,
-                            "rightSide": true,
-                            "show": true,
+                            "rightSide": "true",
+                            "show": "true",
                             "total": false,
-                            "values": true
+                            "values": "true"
                         },
                         "lines": true,
                         "linewidth": 1,
@@ -745,15 +748,15 @@ data:
                         },
                         "id": 9,
                         "legend": {
-                            "alignAsTable": true,
+                            "alignAsTable": "true",
                             "avg": false,
-                            "current": true,
+                            "current": "true",
                             "max": false,
                             "min": false,
-                            "rightSide": true,
-                            "show": true,
+                            "rightSide": "true",
+                            "show": "true",
                             "total": false,
-                            "values": true
+                            "values": "true"
                         },
                         "lines": true,
                         "linewidth": 1,
@@ -1127,8 +1130,8 @@ data:
             "list": [
                 {
                     "current": {
-                        "text": "default",
-                        "value": "default"
+                        "text": "Prometheus",
+                        "value": "Prometheus"
                     },
                     "hide": 0,
                     "label": null,

@@ -1,32 +1,39 @@
 {{- if .Values.ingress.enabled -}}
+{{- $fullName := include "grafana.fullname" . -}}
+{{- $servicePort := .Values.service.port -}}
+{{- $ingressPath := .Values.ingress.path -}}
+{{- $extraPaths := .Values.ingress.extraPaths -}}
+{{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
+apiVersion: networking.k8s.io/v1beta1
+{{ else }}
 apiVersion: extensions/v1beta1
+{{ end -}}
 kind: Ingress
 metadata:
-  name: {{ .Values.service.name }}
-  namespace: {{ .Values.ingress.namespace }}
+  name: {{ $fullName }}
+  namespace: {{ template "grafana.namespace" . }}
   labels:
-    app: {{ template "grafana.name" . }}
-    chart: {{ template "grafana.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "grafana.labels" . | nindent 4 }}
+{{- if .Values.ingress.labels }}
+{{ toYaml .Values.ingress.labels | indent 4 }}
+{{- end }}
+{{- with .Values.ingress.annotations }}
   annotations:
-   {{- range $key, $value := .Values.ingress.annotations }}
-    {{ $key }}: '{{ $value }}'
-    {{- end }}
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-    kubernetes.io/ingress.class: merge
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.service.hostname }}
+{{ toYaml . | indent 4 }}
+{{- end }}
 spec:
+{{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+{{- end }}
   rules:
-    - host: {{ .Values.service.hostname | quote }}
+  {{- range .Values.ingress.hosts }}
+    - host: {{ . }}
       http:
         paths:
-        {{- range .Values.ingress.paths }}
-          - path: {{ default "/*" .path }}
-            backend:
-              serviceName: {{ .serviceName }}
-              servicePort: {{ .servicePort }}
+{{ if $extraPaths }}
+{{ toYaml $extraPaths | indent 10 }}
+{{- end }}
+
   {{- end }}
 {{- end }}

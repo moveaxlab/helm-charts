@@ -1,11 +1,14 @@
-# Generated from 'namespace-by-pod' from https://raw.githubusercontent.com/coreos/kube-prometheus/master/manifests/grafana-dashboardDefinitions.yaml
-# Do not change in-place! In order to change this file first read following link:
-# https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
+{{- /*
+Generated from 'namespace-by-pod' from https://raw.githubusercontent.com/coreos/kube-prometheus/master/manifests/grafana-dashboardDefinitions.yaml
+Do not change in-place! In order to change this file first read following link:
+https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
+*/ -}}
 {{- $kubeTargetVersion := default .Capabilities.KubeVersion.GitVersion .Values.kubeTargetVersionOverride }}
-{{- if and (semverCompare ">=1.14.0-0" $kubeTargetVersion) (semverCompare "<1.16.0-0" $kubeTargetVersion) .Values.grafana.enabled .Values.grafana.defaultDashboardsEnabled }}
+{{- if and (semverCompare ">=1.14.0-0" $kubeTargetVersion) (semverCompare "<9.9.9-9" $kubeTargetVersion) .Values.grafana.enabled .Values.grafana.defaultDashboardsEnabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: {{ $.Release.Namespace }}
   name: {{ printf "%s-%s" (include "prometheus-operator.fullname" $) "namespace-by-pod" | trunc 63 | trimSuffix "-" }}
   labels:
     {{- if $.Values.grafana.sidecar.dashboards.label }}
@@ -322,36 +325,36 @@ data:
             {
                 "columns": [
                     {
-                        "text": "Time",
-                        "value": "Time"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #A",
-                        "value": "Value #A"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #B",
-                        "value": "Value #B"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #C",
-                        "value": "Value #C"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #D",
-                        "value": "Value #D"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #E",
-                        "value": "Value #E"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "Value #F",
-                        "value": "Value #F"
+                        "text": "",
+                        "value": ""
                     },
                     {
-                        "text": "pod",
-                        "value": "pod"
+                        "text": "",
+                        "value": ""
                     }
                 ],
                 "datasource": "$datasource",
@@ -579,9 +582,8 @@ data:
                         "step": 10
                     }
                 ],
-                "timeFrom": null,
-                "timeShift": null,
                 "title": "Current Status",
+                "transform": "table",
                 "type": "table"
             },
             {
@@ -1253,15 +1255,13 @@ data:
             "list": [
                 {
                     "current": {
-                        "text": "default",
-                        "value": "default"
+                        "text": "Prometheus",
+                        "value": "Prometheus"
                     },
                     "hide": 0,
                     "label": null,
                     "name": "datasource",
-                    "options": [
-
-                    ],
+                    "options": [],
                     "query": "prometheus",
                     "refresh": 1,
                     "regex": "",
