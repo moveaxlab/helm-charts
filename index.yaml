@@ -383,6 +383,43 @@ entries:
     version: 0.1.0
   prometheus-operator:
   - apiVersion: v1
+    appVersion: 0.37.0
+    created: "2020-04-04T12:50:58.766819592+02:00"
+    dependencies:
+    - condition: kubeStateMetrics.enabled
+      name: kube-state-metrics
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 2.6.*
+    - condition: nodeExporter.enabled
+      name: prometheus-node-exporter
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 1.9.*
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 5.0.*
+    description: Provides easy monitoring definitions for Kubernetes services, and
+      deployment and management of Prometheus instances.
+    digest: ebf8c04d1f817f862450b25bacb124a1c12a1637d5ebe8abfc05fde56d8c31b4
+    home: https://github.com/coreos/prometheus-operator
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    maintainers:
+    - name: vsliouniaev
+    - name: bismarck
+    - email: gianrubio@gmail.com
+      name: gianrubio
+    name: prometheus-operator
+    sources:
+    - https://github.com/coreos/kube-prometheus
+    - https://github.com/coreos/prometheus-operator
+    - https://coreos.com/operators/prometheus
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/prometheus-operator-8.12.4/prometheus-operator-8.12.4.tgz
+    version: 8.12.4
+  - apiVersion: v1
     appVersion: 0.32.0
     created: "2020-03-18T11:08:44.328838924+01:00"
     dependencies:
