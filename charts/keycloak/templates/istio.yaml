@@ -1,0 +1,39 @@
+{{- if .Values.keycloak.ingress.enabled -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: {{ .Release.Name }}-gateway
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+      - {{ .Values.keycloak.service.hostname }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Release.Name }}-virtualservice
+  namespace: {{ .Release.Namespace }}
+spec:
+  hosts:
+    - {{ .Values.keycloak.service.hostname }}
+  gateways:
+    - {{ .Release.Name }}-gateway
+  http:
+  - route:
+    - destination:
+        host: {{ .Values.keycloak.service.name }}
+        port:
+          number: {{ .Values.keycloak.service.port }}
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
+          x-forwarded-port: "443"
+{{- end -}}
