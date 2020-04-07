@@ -50,6 +50,20 @@ spec:
     {{- end }}
     {{- if or .Values.keycloak.persistence.deployPostgres .Values.keycloak.extraInitContainers }}
       initContainers:
+      {{- if .Values.keycloak.configInitContainer.enabled }}
+        - name: import-json-backup
+          image: "{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}"
+          imagePullPolicy: {{ .Values.keycloak.image.pullPolicy }}
+          command:
+            - bin/standalone.sh
+            - -Dkeycloak.migration.action=import
+            - -Dkeycloak.migration.provider=singleFile
+            - -Dkeycloak.migration.file=/tmp/config.json
+            - -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+          volumeMounts:
+          - mountPath: /tmp
+            name: config.json
+      {{- end }}
       {{- if .Values.keycloak.persistence.deployPostgres }}
         - name: wait-for-postgresql
           image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
@@ -168,6 +182,11 @@ spec:
         - name: secrets
           secret:
             secretName: {{ include "keycloak.secret" . }}
+      {{- if .Values.keycloak.configInitContainer.enabled }}
+        - name: config.json
+          secret:
+            secretName: {{ template "keycloak.fullname" . }}-config-secret
+      {{- end }}
       {{- if or .Values.keycloak.cli.enabled .Values.keycloak.startupScripts }}
         - name: startup
           configMap:
