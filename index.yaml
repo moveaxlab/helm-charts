@@ -1,5 +1,27 @@
 apiVersion: v1
 entries:
+  argo-cd:
+  - apiVersion: v1
+    appVersion: 1.4.2
+    created: "2020-04-07T23:43:27.356510355+02:00"
+    description: A Helm chart for ArgoCD, a declarative, GitOps continuous delivery
+      tool for Kubernetes.
+    digest: fc3cb28275f1f8d9a7b31adafeb92985f5c05889697f0aa6199ad70a06867107
+    home: https://github.com/argoproj/argo-helm
+    icon: https://raw.githubusercontent.com/argoproj/argo/master/docs/assets/argo.png
+    keywords:
+    - argoproj
+    - argocd
+    - gitops
+    maintainers:
+    - name: alexec
+    - name: alexmt
+    - name: jessesuen
+    - name: seanson
+    name: argo-cd
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/argo-cd-2.0.0/argo-cd-2.0.0.tgz
+    version: 2.0.0
   ingress-merge:
   - apiVersion: v1
     created: "2020-03-29T19:11:59.49206561+02:00"
@@ -302,6 +324,39 @@ entries:
     urls:
     - https://github.com/moveaxlab/helm-charts/releases/download/kafka-viz-0.1.0/kafka-viz-0.1.0.tgz
     version: 0.1.0
+  keycloak:
+  - apiVersion: v1
+    appVersion: 8.0.2
+    created: "2020-04-07T23:43:27.564586064+02:00"
+    dependencies:
+    - condition: keycloak.persistence.deployPostgres
+      name: postgresql
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 6.3.13
+    description: Open Source Identity and Access Management For Modern Applications
+      and Services
+    digest: 3f7527331fa15ea5a005483361b60cb3a4951e450579788a4fb0a65807c72507
+    home: https://www.keycloak.org/
+    icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
+    keywords:
+    - sso
+    - idm
+    - openid connect
+    - saml
+    - kerberos
+    - ldap
+    maintainers:
+    - email: unguiculus@gmail.com
+      name: unguiculus
+    - email: thomas.darimont+github@gmail.com
+      name: thomasdarimont
+    name: keycloak
+    sources:
+    - https://github.com/codecentric/helm-charts
+    - https://github.com/jboss-dockerfiles/keycloak
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/keycloak-7.2.1/keycloak-7.2.1.tgz
+    version: 7.2.1
   kibana:
   - apiVersion: v1
     appVersion: 7.3.0
