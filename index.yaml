@@ -415,6 +415,17 @@ entries:
     urls:
     - https://github.com/moveaxlab/helm-charts/releases/download/kube-resource-report-0.2.2/kube-resource-report-0.2.2.tgz
     version: 0.2.2
+  mongodb-express:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-04-08T11:30:56.485034889+02:00"
+    description: A MongoDB Express UI Helm chart for Kubernetes
+    digest: bd502d25a5ba4c12ef765940e5c3bef931d0d5a4dc86157d5bb11e5caecaf954
+    name: mongodb-express
+    type: application
+    urls:
+    - https://github.com/moveaxlab/helm-charts/releases/download/mongodb-express-0.1.0/mongodb-express-0.1.0.tgz
+    version: 0.1.0
   postgresql:
   - apiVersion: v2
     appVersion: 1.16.1
