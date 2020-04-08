@@ -18,6 +18,10 @@ global:
   #  fsGroup: 999
   imagePullSecrets: []
 
+
+DeploymentAnnotations:  {}
+
+
 ## Controller
 controller:
   name: application-controller

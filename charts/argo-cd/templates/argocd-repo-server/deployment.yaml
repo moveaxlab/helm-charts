@@ -2,7 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    reloader.moveax.it/reload: true
+  {{- range $key, $value := .Values.DeploymentAnnotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
   name: {{ template "argo-cd.repoServer.fullname" . }}
   labels:
     app.kubernetes.io/name: {{ include "argo-cd.name" . }}-{{ .Values.repoServer.name }}
