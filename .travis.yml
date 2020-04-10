@@ -4,7 +4,7 @@ env:
   - HELM_URL=https://get.helm.sh
   - HELM_TGZ=helm-v3.1.2-linux-amd64.tar.gz
   - TARGET_BR=gh-pages
-  - REPO_DIR=/home/travis/build/charts
+  - REPO_DIR=/home/travis/build
   - GH_URL=https://moveaxlab.github.io/helm-charts
   - REPO_URL=git://${GH_TOKEN}@github.com/moveaxlab/helm-charts.git
 install:
@@ -18,6 +18,20 @@ before_install:
 - chmod 400 deploy_key
 
 script:
+  # Check charts format
+  - >
+     for dir in `ls ${REPO_DIR}/kubenow`; do
+      helm lint ${REPO_DIR}/kubenow/$dir
+      if [ $? != 0 ]; then
+       travis_terminate 1
+      fi
+     done
+  # Check YAML styling
+  - yamllint -c .yamllint.yml -s .travis.yml .yamllint.yml
+  - yamllint -c .yamllint.yml -s $(find . -type f -name "Chart.yaml")
+  - yamllint -c .yamllint.yml -s $(find . -type f -name "values.yaml")
+  
+after_success:
 - |
   if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
     # Temporary dir for storing new packaged charts and index files
