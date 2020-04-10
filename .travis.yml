@@ -6,7 +6,7 @@ env:
   - TARGET_BR=gh-pages
   - REPO_DIR=/home/travis/build/charts
   - GH_URL=https://moveaxlab.github.io/helm-charts
-  - REPO_URL=https://${GH_TOKEN}@github.com/moveaxlab/helm-charts.git
+  - REPO_URL=git://${GH_TOKEN}@github.com/moveaxlab/helm-charts.git
 install:
 - wget -q ${HELM_URL}/${HELM_TGZ}
 - tar xzfv ${HELM_TGZ}
