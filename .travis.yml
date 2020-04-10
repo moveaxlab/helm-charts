@@ -1,0 +1,72 @@
+language: python
+env:
+  global:
+  - HELM_URL=https://get.helm.sh
+  - HELM_TGZ=helm-v3.1.2-linux-amd64.tar.gz
+  - TARGET_BR=gh-pages
+  - REPO_DIR=/home/travis/build/charts
+  - GH_URL=https://moveaxlab.github.io/helm-charts
+  - REPO_URL=https://${GH_TOKEN}@github.com/moveaxlab/helm-charts.git
+install:
+- wget -q ${HELM_URL}/${HELM_TGZ}
+- tar xzfv ${HELM_TGZ}
+- PATH=`pwd`/linux-amd64/:$PATH
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_189e52c2c347_key -iv $encrypted_189e52c2c347_iv
+  -in deploy_key.enc -out deploy_key -d
+- chmod 400 deploy_key
+
+script:
+- |
+  if [ $TRAVIS_BRANCH = 'master' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+    # Temporary dir for storing new packaged charts and index files
+    BUILD_DIR=$(mktemp -d)
+
+    # Push temporary directory to the stack
+    pushd $BUILD_DIR
+
+    # Iterate over all charts are package them
+    for dir in `ls ${REPO_DIR}/charts`; do
+     helm dep update ${REPO_DIR}/charts/$dir
+     helm package ${REPO_DIR}/charts/$dir
+    done
+
+    # Indexing of charts
+    if [ -f index.yaml ]; then
+     helm repo index --url ${GH_URL} --merge index.yaml .
+    else
+     helm repo index --url ${GH_URL} .
+    fi
+
+    # Pop temporary directory from the stack
+    popd
+
+    # List all the contents that we will push
+    ls ${BUILD_DIR}
+
+    # Clone repository and empty target branch
+    git clone ${REPO_URL} out
+    cd out
+    git checkout ${TARGET_BR} || git checkout --orphan ${TARGET_BR}
+    cd ..
+    rm -rf out/* || exit 0
+
+    # Copying contents of BUILD_DIR to out folder
+    cp $BUILD_DIR/* out/
+    cd out
+
+    # Deploy if there are some changes
+    git diff --quiet
+    if [ $? != 0 ]; then
+     # Add all new files to staging phase and commit the changes
+     SHA=`git rev-parse --verify HEAD`
+     git config user.name "Travis CI"
+     git config user.email "travis@travis-ci.org"
+     git add -A .
+     git status
+     git commit -m "Travis deploy ${SHA}"
+     # We can push.
+     git push ${REPO_URL}
+    fi
+  fi
