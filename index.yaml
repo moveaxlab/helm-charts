@@ -3,10 +3,10 @@ entries:
   argo-cd:
   - apiVersion: v1
     appVersion: 1.4.2
-    created: "2020-04-07T23:43:27.356510355+02:00"
+    created: 2020-04-11T20:10:17.731894324Z
     description: A Helm chart for ArgoCD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: fc3cb28275f1f8d9a7b31adafeb92985f5c05889697f0aa6199ad70a06867107
+    digest: df7c33c04a8e3baa6ae7d681b3a91c37d9f54e9f201a1aeedb0ec4b29f94662d
     home: https://github.com/argoproj/argo-helm
     icon: https://raw.githubusercontent.com/argoproj/argo/master/docs/assets/argo.png
     keywords:
@@ -20,14 +20,14 @@ entries:
     - name: seanson
     name: argo-cd
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/argo-cd-2.0.0/argo-cd-2.0.0.tgz
+    - https://moveaxlab.github.io/helm-charts/argo-cd-2.0.0.tgz
     version: 2.0.0
   ingress-merge:
   - apiVersion: v1
-    created: "2020-03-29T19:11:59.49206561+02:00"
+    created: 2020-04-11T20:10:17.732471815Z
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
-    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
+    digest: c428f2681573ecfaced2cc3881bba9040172ef4c9aef1b23b89a76a2028e390d
     home: https://github.com/jakubkulhan/ingress-merge
     keywords:
     - ingress
@@ -36,232 +36,15 @@ entries:
       name: Jakub Kulhan
     name: ingress-merge
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
+    - https://moveaxlab.github.io/helm-charts/ingress-merge-0.1-alpha4.tgz
     version: 0.1-alpha4
-  - apiVersion: v1
-    created: "2020-03-30T15:15:19.516577626+02:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
-    version: 0.1-alpha4
-  - apiVersion: v1
-    created: "2020-03-30T20:01:48.626890764+02:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
-    version: 0.1-alpha4
-  - apiVersion: v1
-    created: "2020-04-02T12:00:58.488869133+02:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: 68ea8ae100e93cb30dab57c24a7c5951606bd55c133465fa53e37f07bc907cda
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha4/ingress-merge-0.1-alpha4.tgz
-    version: 0.1-alpha4
-  - apiVersion: v1
-    created: "2020-03-18T11:08:43.446769166+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-26T11:57:36.514458615+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-27T11:03:40.19180975+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: 84aa079ac2e5f0cbfd706aa79b85a2ed6c74f7dad115f4ce16ab47ab72b2f5b6
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-28T19:41:49.749341797+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: e2d3809463929d6757e4652c2533f55dfe26c71f3d0a6e6121426dc5f79f2d6a
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-26T20:03:08.2726035+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-26T21:14:06.642564017+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-26T23:08:45.503745558+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
-  - apiVersion: v1
-    created: "2020-03-27T10:52:18.705219376+01:00"
-    description: Merge Ingress Controller combines multiple ingress resorces into
-      a new one.
-    digest: fae4f08ce5e7310d1e28a1704e6e2f7cf4942b46ecc4bf30682e3bf1d619fc7b
-    home: https://github.com/jakubkulhan/ingress-merge
-    keywords:
-    - ingress
-    maintainers:
-    - email: jakub.kulhan@gmail.com
-      name: Jakub Kulhan
-    name: ingress-merge
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/ingress-merge-0.1-alpha2/ingress-merge-0.1-alpha2.tgz
-    version: 0.1-alpha2
   istio:
   - apiVersion: v1
     appVersion: 1.3.3
-    created: "2020-03-26T11:57:36.864690019+01:00"
-    dependencies:
-    - condition: sidecarInjectorWebhook.enabled
-      name: sidecarInjectorWebhook
-      repository: ""
-      version: 1.3.3
-    - condition: security.enabled
-      name: security
-      repository: ""
-      version: 1.3.3
-    - condition: gateways.enabled
-      name: gateways
-      repository: ""
-      version: 1.3.3
-    - condition: or mixer.policy.enabled mixer.telemetry.enabled
-      name: mixer
-      repository: ""
-      version: 1.3.3
-    - condition: nodeagent.enabled
-      name: nodeagent
-      repository: ""
-      version: 1.3.3
-    - condition: pilot.enabled
-      name: pilot
-      repository: ""
-      version: 1.3.3
-    - condition: grafana.enabled
-      name: grafana
-      repository: ""
-      version: 1.3.3
-    - condition: prometheus.enabled
-      name: prometheus
-      repository: ""
-      version: 1.3.3
-    - condition: tracing.enabled
-      name: tracing
-      repository: ""
-      version: 1.3.3
-    - condition: galley.enabled
-      name: galley
-      repository: ""
-      version: 1.3.3
-    - condition: kiali.enabled
-      name: kiali
-      repository: ""
-      version: 1.3.3
-    - condition: istiocoredns.enabled
-      name: istiocoredns
-      repository: ""
-      version: 1.3.3
-    - condition: certmanager.enabled
-      name: certmanager
-      repository: ""
-      version: 1.3.3
+    created: 2020-04-11T20:10:17.737333234Z
     description: Helm chart for all istio components
-    digest: 8dde8b4840832763c871f7c617c106e5d31c322adaa118bd74e6d58e02871146
+    digest: 35db82ad7cedd028d3d004c70f87a12fc4fbd12509b10e048e97c85912cc6369
+    engine: gotpl
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
     - istio
@@ -273,27 +56,17 @@ entries:
     name: istio
     sources:
     - http://github.com/istio/istio
+    tillerVersion: '>=2.7.2-0'
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/istio-1.3.3/istio-1.3.3.tgz
+    - https://moveaxlab.github.io/helm-charts/istio-1.3.3.tgz
     version: 1.3.3
   istio-init:
   - apiVersion: v1
     appVersion: 1.3.3-init
-    created: "2020-03-29T19:12:00.107649269+02:00"
+    created: 2020-04-11T20:10:17.737762568Z
     description: Helm chart to initialize Istio CRDs
-    digest: 1ec796c37b72d0e323113e9526cbc2dca392ad6c188377e6bd475a5b21f8d316
-    icon: https://istio.io/favicons/android-192x192.png
-    name: istio-init
-    sources:
-    - http://github.com/istio/istio
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/istio-init-1.3.3-init/istio-init-1.3.3-init.tgz
-    version: 1.3.3-init
-  - apiVersion: v1
-    appVersion: 1.3.3-init
-    created: "2020-04-02T12:00:59.511251434+02:00"
-    description: Helm chart to initialize Istio CRDs
-    digest: cbfb4552175de1cb927d4e5166ea5c5895f6d587e38dcbe1eb8d33c84b7dc43e
+    digest: a12b8c0fe80c230885490f3cb29b922eef8f120113c95ea63dba27383b97a63f
+    engine: gotpl
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
     - istio
@@ -301,41 +74,37 @@ entries:
     name: istio-init
     sources:
     - http://github.com/istio/istio
+    tillerVersion: '>=2.7.2-0'
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/istio-init-1.3.3-init/istio-init-1.3.3-init.tgz
+    - https://moveaxlab.github.io/helm-charts/istio-init-1.3.3-init.tgz
     version: 1.3.3-init
   kafdrop:
   - apiVersion: v1
     appVersion: 3.x
-    created: "2020-03-26T20:03:09.002483445+01:00"
+    created: 2020-04-11T20:10:17.737983708Z
     description: A Helm chart for Kafdrop
-    digest: 971f4f9c931c35dad222ef00a9e4b4af5a578274475f0edf1db6333a3dbaf3a5
+    digest: ab7776b89fe1be6adf29863f7d035c84c6543a15e94f7b7d972211bd440488f4
     name: kafdrop
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kafdrop-0.1.0/kafdrop-0.1.0.tgz
+    - https://moveaxlab.github.io/helm-charts/kafdrop-0.1.0.tgz
     version: 0.1.0
   kafka-viz:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-03-18T11:08:43.752394358+01:00"
+    created: 2020-04-11T20:10:17.73820603Z
     description: Kafka Vizualizer Helm chart for Kubernetes
-    digest: e304d6bc6114096344762c7628f8853f928bdba6ae39b1de195825ccb1e45bea
+    digest: 24efecbca5d972c545112038542bfc0e4f58c9bb110aa025faad5ff742069764
     name: kafka-viz
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kafka-viz-0.1.0/kafka-viz-0.1.0.tgz
+    - https://moveaxlab.github.io/helm-charts/kafka-viz-0.1.0.tgz
     version: 0.1.0
   keycloak:
   - apiVersion: v1
     appVersion: 8.0.2
-    created: "2020-04-09T14:52:30.734555107+02:00"
-    dependencies:
-    - condition: keycloak.persistence.deployPostgres
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 6.3.13
+    created: 2020-04-11T20:10:17.74025904Z
     description: Open Source Identity and Access Management For Modern Applications
       and Services
-    digest: d38040599da9f4de0e6e01f8b2ddcc75a0ec4a42a88dee636dad4b2adbb5588b
+    digest: 907314d879c100596728864fded0e422c96b75df01ca37d6ae0e17bc10d8aa5e
     home: https://www.keycloak.org/
     icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
     keywords:
@@ -355,46 +124,13 @@ entries:
     - https://github.com/codecentric/helm-charts
     - https://github.com/jboss-dockerfiles/keycloak
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/keycloak-7.3.1/keycloak-7.3.1.tgz
+    - https://moveaxlab.github.io/helm-charts/keycloak-7.3.1.tgz
     version: 7.3.1
-  - apiVersion: v1
-    appVersion: 8.0.2
-    created: "2020-04-07T23:43:27.564586064+02:00"
-    dependencies:
-    - condition: keycloak.persistence.deployPostgres
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 6.3.13
-    description: Open Source Identity and Access Management For Modern Applications
-      and Services
-    digest: 3f7527331fa15ea5a005483361b60cb3a4951e450579788a4fb0a65807c72507
-    home: https://www.keycloak.org/
-    icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
-    keywords:
-    - sso
-    - idm
-    - openid connect
-    - saml
-    - kerberos
-    - ldap
-    maintainers:
-    - email: unguiculus@gmail.com
-      name: unguiculus
-    - email: thomas.darimont+github@gmail.com
-      name: thomasdarimont
-    name: keycloak
-    sources:
-    - https://github.com/codecentric/helm-charts
-    - https://github.com/jboss-dockerfiles/keycloak
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/keycloak-7.2.1/keycloak-7.2.1.tgz
-    version: 7.2.1
   kibana:
-  - apiVersion: v1
-    appVersion: 7.3.0
-    created: "2020-03-26T20:03:09.618550079+01:00"
+  - appVersion: 7.3.0
+    created: 2020-04-11T20:10:17.740702532Z
     description: Official Elastic helm chart for Kibana
-    digest: 3c792797f50da343f32e7929c6c6bc017e3fe959c4a84c71290ead67165ede0f
+    digest: c09d209570bd85ea5383df9ea2c02772c48a34ee00475186e313fe415ef1abe1
     home: https://github.com/elastic/helm-charts
     icon: https://helm.elastic.co/icons/kibana.png
     maintainers:
@@ -404,14 +140,14 @@ entries:
     sources:
     - https://github.com/elastic/kibana
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kibana-7.3.0/kibana-7.3.0.tgz
+    - https://moveaxlab.github.io/helm-charts/kibana-7.3.0.tgz
     version: 7.3.0
   kube-downscaler:
   - apiVersion: v1
     appVersion: 0.5.2
-    created: "2020-03-30T15:15:22.149700205+02:00"
+    created: 2020-04-11T20:10:17.743182651Z
     description: A Helm chart for kube-downscaler
-    digest: d2aa102a4fcc4b67cd829da5e6e21310c08cb70d51748a255a004aff115fc202
+    digest: 60cf326b4610fd54cc2c22ceea50a7c70dac2adccadd085b20ad2028b523a42f
     keywords:
     - k8s pods scheduler
     - scheduled lifecycle
@@ -419,86 +155,48 @@ entries:
     sources:
     - https://github.com/hjacobs/kube-downscaler
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kube-downscaler-0.1.1/kube-downscaler-0.1.1.tgz
+    - https://moveaxlab.github.io/helm-charts/kube-downscaler-0.1.1.tgz
     version: 0.1.1
-  - apiVersion: v1
-    appVersion: 0.5.1
-    created: "2020-03-18T11:08:44.065565549+01:00"
-    description: A Helm chart for kube-downscaler
-    digest: 5bd89d6faf59b2992cbc507065909f78a17720eef6d5544d1882a6136f071854
-    keywords:
-    - k8s pods scheduler
-    - scheduled lifecycle
-    name: kube-downscaler
-    sources:
-    - https://github.com/hjacobs/kube-downscaler
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kube-downscaler-0.1.0/kube-downscaler-0.1.0.tgz
-    version: 0.1.0
   kube-resource-report:
   - apiVersion: v1
     appVersion: 19.12.2
-    created: "2020-03-26T21:14:08.571696343+01:00"
+    created: 2020-04-11T20:10:17.743937403Z
     description: Report Kubernetes cluster and pod resource requests vs usage and
       generate static HTML
-    digest: 16644b2b91f76f532e82813d48d24cee2340983b43f78cfa3f003ef7afbc3e3f
+    digest: 16651eafe26e3a4baa19aba7d9bdb017fa0901f568466e853719e1b7030a8f0b
     home: https://github.com/hjacobs/kube-resource-report.git
     name: kube-resource-report
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/kube-resource-report-0.2.2/kube-resource-report-0.2.2.tgz
+    - https://moveaxlab.github.io/helm-charts/kube-resource-report-0.2.2.tgz
     version: 0.2.2
   mongodb-express:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-08T11:30:56.485034889+02:00"
+    created: 2020-04-11T20:10:17.744461627Z
     description: A MongoDB Express UI Helm chart for Kubernetes
-    digest: bd502d25a5ba4c12ef765940e5c3bef931d0d5a4dc86157d5bb11e5caecaf954
+    digest: 38ef2b8fffa39ff2c83d5ff98308a538ef7812f9127746ad101e6810dde4d4d2
     name: mongodb-express
-    type: application
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/mongodb-express-0.1.0/mongodb-express-0.1.0.tgz
+    - https://moveaxlab.github.io/helm-charts/mongodb-express-0.1.0.tgz
     version: 0.1.0
   postgresql:
   - apiVersion: v2
     appVersion: 1.16.1
-    created: "2020-03-28T19:41:52.921364552+01:00"
+    created: 2020-04-11T20:10:17.744843991Z
     description: A Helm chart for Kubernetes
-    digest: 08f50c20879bcf7bd4b8c78a3cd3b42f34ebe947fed8a45aba56def1ecc54705
+    digest: 232d2dd61d2bdc282d2625a18b6e3b4ce8bc124a27aa6bbb2af531bff581c04b
     name: postgresql
-    type: application
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/postgresql-0.1.1/postgresql-0.1.1.tgz
+    - https://moveaxlab.github.io/helm-charts/postgresql-0.1.1.tgz
     version: 0.1.1
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2020-03-26T23:08:47.944985513+01:00"
-    description: A Helm chart for Kubernetes
-    digest: 8e5fb97881aa64d4b077abeadf75d642a13aad920af1f74ad9f8dc4ef06eb5cf
-    name: postgresql
-    type: application
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/postgresql-0.1.0/postgresql-0.1.0.tgz
-    version: 0.1.0
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.37.0
-    created: "2020-04-04T12:50:58.766819592+02:00"
-    dependencies:
-    - condition: kubeStateMetrics.enabled
-      name: kube-state-metrics
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 2.6.*
-    - condition: nodeExporter.enabled
-      name: prometheus-node-exporter
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.9.*
-    - condition: grafana.enabled
-      name: grafana
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 5.0.*
+    created: 2020-04-11T20:10:17.764869938Z
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: ebf8c04d1f817f862450b25bacb124a1c12a1637d5ebe8abfc05fde56d8c31b4
+    digest: 6d8083b327ede6318e884bb951d297e32e0ecc5570f54f717759f5c1aa6e32c0
+    engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -514,114 +212,26 @@ entries:
     - https://github.com/coreos/kube-prometheus
     - https://github.com/coreos/prometheus-operator
     - https://coreos.com/operators/prometheus
+    tillerVersion: '>=2.12.0'
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/prometheus-operator-8.12.4/prometheus-operator-8.12.4.tgz
+    - https://moveaxlab.github.io/helm-charts/prometheus-operator-8.12.4.tgz
     version: 8.12.4
-  - apiVersion: v1
-    appVersion: 0.32.0
-    created: "2020-03-18T11:08:44.328838924+01:00"
-    dependencies:
-    - condition: kubeStateMetrics.enabled
-      name: kube-state-metrics
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 2.3.*
-    - condition: nodeExporter.enabled
-      name: prometheus-node-exporter
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 1.5.*
-    - condition: grafana.enabled
-      name: grafana
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 3.8.*
-    description: Provides easy monitoring definitions for Kubernetes services, and
-      deployment and management of Prometheus instances.
-    digest: cdbd65321b4c1a2706c0a71341a3fcc9bf6e4e3a78fae5ec4e000156a72604a3
-    home: https://github.com/coreos/prometheus-operator
-    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
-    keywords:
-    - operator
-    - prometheus
-    maintainers:
-    - email: gianrubio@gmail.com
-      name: gianrubio
-    - name: vsliouniaev
-    name: prometheus-operator
-    sources:
-    - https://github.com/coreos/prometheus-operator
-    - https://coreos.com/operators/prometheus
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/prometheus-operator-6.11.0/prometheus-operator-6.11.0.tgz
-    version: 6.11.0
-  proxyinjector:
-  - apiVersion: v1
-    appVersion: v0.0.23
-    created: "2020-03-27T14:20:21.569246978+01:00"
-    description: ProxyInjector chart that runs on kubernetes
-    digest: 332469d054a2d246ddcab1071dcc9f6ba9b629fca871ad850d1a45da2a64744f
-    home: https://github.com/stakater/ProxyInjector
-    keywords:
-    - Proxy
-    - Authentication
-    - kubernetes
-    maintainers:
-    - email: hello@stakater.com
-      name: Stakater
-    name: proxyinjector
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/proxyinjector-0.1.0/proxyinjector-0.1.0.tgz
-    version: 0.1.0
-  - apiVersion: v1
-    created: "2020-03-27T10:52:21.367132099+01:00"
-    description: ProxyInjector chart that runs on kubernetes
-    digest: 047d4f5e8d7650c7ad7b03946d8db80b941a63233744814268baaa0865a29037
-    home: https://github.com/stakater/ProxyInjector
-    keywords:
-    - Proxy
-    - Authentication
-    - kubernetes
-    maintainers:
-    - email: hello@stakater.com
-      name: Stakater
-    name: proxyinjector
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/proxyinjector-v0.0.23/proxyinjector-v0.0.23.tgz
-    version: v0.0.23
   secrets:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-04-03T16:33:24.728016251+02:00"
+    created: 2020-04-11T20:10:17.765236879Z
     description: Chart for templating secrets
-    digest: a2a0b7c8f09dad2019b0cee57127fe462e64734512e62d7acef28fbccfcb3c5e
+    digest: 26b990ecbb23f71b37245aa549d6712a30a2f3eb8aef436b5741011379f68f0d
     name: secrets
-    type: application
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/secrets-0.1.1/secrets-0.1.1.tgz
+    - https://moveaxlab.github.io/helm-charts/secrets-0.1.1.tgz
     version: 0.1.1
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2020-04-02T12:01:04.733933183+02:00"
-    description: Chart for templating secrets
-    digest: e99668fab0b39e31127852a81619635e241163351514fccda82a844b9120fa29
-    name: secrets
-    type: application
-    urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/secrets-0.1.0/secrets-0.1.0.tgz
-    version: 0.1.0
   sonarqube:
   - apiVersion: v1
     appVersion: "8.1"
-    created: "2020-03-30T20:01:52.013640724+02:00"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 0.8.3
-    - condition: mysql.enabled
-      name: mysql
-      repository: https://kubernetes-charts.storage.googleapis.com/
-      version: 0.6.0
+    created: 2020-04-11T20:10:17.766714745Z
     description: Sonarqube is an open sourced code quality scanning tool
-    digest: a91808acebdf104492248b2eb95519ecf72b1ef3d8aec4c9be7243835d010f83
+    digest: e48abdc523799e2b46d91f4d31a082e59299cd384a83ca732ba0714849dda25f
     home: https://www.sonarqube.org/
     icon: https://www.sonarqube.org/assets/logo-31ad3115b1b4b120f3d1efd63e6b13ac9f1f89437f0cf6881cc4d8b5603a52b4.svg
     keywords:
@@ -638,6 +248,6 @@ entries:
     sources:
     - https://github.com/SonarSource/docker-sonarqube
     urls:
-    - https://github.com/moveaxlab/helm-charts/releases/download/sonarqube-2.2.3/sonarqube-2.2.3.tgz
+    - https://moveaxlab.github.io/helm-charts/sonarqube-2.2.3.tgz
     version: 2.2.3
-generated: "2020-03-18T11:08:43.123345085+01:00"
+generated: 2020-04-11T20:10:17.727537102Z
