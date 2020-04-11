@@ -6,7 +6,7 @@ env:
   - TARGET_BR=gh-pages
   - REPO_DIR=/home/travis/build/moveaxlab/helm-charts
   - GH_URL=https://moveaxlab.github.io/helm-charts
-  - REPO_URL=https://${GH_TOKEN}@github.com/moveaxlab/helm-charts.git
+  - REPO_URL=git@github.com/moveaxlab/helm-charts.git
   - YAMLLINT_VERSION=1.8.1
   - GIT_SSH_COMMAND="ssh -i ${PWD}/deploy_key"
 install:
@@ -34,7 +34,6 @@ after_success:
 
     # Iterate over all charts are package them
     for dir in `ls ${REPO_DIR}/charts`; do
-     helm dep update ${REPO_DIR}/charts/$dir
      helm package ${REPO_DIR}/charts/$dir
     done
 
