@@ -2,14 +2,6 @@ proxyinjector:
   replicas: 1
   mount: "configmap"
 
-  #Add this if there's a Secret already deployed
-  existingSecret: "" 
-
-  # SealedSecret config
-  configSealedSecret: 
-  # SealedSecret data for CLIENT-ID and CLIENT-SECRET, each item is the namespace in which to create the secret.
-  clientSealedSecrets:
-
   tolerations: {}
   labels:
     provider: stakater
