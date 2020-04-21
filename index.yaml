@@ -3,10 +3,10 @@ entries:
   argo-cd:
   - apiVersion: v1
     appVersion: 1.4.2
-    created: 2020-04-20T13:10:48.200732988Z
+    created: 2020-04-21T19:02:08.001820171Z
     description: A Helm chart for ArgoCD, a declarative, GitOps continuous delivery
       tool for Kubernetes.
-    digest: cf290db5aa6cbb009f36dfaf59f974cb650c520edaf7ff173bc73ad55afaf884
+    digest: 8c956499da6c89f7b64b1ec6dfe411fe4b0d53d96070e24ccbf0cf9de1b02434
     home: https://github.com/argoproj/argo-helm
     icon: https://raw.githubusercontent.com/argoproj/argo/master/docs/assets/argo.png
     keywords:
@@ -24,10 +24,10 @@ entries:
     version: 2.0.0
   ingress-merge:
   - apiVersion: v1
-    created: 2020-04-20T13:10:48.201180198Z
+    created: 2020-04-21T19:02:08.002067771Z
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
-    digest: a8f876925a81206d551fd03bef58cbb5cb109ca9a838d4cee28047dfea70f9af
+    digest: bdaef7689449022845ed57c2becbb72a4c7cc34fff8f83663fa7b458f30c9d2b
     home: https://github.com/jakubkulhan/ingress-merge
     keywords:
     - ingress
@@ -41,10 +41,10 @@ entries:
   ingresses:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: 2020-04-20T13:10:48.201424858Z
+    created: 2020-04-21T19:02:08.00227553Z
     description: A Helm chart that creates Ingresses only (Used with AWS-ALB-INGRESS-CONTROLLER
       & NGINX-INGRESS-CONTROLLER)
-    digest: 918198faaf67d82bddd21625ee475b0f9991b6ac606c7db20e29fbc6c462cbd5
+    digest: 76e7b508382ee64e8a0fa2f3cf65d89837b979c22fab5ba7a1c0ee7d82098dbb
     name: ingresses
     urls:
     - https://moveaxlab.github.io/helm-charts/ingresses-0.1.0.tgz
@@ -52,9 +52,9 @@ entries:
   istio:
   - apiVersion: v1
     appVersion: 1.3.3
-    created: 2020-04-20T13:10:48.206057528Z
+    created: 2020-04-21T19:02:08.00695658Z
     description: Helm chart for all istio components
-    digest: 725f3eee844d7c8b2ca02c8de0ac03e94dde5a1434a8dd24d3cbdf7121bd5114
+    digest: 918a67d622cf530202c1c4a733a7f1735b4ff149d8f2401840e883396fbde2f7
     engine: gotpl
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
@@ -74,9 +74,9 @@ entries:
   istio-init:
   - apiVersion: v1
     appVersion: 1.3.3-init
-    created: 2020-04-20T13:10:48.206506372Z
+    created: 2020-04-21T19:02:08.007402118Z
     description: Helm chart to initialize Istio CRDs
-    digest: 8bf6a716228226fdda93cfa8ebd5715db8966e284eb7da82996d076589f1c729
+    digest: 9af78e5342e1e7a873f4ed7648d579e7fbfb9a4b511dff05896adaf09e50f39b
     engine: gotpl
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
@@ -92,9 +92,9 @@ entries:
   kafdrop:
   - apiVersion: v1
     appVersion: 3.x
-    created: 2020-04-20T13:10:48.206719256Z
+    created: 2020-04-21T19:02:08.007627461Z
     description: A Helm chart for Kafdrop
-    digest: a3e3b691a7b867b50d972ec50bb4328a372fdaaba97193e5155518d1052db2dd
+    digest: c774824669f795c47177296a0f4bb4d64606f5cf95d1c5f7201c33c79503658f
     name: kafdrop
     urls:
     - https://moveaxlab.github.io/helm-charts/kafdrop-0.1.0.tgz
@@ -102,9 +102,9 @@ entries:
   kafka-viz:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: 2020-04-20T13:10:48.206975488Z
+    created: 2020-04-21T19:02:08.007859433Z
     description: Kafka Vizualizer Helm chart for Kubernetes
-    digest: e53e4cea00b3e5389e66325c2cd48f3332aacc83e355524ac33f09ce3ac83807
+    digest: f295926f310c33ea0bbd654b83c52639f5d8b47688615a52c158c321a2822f0c
     name: kafka-viz
     urls:
     - https://moveaxlab.github.io/helm-charts/kafka-viz-0.1.0.tgz
@@ -112,10 +112,10 @@ entries:
   keycloak:
   - apiVersion: v1
     appVersion: 8.0.2
-    created: 2020-04-20T13:10:48.209332795Z
+    created: 2020-04-21T19:02:08.010248769Z
     description: Open Source Identity and Access Management For Modern Applications
       and Services
-    digest: 2ead1f5a6f964f52a2fffb2a44e8d231d624e372a55c5b436f8ac0ff984ca544
+    digest: df9f369cb5ee92ac5464291f288d49a3442c8d66568357fed30a27a3c4ce22b5
     home: https://www.keycloak.org/
     icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
     keywords:
@@ -139,9 +139,9 @@ entries:
     version: 7.3.2
   kibana:
   - appVersion: 7.3.0
-    created: 2020-04-20T13:10:48.21015796Z
+    created: 2020-04-21T19:02:08.011120807Z
     description: Official Elastic helm chart for Kibana
-    digest: 2e6562fea4d1821c34a61dbd4f04b46ff311864f2495ad3472d72b31fa6a6e03
+    digest: c9706865710cfccf6e248aeb1cc1950a37efd2cadabdbfa004055f60ac8b8a05
     home: https://github.com/elastic/helm-charts
     icon: https://helm.elastic.co/icons/kibana.png
     maintainers:
@@ -155,10 +155,10 @@ entries:
     version: 7.3.0
   kube-downscaler:
   - apiVersion: v1
-    appVersion: 0.5.2
-    created: 2020-04-20T13:10:48.212534325Z
+    appVersion: 0.5.1
+    created: 2020-04-21T19:02:08.013575004Z
     description: A Helm chart for kube-downscaler
-    digest: 773a8227aa8baf68e2c5a144f68d255398b8b87e2479a656e3515e63b6d3db86
+    digest: f01ff06850df51dc60e7394306749d9ffda87c4780b484fd7e1e27712c49ad1f
     keywords:
     - k8s pods scheduler
     - scheduled lifecycle
@@ -166,15 +166,15 @@ entries:
     sources:
     - https://github.com/hjacobs/kube-downscaler
     urls:
-    - https://moveaxlab.github.io/helm-charts/kube-downscaler-0.1.1.tgz
-    version: 0.1.1
+    - https://moveaxlab.github.io/helm-charts/kube-downscaler-0.1.2.tgz
+    version: 0.1.2
   kube-resource-report:
   - apiVersion: v1
     appVersion: 19.12.2
-    created: 2020-04-20T13:10:48.213379598Z
+    created: 2020-04-21T19:02:08.014253655Z
     description: Report Kubernetes cluster and pod resource requests vs usage and
       generate static HTML
-    digest: 26f86858a44563a6b6f0bf0e8c9ee269b6af1be54405f0a5ed70e9339761ccde
+    digest: 9f3646ef946b88bb5a05c26753cf509dd6970ddff3887465e31e6af1c9d704ff
     home: https://github.com/hjacobs/kube-resource-report.git
     name: kube-resource-report
     urls:
@@ -183,9 +183,9 @@ entries:
   mongodb-express:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: 2020-04-20T13:10:48.21375042Z
+    created: 2020-04-21T19:02:08.014551836Z
     description: A MongoDB Express UI Helm chart for Kubernetes
-    digest: f62c92f095b36807fd1954158380f640a6e9023cd71c1a1574f139c4abc9bb17
+    digest: 4d9a6c8ce1aa03863ccf11e27e00340655aeddb514a683822fa546ad84ed2367
     name: mongodb-express
     urls:
     - https://moveaxlab.github.io/helm-charts/mongodb-express-0.1.0.tgz
@@ -193,9 +193,9 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 1.16.1
-    created: 2020-04-20T13:10:48.213943646Z
+    created: 2020-04-21T19:02:08.01474959Z
     description: A Helm chart for Kubernetes
-    digest: 1aea19114f72281c20aded28bf8646f8471fd5c9d95884778183c40d60aac5eb
+    digest: cabfcc7404cf7894a004a5cb89198ddb91a9b2eecc6b0e6bb9023c0a1e42ac0b
     name: postgresql
     urls:
     - https://moveaxlab.github.io/helm-charts/postgresql-0.1.1.tgz
@@ -203,10 +203,10 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.37.0
-    created: 2020-04-20T13:10:48.233055874Z
+    created: 2020-04-21T19:02:08.034333614Z
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: ca4ca209668dbc3d50c7b21c10e3dd9dabcca851fb75c8621e7d9c0fdd6f2766
+    digest: c6de1fc5518bf9b3151f2257338908b8f2b8c5027a28fc6b9af2868b07d623a4
     engine: gotpl
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
@@ -230,9 +230,9 @@ entries:
   secrets:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: 2020-04-20T13:10:48.233244692Z
+    created: 2020-04-21T19:02:08.034577639Z
     description: Chart for templating secrets
-    digest: 6aeaccd058c16ad211a5fa305703ce790ff615933a12690acce8f2a7d415148a
+    digest: c190a4fa55c55a9790f6c3edb78c1fffa24218287dbd2affa6fbb84440ab9827
     name: secrets
     urls:
     - https://moveaxlab.github.io/helm-charts/secrets-0.1.1.tgz
@@ -240,9 +240,9 @@ entries:
   sonarqube:
   - apiVersion: v1
     appVersion: "8.1"
-    created: 2020-04-20T13:10:48.234478038Z
+    created: 2020-04-21T19:02:08.035819659Z
     description: Sonarqube is an open sourced code quality scanning tool
-    digest: 9c8d3f34ee8bd05121e5c15b19636bfa57bc1948452065a84b6692ff1a18a868
+    digest: 90ce2442cbd188396ecb8b8026cb167668953d1e3ff654578ec9ffa60d0c0823
     home: https://www.sonarqube.org/
     icon: https://www.sonarqube.org/assets/logo-31ad3115b1b4b120f3d1efd63e6b13ac9f1f89437f0cf6881cc4d8b5603a52b4.svg
     keywords:
@@ -261,4 +261,4 @@ entries:
     urls:
     - https://moveaxlab.github.io/helm-charts/sonarqube-2.2.3.tgz
     version: 2.2.3
-generated: 2020-04-20T13:10:48.196367522Z
+generated: 2020-04-21T19:02:07.997059487Z
