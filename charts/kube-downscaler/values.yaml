@@ -13,6 +13,15 @@ debug:
   ## Deployment will query all namespaces if left empty:
 #  active_in:
 ## How frequently kube-downscaler should query applications uptime, unit is in seconds.
+nodeAffinity:
+  enabled: true
+  required:
+    nodeSelectorTerms:
+    - matchExpressions:
+      - key: env
+        operator: NotIn
+        values:
+          - staging
 
 ## Default is 1 minute.
 interval: 3600
