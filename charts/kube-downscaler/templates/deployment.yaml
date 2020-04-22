@@ -21,6 +21,20 @@ spec:
         app: {{ template "kube-downscaler.fullname" . }}
         release: {{ .Release.Name }}
     spec:
+{{- if .Values.nodeAffinity.enabled }}
+      affinity:
+{{- with .Values.nodeAffinity }}
+        nodeAffinity:
+{{- with .required }}
+          requiredDuringSchedulingIgnoredDuringExecution:
+            {{- toYaml . | nindent 12 }}
+{{- end }}
+{{- with .preferred }}
+          preferredDuringSchedulingIgnoredDuringExecution:
+            {{- toYaml . | nindent 12 }}
+{{- end }}
+{{- end }}
+{{- end }}    
       serviceAccountName: {{ if .Values.rbac.create }}{{ template "kube-downscaler.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
       containers:
       - name: {{ template "kube-downscaler.fullname" . }}
