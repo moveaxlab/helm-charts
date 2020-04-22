@@ -23,7 +23,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: sa-keycloak-init
-  namespace: keycloak
+  apiGroup: "rbac.authorization.k8s.io"
 roleRef:
   kind: ClusterRole
   name: keycloak-init
