@@ -1,15 +1,13 @@
 
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: keycloak
-  name: keycloak-init
 rules:
 - apiGroups: [""]
   resources:
   - secrets
-  - serviceaccounts
-  - serviceaccounts/token
+  - namespaces
   verbs:
   - 'delete'
   - 'create'
@@ -48,6 +46,7 @@ metadata:
     "helm.sh/hook-weight": "-5"
     "helm.sh/hook-delete-policy": hook-succeeded  
 spec:
+  serviceAccountName: sa-keycloak-init
   backoffLimit: 2
   template:
     metadata:
