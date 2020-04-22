@@ -40,13 +40,10 @@ metadata:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: db-migrate-{{ .name  }}-job
-  annotations:
-    "helm.sh/hook": pre-install
-    "helm.sh/hook-weight": "-5"
-    "helm.sh/hook-delete-policy": hook-succeeded  
+  name: db-migrate-{{ include "keycloak-init.fullname" . }}-job 
 spec:
   serviceAccountName: sa-keycloak-init
+  ttlSecondsAfterFinished: 0
   backoffLimit: 2
   template:
     metadata:
