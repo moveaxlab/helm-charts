@@ -56,7 +56,7 @@ spec:
         command: ["/opt/jboss/keycloak/bin/client_secret.sh"]
         env:
           - name: NAMESPACES
-            value: "{{ .Values.oidcSecret.namespaces }}"
+            value: "{{ include "helm-toolkit.utils.joinListWithComma" .Values.test }}"
           - name: KEYCLOAK_HOST
             value: {{ .Values.keycloak.host }}
           - name: KEYCLOAK_USER
