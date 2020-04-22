@@ -41,7 +41,6 @@ kind: Job
 metadata:
   name: db-migrate-{{ include "keycloak-init.fullname" . }}-job 
 spec:
-  serviceAccountName: sa-keycloak-init
   ttlSecondsAfterFinished: 0
   backoffLimit: 2
   template:
@@ -63,6 +62,7 @@ spec:
             subPath: client_secret.sh
             readOnly: true
       restartPolicy: OnFailure
+      serviceAccountName: sa-keycloak-init
 ---
 apiVersion: v1
 kind: ConfigMap
