@@ -1,0 +1,73 @@
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: keycloak
+rules:
+- apiGroups: [""]
+  resources:
+  - secrets
+  - namespaces
+  verbs:
+  - 'delete'
+  - 'create'
+  - 'patch'
+  - 'get'
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: keycloak-init
+  namespace: keycloak
+subjects:
+- kind: ServiceAccount
+  name: sa-keycloak-init
+  apiGroup: "rbac.authorization.k8s.io"
+roleRef:
+  kind: ClusterRole
+  name: keycloak-init
+  apiGroup: "rbac.authorization.k8s.io"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-keycloak-init
+  namespace: keycloak
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate-{{ include "keycloak-init.fullname" . }}-job 
+spec:
+  ttlSecondsAfterFinished: 0
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+      - name: keycloak-init
+        image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        command: ["/opt/jboss/keycloak/bin/client_secret.sh"]
+        env:
+          - name: NAMESPACES
+            value: "{{ include "helm-toolkit.utils.joinListWithComma" .Values.test }}"
+          - name: KEYCLOAK_HOST
+            value: {{ .Values.keycloak.host }}
+          - name: KEYCLOAK_USER
+            value: {{ .Values.keycloak.user }}
+        volumeMounts:
+          - mountPath: /opt/jboss/keycloak/bin/client_secret.sh
+            name: client_secret.sh
+            subPath: client_secret.sh
+            readOnly: true
+      restartPolicy: OnFailure
+      serviceAccountName: sa-keycloak-init
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ include "keycloak-init.fullname" . }}-script"
+data:
+  client_secret.sh: |-
+{{ .Files.Get "files/client_secret.sh" | indent 4 }}
