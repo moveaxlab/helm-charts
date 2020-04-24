@@ -50,20 +50,6 @@ spec:
     {{- end }}
     {{- if or .Values.keycloak.persistence.deployPostgres .Values.keycloak.extraInitContainers }}
       initContainers:
-      {{- if .Values.keycloak.configInitContainer.enabled }}
-        - name: import-json-backup
-          image: "{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}"
-          imagePullPolicy: {{ .Values.keycloak.image.pullPolicy }}
-          command:
-            - bin/standalone.sh
-            - -Dkeycloak.migration.action=import
-            - -Dkeycloak.migration.provider=singleFile
-            - -Dkeycloak.migration.file=/tmp/config.json
-            - -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
-          volumeMounts:
-          - mountPath: /tmp
-            name: config.json
-      {{- end }}
       {{- if .Values.keycloak.persistence.deployPostgres }}
         - name: wait-for-postgresql
           image: "{{ .Values.init.image.repository }}:{{ .Values.init.image.tag }}"
@@ -92,13 +78,16 @@ spec:
           imagePullPolicy: {{ .Values.keycloak.image.pullPolicy }}
           securityContext:
             {{- toYaml .Values.keycloak.containerSecurityContext | nindent 12 }}
-          command:
-            - /scripts/keycloak.sh
+          command: [ "/scripts/keycloak.sh"]
           {{- with .Values.keycloak.lifecycleHooks }}
           lifecycle:
             {{- tpl . $ | nindent 12 }}
           {{- end }}
           env:
+          {{- if .Values.keycloak.configInitContainer.enabled }}
+            - name: KEYCLOAK_IMPORT
+              value: /tmp/backup
+          {{- end }}
             - name: KEYCLOAK_USER
               value: {{ .Values.keycloak.username }}
             - name: KEYCLOAK_PASSWORD_FILE
@@ -126,6 +115,11 @@ spec:
             - name: startup
               mountPath: /opt/jboss/startup-scripts
               readOnly: true
+            {{- if .Values.keycloak.configInitContainer.enabled }}
+            - name: backup
+              mountPath: /tmp
+              readOnly: true
+            {{- end }}
             {{- end }}
             {{- with .Values.keycloak.extraVolumeMounts }}
             {{- tpl . $ | nindent 12 }}
@@ -183,7 +177,7 @@ spec:
           secret:
             secretName: {{ include "keycloak.secret" . }}
       {{- if .Values.keycloak.configInitContainer.enabled }}
-        - name: config.json
+        - name: backup
           secret:
             secretName: {{ template "keycloak.fullname" . }}-config-secret
       {{- end }}
