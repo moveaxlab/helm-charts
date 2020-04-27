@@ -62,7 +62,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - kubectl exec keycloak-0 -n keyclok /opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file={{ .Values.backupConfig.config }} -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+          - kubectl exec keycloak-0 -n keycloak bash -c "/opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file={{ .Values.backupConfig.config }} -Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
         env:
           - name: KEYCLOAK_HOST
             value: {{ .Values.keycloak.host }}
@@ -93,12 +93,12 @@ spec:
           - name: KEYCLOAK_USER
             value: {{ .Values.keycloak.user }}
         volumeMounts:
-          - mountPath: /opt/jboss/keycloak/bin/client_secret
-            name: client_secret
-            subPath: client_secret
+          - mountPath: /opt/jboss/keycloak/bin/client-secret
+            name: client-secret
+            subPath: client-secret
             readOnly: true
       volumes:
-        - name: client_secret
+        - name: client-secret
           configMap:
             name: {{ include "keycloak-init.fullname" . }}-script
             defaultMode: 0555
@@ -110,5 +110,5 @@ kind: ConfigMap
 metadata:
   name: "{{ include "keycloak-init.fullname" . }}-script"
 data:
-  client_secret: |-
+  client-secret: |-
 {{ .Files.Get "files/client_secret.sh" | indent 4 }}
