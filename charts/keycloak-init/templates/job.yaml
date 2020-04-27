@@ -3,6 +3,7 @@ kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: keycloak
+  name: keycloak-init
 rules:
 - apiGroups: [""]
   resources:
@@ -15,20 +16,24 @@ rules:
   - 'patch'
   - 'get'
 ---
+{{- range $i, $val := .Values.oidcSecret.namespaces }}
+  
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
   name: keycloak-init
-  namespace: keycloak
+  namespace: {{ $val }}
 subjects:
 - kind: ServiceAccount
   name: sa-keycloak-init
-  apiGroup: "rbac.authorization.k8s.io"
+  namespace: keycloak
+  apiGroup: ""
 roleRef:
   kind: ClusterRole
   name: keycloak-init
-  apiGroup: "rbac.authorization.k8s.io"
+  apiGroup: ""
 ---
+{{ end -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -63,11 +68,6 @@ spec:
             value: {{ .Values.keycloak.host }}
           - name: KEYCLOAK_USER
             value: {{ .Values.keycloak.user }}
-        volumeMounts:
-          - mountPath: /opt/jboss/keycloak/bin/client_secret.sh
-            name: client_secret.sh
-            subPath: client_secret.sh
-            readOnly: true
       restartPolicy: OnFailure
       serviceAccountName: sa-keycloak-init
 ---
@@ -93,10 +93,15 @@ spec:
           - name: KEYCLOAK_USER
             value: {{ .Values.keycloak.user }}
         volumeMounts:
-          - mountPath: /opt/jboss/keycloak/bin/client_secret.sh
-            name: client_secret.sh
-            subPath: client_secret.sh
+          - mountPath: /opt/jboss/keycloak/bin/client_secret
+            name: client_secret
+            subPath: client_secret
             readOnly: true
+      volumes:
+        - name: client_secret
+          configMap:
+            name: {{ include "keycloak-init.fullname" . }}-script
+            defaultMode: 0555
       restartPolicy: OnFailure
       serviceAccountName: sa-keycloak-init
 ---
@@ -105,5 +110,5 @@ kind: ConfigMap
 metadata:
   name: "{{ include "keycloak-init.fullname" . }}-script"
 data:
-  client_secret.sh: |-
+  client_secret: |-
 {{ .Files.Get "files/client_secret.sh" | indent 4 }}
