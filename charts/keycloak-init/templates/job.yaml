@@ -10,6 +10,7 @@ rules:
   - secrets
   - namespaces
   - pods/exec
+  - pods
   verbs:
   - 'delete'
   - 'create'
