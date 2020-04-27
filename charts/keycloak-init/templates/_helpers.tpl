@@ -60,3 +60,11 @@ Create the name of the service account to use
 {{- $local := dict "first" true -}}
 {{- range $k, $v := . -}}{{- if not $local.first -}},{{- end -}}{{- $v -}}{{- $_ := set $local "first" false -}}{{- end -}}
 {{- end -}}
+
+{{- define "listWithComma" -}}
+{{- $zkservers := list -}}
+{{- range int . | until -}}
+{{- $zkservers = print "zk-" . ".zookeeper" | append $zkservers -}}
+{{- end -}}
+{{- join "," $zkservers -}}
+{{- end -}}
