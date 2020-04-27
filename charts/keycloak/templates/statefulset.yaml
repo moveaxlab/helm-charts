@@ -84,7 +84,7 @@ spec:
             {{- tpl . $ | nindent 12 }}
           {{- end }}
           {{- if .Values.keycloak.configInitContainer.enabled }}
-            PostStart:
+            postStart:
               exec:
                 command: [ "sleep 180 && " ,"/bin/standalone.sh", "-Dkeycloak.migration.action=import","-Dkeycloak.migration.provider=singleFile","-Dkeycloak.migration.file=/tmp/config.json","-Dkeycloak.migration.strategy=OVERWRITE_EXISTING" ]
           {{- end }}
