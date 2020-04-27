@@ -22,5 +22,5 @@ delimiter=","
 declare -a namespaces=($(echo $NAMESPACES | tr "$delimiter" " "))
 for namespace in "${namespaces[@]}"; do  
     echo "Setting secret for $namespace"
-    kubectl create secret -n "$namespace" generic oidc-client-secret --from-literal=CLIENT_ID="$clientId" --from-literal=CLIENT_SECRET="$clientSecret"
+    kubectl create secret -n "$namespace" generic oidc-client-secret --from-literal=CLIENT_ID="$clientId" --from-literal=CLIENT_SECRET="$clientSecret" || exit 0
 done
