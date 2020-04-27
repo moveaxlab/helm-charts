@@ -83,6 +83,11 @@ spec:
           lifecycle:
             {{- tpl . $ | nindent 12 }}
           {{- end }}
+          {{- if .Values.keycloak.configInitContainer.enabled }}
+            PostStart:
+              exec:
+                command: [ "/bin/standalone.sh", "-Dkeycloak.migration.action=import","-Dkeycloak.migration.provider=singleFile","-Dkeycloak.migration.file=/tmp/config.json","-Dkeycloak.migration.strategy=OVERWRITE_EXISTING" ]
+          {{- end }}
           env:
           {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: KEYCLOAK_IMPORT
