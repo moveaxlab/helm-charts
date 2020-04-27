@@ -8,12 +8,12 @@ rules:
   resources:
   - secrets
   - namespaces
+  - pods/exec
   verbs:
   - 'delete'
   - 'create'
   - 'patch'
   - 'get'
-
 ---
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -36,6 +36,42 @@ metadata:
   namespace: keycloak
 
 ---
+{{- if .Values.backupConfig }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-import-{{ include "keycloak-init.fullname" . }}-job 
+  namespace: keycloak
+  annotations:
+    helm.sh/hook: "pre-install"
+    helm.sh/hook-weight: "-1"
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+spec:
+  ttlSecondsAfterFinished: 0
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+      - name: keycloak-init
+        image: "bitnami/kubectl:latest"
+        command:
+          - /bin/sh
+          - -c
+          - kubectl exec keycloak-0 -n keyclok /opt/jboss/keycloak/bin/standalone.sh -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file={{ .Values.backupConfig.config }} -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+        env:
+          - name: KEYCLOAK_HOST
+            value: {{ .Values.keycloak.host }}
+          - name: KEYCLOAK_USER
+            value: {{ .Values.keycloak.user }}
+        volumeMounts:
+          - mountPath: /opt/jboss/keycloak/bin/client_secret.sh
+            name: client_secret.sh
+            subPath: client_secret.sh
+            readOnly: true
+      restartPolicy: OnFailure
+      serviceAccountName: sa-keycloak-init
+---
+{{- end }}
 apiVersion: batch/v1
 kind: Job
 metadata:

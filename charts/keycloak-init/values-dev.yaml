@@ -5,6 +5,9 @@ image:
 oidcSecret:
   namespaces: ""
 
+backupConfig:
+  config: test.json
+
 keycloak:
   host: https://keycloak.local
   user: keycloak
