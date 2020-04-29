@@ -50,12 +50,11 @@ after_success:
     # List all the contents that we will push
     ls ${BUILD_DIR}
 
-    # Clone repository and empty target branch
+    # Clone repository and checkout target branch
     git clone ${REPO_URL} out
     cd out
-    git checkout ${TARGET_BR}
+    git checkout ${TARGET_BR} || git checkout --orphan ${TARGET_BR} 
     cd ..
-    rm -rf out/* || exit 0
 
     # Copying contents of BUILD_DIR to out folder
     cp $BUILD_DIR/* out/
