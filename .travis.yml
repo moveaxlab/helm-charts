@@ -53,7 +53,7 @@ after_success:
     # Clone repository and checkout target branch
     git clone ${REPO_URL} out
     cd out
-    git checkout ${TARGET_BR} || git checkout --orphan ${TARGET_BR} 
+    git checkout ${TARGET_BR}
     cd ..
 
     # Copying contents of BUILD_DIR to out folder
