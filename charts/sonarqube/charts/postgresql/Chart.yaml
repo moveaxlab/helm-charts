@@ -16,3 +16,4 @@ sources:
 - https://github.com/kubernetes/charts
 - https://github.com/docker-library/postgres
 version: 0.8.3
+apiVersion: v1
