@@ -89,6 +89,23 @@ entries:
     urls:
     - https://moveaxlab.github.io/helm-charts/istio-init-1.3.3-init.tgz
     version: 1.3.3-init
+  - apiVersion: v1
+    appVersion: 1.3.3
+    created: 2020-05-04T12:05:38.926071846Z
+    description: Helm chart to initialize Istio CRDs
+    digest: ebfca74b9d520677892a106585249568baaebcb5889556df0c6f2852440d5624
+    engine: gotpl
+    icon: https://istio.io/favicons/android-192x192.png
+    keywords:
+    - istio
+    - crd
+    name: istio-init
+    sources:
+    - http://github.com/istio/istio
+    tillerVersion: '>=2.7.2-0'
+    urls:
+    - https://moveaxlab.github.io/helm-charts/istio-init-1.3.3-init.tgz
+    version: 1.3.3
   kafdrop:
   - apiVersion: v1
     appVersion: 3.x
