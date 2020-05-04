@@ -197,7 +197,7 @@ spec:
       {{- if .Values.sonarSecretKey }}
       - name: secret
         secret:
-          secretName: {{ .Values.sonarSecretKey }}
+          secretName: {{ include "sonarqube.name" . }}-encryption-secret
           items:
           - key: sonar-secret.txt
             path: sonar-secret.txt
