@@ -1,0 +1,11 @@
+# _config.yaml
+title: Moveax Helm chart repo
+description: A Helm Charts repo
+theme: minima
+url: "https://moveaxlab.github.io/helm-charts/"
+repo_name: helm-charts
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .gitignore
