@@ -115,11 +115,11 @@ spec:
             - name: startup
               mountPath: /opt/jboss/startup-scripts
               readOnly: true
+            {{- end }}
             {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: backup
               mountPath: /tmp
               readOnly: true
-            {{- end }}
             {{- end }}
             {{- with .Values.keycloak.extraVolumeMounts }}
             {{- tpl . $ | nindent 12 }}
