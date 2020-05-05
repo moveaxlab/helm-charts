@@ -118,7 +118,7 @@ spec:
             {{- end }}
             {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: backup
-              mountPath: /tmp
+              mountPath: /tmp/config.json
               subPath: config.json
               readOnly: true
             {{- end }}
