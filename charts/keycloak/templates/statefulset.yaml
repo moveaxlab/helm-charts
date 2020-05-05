@@ -86,7 +86,7 @@ spec:
           env:
           {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: KEYCLOAK_IMPORT
-              value: /tmp/backup
+              value: /backup/config.json
           {{- end }}
             - name: KEYCLOAK_USER
               value: {{ .Values.keycloak.username }}
@@ -119,7 +119,6 @@ spec:
             {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: backup
               mountPath: /backup/config.json
-              subPath: config.json
               readOnly: true
             {{- end }}
             {{- with .Values.keycloak.extraVolumeMounts }}
