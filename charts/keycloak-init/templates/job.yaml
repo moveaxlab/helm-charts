@@ -39,9 +39,6 @@ roleRef:
   name: keycloak-init
   apiGroup: ""
 ---
-{{- range $i, $val := .Values.oidcSecret.namespaces }}
-  
-{{ end -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
