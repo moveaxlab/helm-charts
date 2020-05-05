@@ -102,8 +102,8 @@ Create the name for the database secret.
 Create the Keycloak password.
 */}}
 {{- define "keycloak.password" -}}
-{{- if .Values.keycloak.password -}}
-  {{- .Values.keycloak.password | b64enc | quote -}}
+{{- if .Values.secrets.keycloak.password -}}
+  {{- .Values.secrets.keycloak.password | b64enc | quote -}}
 {{- else -}}
   {{- randAlphaNum 16 | b64enc | quote -}}
 {{- end -}}
