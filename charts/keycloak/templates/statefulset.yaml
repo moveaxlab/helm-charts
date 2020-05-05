@@ -119,7 +119,7 @@ spec:
             {{- if .Values.keycloak.configInitContainer.enabled }}
             - name: backup
               mountPath: /backup/config.json
-              subPath: /backup/config.json
+              subPath: config.json
               readOnly: true
             {{- end }}
             {{- with .Values.keycloak.extraVolumeMounts }}
@@ -180,6 +180,7 @@ spec:
       {{- if .Values.keycloak.configInitContainer.enabled }}
         - name: backup
           secret:
+            defaultMode: 0555
             secretName: {{ template "keycloak.fullname" . }}-config-secret
       {{- end }}
       {{- if or .Values.keycloak.cli.enabled .Values.keycloak.startupScripts }}
