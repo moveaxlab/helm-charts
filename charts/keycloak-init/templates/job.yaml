@@ -112,7 +112,7 @@ spec:
                 name: keycloak-http
                 key: password
         volumeMounts:
-          - mountPath: /opt/jboss/keycloak/bin/client-secret
+          - mountPath: /migrate/client-secret
             name: client-secret
             subPath: client-secret
             readOnly: true
@@ -120,7 +120,7 @@ spec:
         - name: client-secret
           configMap:
             name: {{ include "keycloak-init.fullname" . }}-script
-            defaultMode: 0555
+            defaultMode: 0744
       restartPolicy: OnFailure
       serviceAccountName: sa-keycloak-init
 ---
