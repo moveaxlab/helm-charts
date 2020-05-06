@@ -70,12 +70,14 @@ spec:
         command:
           - /bin/sh
           - -c
-          - kubectl exec keycloak-0 -c keycloak  -i -t -- bash -ilc "/opt/jboss/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user keycloak --password {{ .Values.secrets.keycloakPassword }} && /opt/jboss/keycloak/bin/kcadm.sh update realms/master -f {{ .Values.backupConfig.config }} || exit 0"
+          - kubectl exec keycloak-0 -c keycloak  -i -t -- bash -ilc "/opt/jboss/keycloak/bin/kcadm.sh config credentials --server $KEYCLOAK_HOST --realm master --user keycloak --password {{ .Values.secrets.keycloakPassword }} && /opt/jboss/keycloak/bin/kcadm.sh update realms/master -f {{ .Values.backupConfig.config }} || exit 0"
         env:
           - name: KEYCLOAK_HOST
             value: {{ .Values.keycloak.host }}
           - name: KEYCLOAK_USER
             value: {{ .Values.keycloak.user }}
+          - name: KEYCLOAK_HOST
+            value: {{ .Values.keycloak.host }}
       restartPolicy: OnFailure
       serviceAccountName: sa-keycloak-init
 ---

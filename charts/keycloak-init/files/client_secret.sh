@@ -10,7 +10,7 @@ chmod +x ./kubectl
 mv ./kubectl /usr/local/bin/kubectl
 password=$KEYCLOAK_PASSWORD
 
-/opt/jboss/keycloak/bin/kcadm.sh config credentials --server "$KEYCLOAK_HOST" --realm master --user $KEYCLOAK_USER --password $password
+/opt/jboss/keycloak/bin/kcadm.sh config credentials --server $KEYCLOAK_HOST --realm master --user $KEYCLOAK_USER --password $password
 echo "Logged in."
 
 clientId=$(/opt/jboss/keycloak/bin/kcadm.sh get clients --server $KEYCLOAK_HOST --realm master | grep security-admin-console -C 2 | grep id | cut -d '"' -f 4 | tr -d '\n')
