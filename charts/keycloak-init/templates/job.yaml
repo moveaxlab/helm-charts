@@ -98,7 +98,7 @@ spec:
       containers:
       - name: keycloak-init
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
-        command: ["/opt/jboss/keycloak/bin/client-secret"]
+        command: ["/migrate/client-secret"]
         env:
           - name: NAMESPACES
             value: "{{ include "helm-toolkit.utils.joinListWithComma" .Values.oidcSecret.namespaces }}"
