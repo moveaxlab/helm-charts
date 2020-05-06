@@ -70,7 +70,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - kubectl exec keycloak-0 -c keycloak  -i -t -- bash -ilc "/opt/jboss/keycloak/bin/kcadm.sh config credentials --server $KEYCLOAK_HOST --realm master --user keycloak --password {{ .Values.secrets.keycloakPassword }} && /opt/jboss/keycloak/bin/kcadm.sh update realms/master -f {{ .Values.backupConfig.config }} || exit 0"
+          - kubectl exec keycloak-0 -c keycloak  -i -t -- bash -ilc "/opt/jboss/keycloak/bin/kcadm.sh config credentials --server $KEYCLOAK_HOST --realm master --user keycloak --password {{ .Values.secrets.keycloakPassword }} && /opt/jboss/keycloak/bin/kcadm.sh create partialImport -r master -s ifResourceExists=SKIP -o -f {{ .Values.backupConfig.config }} || exit 0"
         env:
           - name: KEYCLOAK_HOST
             value: {{ .Values.keycloak.host }}
