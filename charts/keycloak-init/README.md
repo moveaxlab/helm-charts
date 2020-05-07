@@ -1,3 +1,9 @@
+keycloak-init
+=============
+job for populating oidc secrets from keycloak
+
+Current chart version is `0.1.1`
+
 # Initialization of a Keycloak deployment
 
 The following chart helps in setting up a Keycloak deployment by automating the import of a previous Keycloak backup and automatically creating the k8s Secrets containing the client id and secret for eventual OIDC clients.
@@ -15,3 +21,16 @@ The following chart helps in setting up a Keycloak deployment by automating the 
 keycloak-init will trigger two Jobs sequentially: one for importing the backup into your keycloak deployment, and the other for automatically creating the Secrets.
 
 The secret creation Job uses a separate ServiceAccount to have the necessary permissions, and also runs it's own container as root. Be aware of this in case it's incompatible with some Cluster Policies instated in your local k8s cluster.
+
+
+
+## Chart Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| backupConfig.config | string | `"test.json"` |  |
+| image.name | string | `"moveax/keycloak"` |  |
+| image.tag | string | `"7.3.1"` |  |
+| keycloak.host | string | `"https://keycloak.local"` |  |
+| keycloak.user | string | `"keycloak"` |  |
+| oidcSecret.namespaces | string | `""` |  |
