@@ -34,12 +34,12 @@ spec:
   {{- range .Values.ingress.hosts }}
     - host: {{ . }}
       http:
-        paths:
-        {{- range .Values.ingress.paths }}
-          - path: {{ default "/*" .path }}
-            backend:
-              serviceName: {{ .serviceName }}
-              servicePort: {{ .servicePort }}
-        {{- end }}
+        paths:  
+          - path: /*
+            serviceName: ssl-redirect 
+            servicePort: use-annotation
+          - path: /*
+            serviceName: istio-ingressgateway
+            servicePort: 80
   {{- end }}
 {{- end }}
