@@ -11,14 +11,6 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   namespace: istio-system
-  annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-    kubernetes.io/ingress.class: merge
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.service.hostname }}
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
 {{- if .Values.ingress.labels }}
@@ -28,6 +20,11 @@ metadata:
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    kubernetes.io/ingress.class: merge
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    external-dns.alpha.kubernetes.io/hostname: {{ .Values.service.hostname }}
 spec:
 {{- if .Values.ingress.tls }}
   tls:
@@ -39,4 +36,5 @@ spec:
       http:
         paths:
 
+  {{- end }}
 {{- end }}
