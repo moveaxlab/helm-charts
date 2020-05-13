@@ -37,13 +37,6 @@ after_success:
      helm package ${REPO_DIR}/charts/$dir
     done
 
-    # Indexing of charts
-    if [ -f index.yaml ]; then
-     helm repo index --url ${GH_URL} --merge index.yaml .
-    else
-     helm repo index --url ${GH_URL} .
-    fi
-
     # Pop temporary directory from the stack
     popd
 
@@ -59,6 +52,13 @@ after_success:
     # Copying contents of BUILD_DIR to out folder
     cp $BUILD_DIR/* out/
     cd out
+
+    # Indexing of charts
+    if [ -f index.yaml ]; then
+     helm repo index --url ${GH_URL} --merge index.yaml .
+    else
+     helm repo index --url ${GH_URL} .
+    fi
 
     # Deploy if there are some changes
     git diff --quiet
