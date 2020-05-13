@@ -11,7 +11,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
-  namespace: {{ template "grafana.namespace" . }}
+  namespace: istio-system
   labels:
     {{- include "grafana.labels" . | nindent 4 }}
 {{- if .Values.ingress.labels }}
