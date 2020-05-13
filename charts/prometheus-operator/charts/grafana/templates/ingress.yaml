@@ -35,6 +35,11 @@ spec:
     - host: {{ . }}
       http:
         paths:
-
+        {{- range .Values.ingress.paths }}
+          - path: {{ default "/*" .path }}
+            backend:
+              serviceName: {{ .serviceName }}
+              servicePort: {{ .servicePort }}
+        {{- end }}
   {{- end }}
 {{- end }}
