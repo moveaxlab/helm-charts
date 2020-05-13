@@ -2,7 +2,6 @@
 {{- $fullName := include "grafana.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
-{{- $extraPaths := .Values.ingress.extraPaths -}}
 {{- if .Capabilities.APIVersions.Has "networking.k8s.io/v1beta1" }}
 apiVersion: networking.k8s.io/v1beta1
 {{ else }}
@@ -39,9 +38,5 @@ spec:
     - host: {{ . }}
       http:
         paths:
-{{ if $extraPaths }}
-{{ toYaml $extraPaths | indent 10 }}
-{{- end }}
 
-  {{- end }}
 {{- end }}
