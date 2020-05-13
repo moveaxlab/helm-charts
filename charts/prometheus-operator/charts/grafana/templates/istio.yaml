@@ -1,3 +1,4 @@
+{{- $fullName := include "grafana.fullname" . -}}
 {{- if  .Values.ingress.enabled -}}
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -8,12 +9,12 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - {{ .Values.service.hostname }}
-      port:
+    - port:
         number: 80
         name: http
         protocol: HTTP
+      hosts:
+        - {{ .Values.service.hostname }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -28,7 +29,7 @@ spec:
   http:
   - route:
     - destination:
-        host: {{ .Values.service.name }}
+        host: {{ $fullName }}
         port:
           number: {{ .Values.service.port }}
 {{- end -}}
