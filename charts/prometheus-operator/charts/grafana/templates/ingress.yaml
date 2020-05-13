@@ -36,10 +36,12 @@ spec:
       http:
         paths:  
           - path: /*
-            serviceName: ssl-redirect 
-            servicePort: use-annotation
+            backend:
+              serviceName: ssl-redirect 
+              servicePort: use-annotation
           - path: /*
-            serviceName: istio-ingressgateway
-            servicePort: 80
+            backend:
+              serviceName: istio-ingressgateway
+              servicePort: 80
   {{- end }}
 {{- end }}
