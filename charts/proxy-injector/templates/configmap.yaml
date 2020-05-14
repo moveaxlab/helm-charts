@@ -13,5 +13,5 @@ metadata:
   name: {{ template "proxyinjector-name" . }}
 data:
   config.yml: |-
-{{ .Values.proxyinjector.data.config | trim | indent 4 }}
+{{ .Files.Get "files/config.yml" | trim | indent 4 }}
 {{- end }}
