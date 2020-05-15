@@ -133,7 +133,11 @@ spec:
             {{- end }}
 
         ports:
+        {{- if .Values.authProxy.enabled }}
+        - containerPort: {{ .Values.service.port }}
+        {{- else }}
         - containerPort: {{ .Values.httpPort }}
+        {{- end }} 
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
