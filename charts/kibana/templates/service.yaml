@@ -20,7 +20,11 @@ spec:
 {{- end }}
       protocol: TCP
       name: http
+      {{- if .Values.authProxy.enabled }}
+      targetPort: {{ .Values.service.port }}
+      {{- else }}
       targetPort: {{ .Values.httpPort }}
+      {{- end }}
   selector:
     app: {{ .Chart.Name }}
     release: {{ .Release.Name | quote }}
