@@ -100,6 +100,22 @@ spec:
             command:
               - sh
               - -c
+            {{- if .Values.authProxy.enabled }}
+              - |
+                #!/usr/bin/env bash -e
+                http () {
+                    local path="${1}"
+                    set -- -XGET -s --fail
+
+                    if [ -n "${ELASTIC_USERNAME}" ] && [ -n "${ELASTIC_PASSWORD}" ]; then
+                      set -- "$@" -u "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}"
+                    fi
+
+                    curl -k "$@" "{{ .Values.protocol }}://localhost:{{ .Values.service.port }}${path}"
+                }
+
+                http "{{ .Values.healthCheckPath }}"
+            {{- else }}
               - |
                 #!/usr/bin/env bash -e
                 http () {
@@ -114,6 +130,8 @@ spec:
                 }
 
                 http "{{ .Values.healthCheckPath }}"
+            {{- end }}
+
         ports:
         - containerPort: {{ .Values.httpPort }}
         resources:
