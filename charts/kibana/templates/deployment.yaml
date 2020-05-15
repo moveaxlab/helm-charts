@@ -111,7 +111,7 @@ spec:
                       set -- "$@" -u "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}"
                     fi
 
-                    curl -k "$@" "{{ .Values.protocol }}://localhost:{{ .Values.service.port }}${path}"
+                    curl -k "$@" "{{ .Values.protocol }}://localhost:{{ .Values.httpPort }}${path}"
                 }
 
                 http "{{ .Values.healthCheckPath }}"
@@ -126,7 +126,7 @@ spec:
                       set -- "$@" -u "${ELASTIC_USERNAME}:${ELASTIC_PASSWORD}"
                     fi
 
-                    curl -k "$@" "{{ .Values.protocol }}://localhost:{{ .Values.httpPort }}${path}"
+                    curl -k "$@" "{{ .Values.protocol }}://localhost:{{ .Values.service.port }}${path}"
                 }
 
                 http "{{ .Values.healthCheckPath }}"
