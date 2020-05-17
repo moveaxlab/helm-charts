@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: postgres
-  name: postgres
+    name: postgres
 spec:
   replicas: 1
   selector:
@@ -16,6 +16,7 @@ spec:
     metadata:
       labels:
         app: postgres
+        name: postgres
       annotations:
         sidecar.istio.io/inject: "false"
         
