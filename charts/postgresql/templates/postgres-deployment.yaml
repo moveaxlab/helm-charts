@@ -1,17 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: postgres
   name: postgres
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+      release: {{ .Release.Name | quote }}
   strategy:
     type: Recreate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: postgres
       annotations:
