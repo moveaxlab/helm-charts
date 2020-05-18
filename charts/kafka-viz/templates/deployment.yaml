@@ -50,9 +50,9 @@ spec:
           ports:
             - name: {{ include "kafka-viz.fullname" . }}
               {{- if .Values.authProxy.enabled }}
-              - containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.service.port }}
               {{- else }}
-              - containerPort: 8080
+              containerPort: 8080
               {{- end }} 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
