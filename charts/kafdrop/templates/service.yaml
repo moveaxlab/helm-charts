@@ -11,10 +11,16 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+{{- if .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
+{{- end }}
       protocol: TCP
       name: http
-      nodePort: {{ .Values.service.nodePort }}
+      {{- if .Values.authProxy.enabled }}
+      targetPort: {{ .Values.service.port }}
+      {{- else }}
+      targetPort: http
+      {{- end }}
   selector:
     app.kubernetes.io/name: {{ include "chart.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
