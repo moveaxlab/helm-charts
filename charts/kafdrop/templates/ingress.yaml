@@ -1,10 +1,10 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "chart.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  namespace: {{ .Values.ingress.namespace }}
+  name: "{{ .Values.service.name }}"
   labels:
     app.kubernetes.io/name: {{ include "chart.name" . }}
     helm.sh/chart: {{ include "chart.chart" . }}
