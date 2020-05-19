@@ -1,3 +1,10 @@
+istio-init
+==========
+Helm chart to initialize Istio CRDs
+
+Current chart version is `1.3.4`
+
+
 # Istio
 
 [Istio](https://istio.io/) is an open platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data.
@@ -75,3 +82,14 @@ To delete all CRDs, run the following command
     ```
     $ for i in istio-init/files/*crd*yaml; do kubectl delete -f $i; done
     ```
+
+
+
+## Chart Values
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| certmanager.enabled | bool | `false` |  |
+| global.hub | string | `"docker.io/istio"` |  |
+| global.imagePullPolicy | string | `"IfNotPresent"` |  |
+| global.tag | string | `"1.3.3"` |  |
