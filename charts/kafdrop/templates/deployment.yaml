@@ -64,7 +64,9 @@ spec:
           - name: SERVER_PORT
             value: "{{ .Values.server.port }}"
           ports:
-          - containerPort: {{ .Values.server.port }}
+            - name: http
+              containerPort: {{ .Values.server.port }}
+              protocol: TCP
           livenessProbe:
             httpGet:
               path: "{{ .Values.server.servlet.contextPath | trimSuffix "/" }}/actuator/health"
