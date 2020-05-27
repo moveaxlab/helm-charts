@@ -12,7 +12,7 @@ metadata:
     authproxy.stakater.com/source-service-name: "{{ .Values.service.name }}"
     authproxy.stakater.com/target-port: "{{ .Values.authProxy.targetPort }}"
     authproxy.stakater.com/listen: "0.0.0.0:{{ .Values.authProxy.targetPort }}"
-    authproxy.stakater.com/redirection-url: "https://{{ .Values.service.hostname }}"
+    authproxy.stakater.com/redirection-url: "http://{{ .Values.service.hostname }}/"
     {{- range $key, $value := .Values.authProxy.deploymentAnnotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
@@ -63,21 +63,17 @@ spec:
             value: "{{ .Values.kafka.keystoreFile }}"
           - name: SERVER_PORT
             value: "{{ .Values.server.port }}"
-          ports:
-            - name: http
-              containerPort: {{ .Values.server.port }}
-              protocol: TCP
           livenessProbe:
             httpGet:
               path: "{{ .Values.server.servlet.contextPath | trimSuffix "/" }}/actuator/health"
-              port: http
+              port: {{ .Values.server.port }}
             initialDelaySeconds: 180
             periodSeconds: 30
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: "{{ .Values.server.servlet.contextPath | trimSuffix "/" }}/actuator/health"
-              port: http
+              port: {{ .Values.server.port }}
             initialDelaySeconds: 20
             periodSeconds: 5
             timeoutSeconds: 10
