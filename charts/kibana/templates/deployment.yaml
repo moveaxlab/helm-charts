@@ -13,7 +13,7 @@ metadata:
     authproxy.stakater.com/source-service-name: "{{ .Values.service.name }}"
     authproxy.stakater.com/target-port: "{{ .Values.authProxy.targetPort }}"
     authproxy.stakater.com/listen: "0.0.0.0:{{ .Values.authProxy.targetPort }}"
-    authproxy.stakater.com/redirection-url: "{{ .Values.service.hostname }}"
+    authproxy.stakater.com/redirection-url: "https://{{ .Values.service.hostname }}"
     {{- range $key, $value := .Values.authProxy.deploymentAnnotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
@@ -133,11 +133,7 @@ spec:
             {{- end }}
 
         ports:
-        {{- if .Values.authProxy.enabled }}
-        - containerPort: {{ .Values.service.port }}
-        {{- else }}
         - containerPort: {{ .Values.httpPort }}
-        {{- end }} 
         resources:
 {{ toYaml .Values.resources | indent 10 }}
         volumeMounts:
