@@ -2,12 +2,18 @@ image:
   name: moveax/keycloak
   tag: 7.3.1
 
-oidcSecret:
-  namespaces: ""
 
 backupConfig:
   config: test.json
 
+oidcSecret:
+  clientId: client_id
+  namespaces:
+    - default
+
 keycloak:
   host: https://keycloak.local
   user: keycloak
+
+secrets:
+  keycloakPassword: test
