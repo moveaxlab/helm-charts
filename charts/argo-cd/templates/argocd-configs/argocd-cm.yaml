@@ -11,3 +11,16 @@ metadata:
     app.kubernetes.io/component: {{ .Values.server.name }}
 data:
 {{- toYaml .Values.server.config | nindent 4 }}
+{{- if .Values.ssoAuth.enabled }}
+    oidc.config: |
+      name: {{ .Values.ssoAuth.name }}
+      issuer: {{ .Values.ssoAuth.issuer }}
+      clientID: {{ .Values.ssoAuth.clientId }}
+      clientSecret: {{ .Values.ssoAuth.clientSecret }}
+      requestedScopes:
+      {{- range .Values.ssoAuth.requestedScopes }}
+        {{ print "- " (. | quote) }}
+      {{- end }}
+      requestedIDTokenClaims:
+      {{- toYaml .Values.ssoAuth.requestedIDTokenClaims | nindent 7 }}
+{{- end }}
