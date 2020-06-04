@@ -6,6 +6,11 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "keycloak.commonLabels" . | nindent 4 }}
+  annotations:
+    {{- with .Values.keycloak.statefulSetAnnotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+
 spec:
   selector:
     matchLabels:
