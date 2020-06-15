@@ -31,7 +31,7 @@ spec:
           - name: SENDER_TYPE
             value: "slack"
           - name: INTERVAL
-            value: "{{ .Values.configs.interval }}"
+            value: "{{ .Values.configs.interval | int }}"
           - name: HTTP_ENDPOINT
             value: "{{ .Values.configs.slackHook }}"
           - name: SLACK_CHANNEL
@@ -40,7 +40,6 @@ spec:
             value: "{{ .Values.configs.slackUsername | default "Cole - DeadManSwitch Monitor" }}"
           - name: SLACK_ICON
             value: "{{ .Values.configs.slackIcon | default ":monkey_face:" }}"
-          livenessProbe:
           ports:
             - name: http
               containerPort: 8080
