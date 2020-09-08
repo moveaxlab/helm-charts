@@ -79,14 +79,6 @@ spec:
       expr: sum by(name, namespace)(increase(aggregator_unavailable_apiservice_count[5m])) > 2
       labels:
         severity: warning
-    - alert: AggregatedAPIDown
-      annotations:
-        message: An aggregated API {{`{{`}} $labels.name {{`}}`}}/{{`{{`}} $labels.namespace {{`}}`}} is down. It has not been available at least for the past five minutes.
-        runbook_url: {{ .Values.defaultRules.runbookUrl }}alert-name-aggregatedapidown
-      expr: sum by(name, namespace)(sum_over_time(aggregator_unavailable_apiservice[5m])) > 0
-      for: 5m
-      labels:
-        severity: warning
 {{- if .Values.kubeApiServer.enabled }}
     - alert: KubeAPIDown
       annotations:
