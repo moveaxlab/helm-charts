@@ -30,16 +30,16 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.name" . }}-data
+                  name:  {{ include "postgresql.name" . }}
                   key: POSTGRES_USER 
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.name" . }}-data
+                  name:  {{ include "postgresql.name" . }}
                   key: POSTGRES_PASSWORD 
         envFrom:
           - configMapRef:
-              name: {{ include "postgresql.name" . }}-data
+              name: {{ include "postgresql.name" . }}
         ports:
           - containerPort: 5432
         volumeMounts:
