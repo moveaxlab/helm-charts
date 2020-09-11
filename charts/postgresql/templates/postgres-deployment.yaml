@@ -25,12 +25,7 @@ spec:
       - name: postgres  
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         args: 
-          - -c 
-          - 'max_connections=300'
-          - '-c'
-          - 'max_wal_senders=50'
-          - '-c'
-          - 'max_replication_slots=50'
+        {{- toYaml .Values.args | nindent 10 }}
         env:
           - name: POSTGRES_USER
             valueFrom:
