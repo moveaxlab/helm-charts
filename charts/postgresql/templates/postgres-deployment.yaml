@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: {{ include "postgresql.name" . }}
   labels:
-    app: postgres
-    name: postgres
+    app: {{ include "postgresql.name" . }}
+    release: {{ .Release.Name | quote }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: {{ include "postgresql.name" . }}
       release: {{ .Release.Name | quote }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: postgres
+        app: {{ include "postgresql.name" . }}
+        release: {{ .Release.Name | quote }}
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
@@ -29,24 +30,24 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                  name:  postgres-db
+                  name:  {{ include "postgresql.name" . }}-data
                   key: POSTGRES_USER 
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                  name:  postgres-db
+                  name:  {{ include "postgresql.name" . }}-data
                   key: POSTGRES_PASSWORD 
         envFrom:
           - configMapRef:
-              name: postgres-configmap 
+              name: {{ include "postgresql.name" . }}-data
         ports:
           - containerPort: 5432
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: postgres-data
+            name: {{ include "postgresql.name" . }}-data
             subPath: postgres
       restartPolicy: Always
       volumes:
-        - name: postgres-data
+        - name: {{ include "postgresql.name" . }}-data
           persistentVolumeClaim:
-            claimName: postgres-data
+            claimName: {{ include "postgresql.name" . }}-data
