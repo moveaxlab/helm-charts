@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: postgres
   labels:
     app: postgres
     name: postgres
@@ -16,10 +17,8 @@ spec:
     metadata:
       labels:
         app: postgres
-        name: postgres
       annotations:
         sidecar.istio.io/inject: "false"
-        
     spec:
       containers:
       - name: postgres  
