@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ include "postgresql.name" . }}
+    app: {{ include "postgresql.fullname" . }}
     release: {{ .Release.Name | quote }}
-  name: {{ include "postgresql.name" . }}-data
+  name: {{ include "postgresql.fullname" . }}-data
 spec:
   accessModes:
   - ReadWriteOnce

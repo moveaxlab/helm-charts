@@ -3,16 +3,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: {{ include "postgresql.name" . }}
+    app: {{ include "postgresql.fullname" . }}
     release: {{ .Release.Name | quote }}
-  name: {{ include "postgresql.name" . }}
+  name: {{ include "postgresql.fullname" . }}
 spec:
   ports:
   - name: "postgres"
     port: 5432
     targetPort: 5432
   selector:
-    app: {{ include "postgresql.name" . }}
+    app: {{ include "postgresql.fullname" . }}
     release: {{ .Release.Name | quote }}
 status:
   loadBalancer: {}

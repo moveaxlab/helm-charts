@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "postgresql.name" . }}
+  name: {{ include "postgresql.fullname" . }}
   labels:
-    app: {{ include "postgresql.name" . }}
+    app: {{ include "postgresql.fullname" . }}
     release: {{ .Release.Name | quote }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "postgresql.name" . }}
+      app: {{ include "postgresql.fullname" . }}
       release: {{ .Release.Name | quote }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ include "postgresql.name" . }}
+        app: {{ include "postgresql.fullname" . }}
         release: {{ .Release.Name | quote }}
       annotations:
         sidecar.istio.io/inject: "false"
@@ -30,24 +30,24 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.name" . }}
+                  name:  {{ include "postgresql.fullname" . }}
                   key: POSTGRES_USER 
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.name" . }}
+                  name:  {{ include "postgresql.fullname" . }}
                   key: POSTGRES_PASSWORD 
         envFrom:
           - configMapRef:
-              name: {{ include "postgresql.name" . }}
+              name: {{ include "postgresql.fullname" . }}
         ports:
           - containerPort: 5432
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: {{ include "postgresql.name" . }}-data
+            name: {{ include "postgresql.fullname" . }}-data
             subPath: postgres
       restartPolicy: Always
       volumes:
-        - name: {{ include "postgresql.name" . }}-data
+        - name: {{ include "postgresql.fullname" . }}-data
           persistentVolumeClaim:
-            claimName: {{ include "postgresql.name" . }}-data
+            claimName: {{ include "postgresql.fullname" . }}-data
