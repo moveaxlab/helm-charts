@@ -16,7 +16,7 @@ spec:
       {{- if .Values.authProxy.enabled }}
       targetPort: {{ .Values.service.port }}
       {{- else }}
-      targetPort: http
+      targetPort: 9000
       {{- end }}
   selector:
     app.kubernetes.io/name: {{ include "chart.name" . }}
