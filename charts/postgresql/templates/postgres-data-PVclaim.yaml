@@ -3,12 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    app: postgres-data
-  name: postgres-data
+    app: {{ include "postgresql.fullname" . }}
+    release: {{ .Release.Name | quote }}
+  name: {{ include "postgresql.fullname" . }}-data
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
-status: {}
+      storage: {{ .Values.storage }}
