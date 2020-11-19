@@ -1,4 +1,4 @@
-# Generated from 'pilot-dashboard' from https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/pilot-dashboard.json
+# Generated from 'pilot-dashboard' from https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/pilot-dashboard.json
 # Do not change in-place! In order to change this file first read following link:
 # https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
 {{- $kubeTargetVersion := default .Capabilities.KubeVersion.GitVersion .Values.kubeTargetVersionOverride }}
@@ -32,7 +32,6 @@ data:
         "editable": false,
         "gnetId": null,
         "graphTooltip": 1,
-        "id": 11,
         "links": [],
         "panels": [
             {
@@ -183,7 +182,7 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "process_virtual_memory_bytes{job=\"pilot\"}",
+                        "expr": "process_virtual_memory_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "instant": false,
                         "intervalFactor": 2,
@@ -192,7 +191,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "process_resident_memory_bytes{job=\"pilot\"}",
+                        "expr": "process_resident_memory_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "Resident Memory",
@@ -200,7 +199,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "go_memstats_heap_sys_bytes{job=\"pilot\"}",
+                        "expr": "go_memstats_heap_sys_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": true,
                         "intervalFactor": 2,
@@ -208,7 +207,7 @@ data:
                         "refId": "A"
                     },
                     {
-                        "expr": "go_memstats_heap_alloc_bytes{job=\"pilot\"}",
+                        "expr": "go_memstats_heap_alloc_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": true,
                         "intervalFactor": 2,
@@ -216,7 +215,7 @@ data:
                         "refId": "D"
                     },
                     {
-                        "expr": "go_memstats_alloc_bytes{job=\"pilot\"}",
+                        "expr": "go_memstats_alloc_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "Alloc",
@@ -224,7 +223,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "go_memstats_heap_inuse_bytes{job=\"pilot\"}",
+                        "expr": "go_memstats_heap_inuse_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 2,
@@ -233,7 +232,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "go_memstats_stack_inuse_bytes{job=\"pilot\"}",
+                        "expr": "go_memstats_stack_inuse_bytes{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "Stack in-use",
@@ -241,7 +240,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "container_memory_usage_bytes{job=\"kubernetes-cadvisor\", container_name=~\"discovery\", pod_name=~\"istio-pilot-.*\"}",
+                        "expr": "container_memory_usage_bytes{container=~\"discovery\", pod=~\"istiod-.*|istio-pilot-.*\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 2,
@@ -250,7 +249,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "container_memory_usage_bytes{job=\"kubernetes-cadvisor\", container_name=~\"istio-proxy\", pod_name=~\"istio-pilot-.*\"}",
+                        "expr": "container_memory_usage_bytes{container=~\"istio-proxy\", pod=~\"istiod-.*|istio-pilot-.*\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Sidecar (container)",
@@ -335,14 +334,14 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "sum(irate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\",container_name=\"discovery\", pod_name=~\"istio-pilot-.*\"}[1m]))",
+                        "expr": "sum(irate(container_cpu_usage_seconds_total{container=\"discovery\", pod=~\"istiod-.*|istio-pilot-.*\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Discovery (container)",
                         "refId": "A"
                     },
                     {
-                        "expr": "irate(process_cpu_seconds_total{job=\"pilot\"}[1m])",
+                        "expr": "irate(process_cpu_seconds_total{app=\"istiod\"}[1m])",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 2,
@@ -351,7 +350,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "sum(irate(container_cpu_usage_seconds_total{job=\"kubernetes-cadvisor\",container_name=\"istio-proxy\", pod_name=~\"istio-pilot-.*\"}[1m]))",
+                        "expr": "sum(irate(container_cpu_usage_seconds_total{container=\"istio-proxy\", pod=~\"istiod-.*|istio-pilot-.*\"}[1m]))",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 2,
@@ -438,7 +437,7 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "container_fs_usage_bytes{job=\"kubernetes-cadvisor\", container_name=\"discovery\", pod_name=~\"istio-pilot-.*\"}",
+                        "expr": "container_fs_usage_bytes{container=\"discovery\", pod=~\"istiod-.*|istio-pilot-.*\"}",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "Discovery",
@@ -446,7 +445,7 @@ data:
                         "step": 2
                     },
                     {
-                        "expr": "container_fs_usage_bytes{job=\"kubernetes-cadvisor\", container_name=\"istio-proxy\", pod_name=~\"istio-pilot-.*\"}",
+                        "expr": "container_fs_usage_bytes{container=\"istio-proxy\", pod=~\"istiod-.*|istio-pilot-.*\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Sidecar",
@@ -532,7 +531,7 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "go_goroutines{job=\"pilot\"}",
+                        "expr": "go_goroutines{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 2,
                         "legendFormat": "Number of Goroutines",
@@ -599,6 +598,7 @@ data:
                 "bars": true,
                 "dashLength": 10,
                 "dashes": false,
+                "datasource": "Prometheus",
                 "description": "Shows the rate of pilot pushes",
                 "fill": 1,
                 "gridPos": {
@@ -743,7 +743,7 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "sum(pilot_xds_cds_reject{job=\"pilot\"}) or (absent(pilot_xds_cds_reject{job=\"pilot\"}) - 1)",
+                        "expr": "sum(pilot_xds_cds_reject{app=\"istiod\"}) or (absent(pilot_xds_cds_reject{app=\"istiod\"}) - 1)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -751,7 +751,7 @@ data:
                         "refId": "C"
                     },
                     {
-                        "expr": "sum(pilot_xds_eds_reject{job=\"pilot\"}) or (absent(pilot_xds_eds_reject{job=\"pilot\"}) - 1)",
+                        "expr": "sum(pilot_xds_eds_reject{app=\"istiod\"}) or (absent(pilot_xds_eds_reject{app=\"istiod\"}) - 1)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -759,7 +759,7 @@ data:
                         "refId": "D"
                     },
                     {
-                        "expr": "sum(pilot_xds_rds_reject{job=\"pilot\"}) or (absent(pilot_xds_rds_reject{job=\"pilot\"}) - 1)",
+                        "expr": "sum(pilot_xds_rds_reject{app=\"istiod\"}) or (absent(pilot_xds_rds_reject{app=\"istiod\"}) - 1)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -767,7 +767,7 @@ data:
                         "refId": "A"
                     },
                     {
-                        "expr": "sum(pilot_xds_lds_reject{job=\"pilot\"}) or (absent(pilot_xds_lds_reject{job=\"pilot\"}) - 1)",
+                        "expr": "sum(pilot_xds_lds_reject{app=\"istiod\"}) or (absent(pilot_xds_lds_reject{app=\"istiod\"}) - 1)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -775,14 +775,14 @@ data:
                         "refId": "B"
                     },
                     {
-                        "expr": "sum(rate(pilot_xds_write_timeout{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_xds_write_timeout{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Write Timeouts",
                         "refId": "F"
                     },
                     {
-                        "expr": "sum(rate(pilot_total_xds_internal_errors{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_total_xds_internal_errors{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -790,7 +790,7 @@ data:
                         "refId": "H"
                     },
                     {
-                        "expr": "sum(rate(pilot_total_xds_rejects{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_total_xds_rejects{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -798,7 +798,7 @@ data:
                         "refId": "E"
                     },
                     {
-                        "expr": "sum(rate(pilot_xds_push_context_errors{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_xds_push_context_errors{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -813,7 +813,7 @@ data:
                         "refId": "L"
                     },
                     {
-                        "expr": "sum(rate(pilot_xds_push_errors{job=\"pilot\"}[1m])) by (type)",
+                        "expr": "sum(rate(pilot_xds_push_errors{app=\"istiod\"}[1m])) by (type)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -821,14 +821,14 @@ data:
                         "refId": "I"
                     },
                     {
-                        "expr": "sum(rate(pilot_xds_push_timeout{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_xds_push_timeout{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Push Timeouts",
                         "refId": "G"
                     },
                     {
-                        "expr": "sum(rate(pilot_xds_push_timeout_failures{job=\"pilot\"}[1m]))",
+                        "expr": "sum(rate(pilot_xds_push_timeout_failures{app=\"istiod\"}[1m]))",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Push Timeouts Failures",
@@ -881,6 +881,7 @@ data:
                 "bars": false,
                 "dashLength": 10,
                 "dashes": false,
+                "datasource": "Prometheus",
                 "description": "Shows the total time it takes to push a config update to a proxy",
                 "fill": 1,
                 "gridPos": {
@@ -1021,7 +1022,7 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "pilot_conflict_inbound_listener{job=\"pilot\"}",
+                        "expr": "pilot_conflict_inbound_listener{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -1029,7 +1030,7 @@ data:
                         "refId": "B"
                     },
                     {
-                        "expr": "pilot_conflict_outbound_listener_http_over_current_tcp{job=\"pilot\"}",
+                        "expr": "pilot_conflict_outbound_listener_http_over_current_tcp{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -1037,7 +1038,7 @@ data:
                         "refId": "A"
                     },
                     {
-                        "expr": "pilot_conflict_outbound_listener_tcp_over_current_tcp{job=\"pilot\"}",
+                        "expr": "pilot_conflict_outbound_listener_tcp_over_current_tcp{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -1045,7 +1046,7 @@ data:
                         "refId": "C"
                     },
                     {
-                        "expr": "pilot_conflict_outbound_listener_tcp_over_current_http{job=\"pilot\"}",
+                        "expr": "pilot_conflict_outbound_listener_tcp_over_current_http{app=\"istiod\"}",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,
@@ -1131,21 +1132,21 @@ data:
                 "steppedLine": false,
                 "targets": [
                     {
-                        "expr": "pilot_virt_services{job=\"pilot\"}",
+                        "expr": "pilot_virt_services{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Virtual Services",
                         "refId": "A"
                     },
                     {
-                        "expr": "pilot_services{job=\"pilot\"}",
+                        "expr": "pilot_services{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Services",
                         "refId": "B"
                     },
                     {
-                        "expr": "pilot_xds{job=\"pilot\"}",
+                        "expr": "pilot_xds{app=\"istiod\"}",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "legendFormat": "Connected Endpoints",
@@ -1237,7 +1238,7 @@ data:
                 ],
                 "targets": [
                     {
-                        "expr": "sum(pilot_xds_eds_instances{job=\"pilot\", cluster=~\".+\\\\|.+\"}) by (cluster) < 1",
+                        "expr": "sum(pilot_xds_eds_instances{app=\"istiod\", cluster=~\".+\\\\|.+\"}) by (cluster) < 1",
                         "format": "time_series",
                         "hide": false,
                         "instant": true,
@@ -1563,6 +1564,212 @@ data:
                     "align": false,
                     "alignLevel": null
                 }
+            },
+            {
+                "collapsed": false,
+                "datasource": null,
+                "gridPos": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 40
+                },
+                "id": 626,
+                "panels": [],
+                "title": "Webhooks",
+                "type": "row"
+            },
+            {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": null,
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 0,
+                    "y": 41
+                },
+                "hiddenSeries": false,
+                "id": 629,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "hideEmpty": false,
+                    "hideZero": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "dataLinks": []
+                },
+                "percentage": false,
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                        "expr": "sum(rate(galley_validation_passed[1m]))",
+                        "interval": "",
+                        "legendFormat": "Validations (Success)",
+                        "refId": "A"
+                    },
+                    {
+                        "expr": "sum(rate(galley_validation_failed[1m]))",
+                        "interval": "",
+                        "legendFormat": "Validation (Failure)",
+                        "refId": "B"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Configuration Validation",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    },
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+            },
+            {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": null,
+                "description": "",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 12,
+                    "x": 12,
+                    "y": 41
+                },
+                "hiddenSeries": false,
+                "id": 630,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "hideZero": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                    "dataLinks": []
+                },
+                "percentage": false,
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                    {
+                        "expr": "sum(rate(sidecar_injection_success_total[1m]))",
+                        "interval": "",
+                        "legendFormat": "Injections (Success)",
+                        "refId": "A"
+                    },
+                    {
+                        "expr": "sum(rate(sidecar_injection_failure_total[1m]))",
+                        "interval": "",
+                        "legendFormat": "Injections (Failure)",
+                        "refId": "B"
+                    }
+                ],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Sidecar Injection",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    },
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
             }
         ],
         "refresh": "5s",
@@ -1602,7 +1809,7 @@ data:
             ]
         },
         "timezone": "browser",
-        "title": "Istio Pilot Dashboard",
+        "title": "Istio Control Plane Dashboard",
         "uid": "3--MLVZZk",
         "version": 11
     }

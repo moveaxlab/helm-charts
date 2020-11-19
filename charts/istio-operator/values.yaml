@@ -1,0 +1,24 @@
+hub: docker.io/istio
+tag: 1.7.4
+
+operatorNamespace: istio-operator
+
+# Used to replace istioNamespace to support operator watch multiple namespaces.
+watchedNamespaces: istio-system
+waitForResourcesTimeout: 300s
+
+# Used for helm2 to add the CRDs to templates.
+enableCRDTemplates: true
+
+# revision for the operator resources
+revision: 1-7-4
+
+# Operator resource defaults
+operator:
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 128Mi
