@@ -40,56 +40,42 @@ charts = [
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/pilot-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/istio-mesh-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/mixer-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/istio-performance-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/istio-workload-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/istio-service-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/istio-service-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/istio-workload-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/istio-performance-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/mixer-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
     },
     {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/istio-mesh-dashboard.json',
-        'destination': '../templates/grafana/dashboards',
-        'type': 'json',
-        'min_kubernetes': '1.14.0-0',
-        'max_kubernetes': '1.18.0-0'
-    },
-    {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/galley-dashboard.json',
-        'destination': '../templates/grafana/dashboards',
-        'type': 'json',
-        'min_kubernetes': '1.14.0-0',
-        'max_kubernetes': '1.18.0-0'
-    },
-    {
-        'source': 'https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/citadel-dashboard.json',
+        'source': 'https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/pilot-dashboard.json',
         'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',

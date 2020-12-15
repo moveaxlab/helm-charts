@@ -1,4 +1,4 @@
-# Generated from 'istio-mesh-dashboard' from https://raw.githubusercontent.com/istio/istio/1.3.8/install/kubernetes/helm/istio/charts/grafana/dashboards/istio-mesh-dashboard.json
+# Generated from 'istio-mesh-dashboard' from https://raw.githubusercontent.com/istio/istio/1.7.4/manifests/charts/istio-telemetry/grafana/dashboards/istio-mesh-dashboard.json
 # Do not change in-place! In order to change this file first read following link:
 # https://github.com/helm/charts/tree/master/stable/prometheus-operator/hack
 {{- $kubeTargetVersion := default .Capabilities.KubeVersion.GitVersion .Values.kubeTargetVersionOverride }}
@@ -36,7 +36,7 @@ data:
         "links": [],
         "panels": [
             {
-                "content": "<div>\n  <div style=\"position: absolute; bottom: 0\">\n    <a href=\"https://istio.io\" target=\"_blank\" style=\"font-size: 30px; text-decoration: none; color: inherit\"><img src=\"https://istio.io/img/istio-logo.svg\" style=\"height: 50px\"> Istio</a>\n  </div>\n  <div style=\"position: absolute; bottom: 0; right: 0; font-size: 15px\">\n    Istio is an <a href=\"https://github.com/istio/istio\" target=\"_blank\">open platform</a> that provides a uniform way to connect,\n    <a href=\"https://istio.io/docs/concepts/traffic-management/overview.html\" target=\"_blank\">manage</a>, and \n    <a href=\"https://istio.io/docs/concepts/network-and-auth/auth.html\" target=\"_blank\">secure</a> microservices.\n    <br>\n    Need help? Join the <a href=\"https://istio.io/community/\" target=\"_blank\">Istio community</a>.\n  </div>\n</div>",
+                "content": "<div>\n  <div style=\"position: absolute; bottom: 0\">\n    <a href=\"https://istio.io\" target=\"_blank\" style=\"font-size: 30px; text-decoration: none; color: inherit\"><img src=\"https://istio.io/latest/img/istio-bluelogo-nobackground-unframed.svg\" style=\"height: 50px\"> Istio</a>\n  </div>\n  <div style=\"position: absolute; bottom: 0; right: 0; font-size: 15px\">\n    Istio is an <a href=\"https://github.com/istio/istio\" target=\"_blank\">open platform</a> that provides a uniform way to connect,\n    <a href=\"https://istio.io/docs/concepts/traffic-management/overview.html\" target=\"_blank\">manage</a>, and \n    <a href=\"https://istio.io/docs/concepts/network-and-auth/auth.html\" target=\"_blank\">secure</a> microservices.\n    <br>\n    Need help? Join the <a href=\"https://istio.io/community/\" target=\"_blank\">Istio community</a>.\n  </div>\n</div>",
                 "gridPos": {
                     "h": 3,
                     "w": 24,
@@ -386,6 +386,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
+                "datasource": "Prometheus",
                 "format": "none",
                 "gauge": {
                     "maxValue": 100,
@@ -437,7 +438,7 @@ data:
                 "tableColumn": "",
                 "targets": [
                     {
-                        "expr": "sum(galley_istio_networking_virtualservices) / count(up{job=\"galley\"})",
+                        "expr": "avg(galley_istio_networking_virtualservices)",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "refId": "A"
@@ -467,6 +468,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
+                "datasource": "Prometheus",
                 "format": "none",
                 "gauge": {
                     "maxValue": 100,
@@ -518,7 +520,7 @@ data:
                 "tableColumn": "",
                 "targets": [
                     {
-                        "expr": "sum(galley_istio_networking_destinationrules) / count(up{job=\"galley\"})",
+                        "expr": "avg(galley_istio_networking_destinationrules)",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "refId": "A"
@@ -548,6 +550,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
+                "datasource": "Prometheus",
                 "format": "none",
                 "gauge": {
                     "maxValue": 100,
@@ -599,7 +602,7 @@ data:
                 "tableColumn": "",
                 "targets": [
                     {
-                        "expr": "sum(galley_istio_networking_gateways) / count(up{job=\"galley\"})",
+                        "expr": "avg(galley_istio_networking_gateways)",
                         "format": "time_series",
                         "intervalFactor": 1,
                         "refId": "A"
@@ -629,6 +632,7 @@ data:
                     "rgba(237, 129, 40, 0.89)",
                     "#d44a3a"
                 ],
+                "datasource": "Prometheus",
                 "format": "none",
                 "gauge": {
                     "maxValue": 100,
@@ -680,7 +684,7 @@ data:
                 "tableColumn": "",
                 "targets": [
                     {
-                        "expr": "sum(galley_istio_authentication_meshpolicies) / count(up{job=\"galley\"})",
+                        "expr": "avg(galley_istio_authentication_meshpolicies)",
                         "format": "time_series",
                         "hide": false,
                         "intervalFactor": 1,

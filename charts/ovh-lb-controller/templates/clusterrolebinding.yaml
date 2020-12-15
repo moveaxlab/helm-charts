@@ -1,0 +1,19 @@
+{{- if .Values.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: {{ template "ovh-lb-controller.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+  name: {{ template "ovh-lb-controller.fullname" . }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: "{{ template "ovh-lb-controller.fullname" . }}"
+subjects:
+- kind: ServiceAccount
+  name: "{{ template "ovh-lb-controller.fullname" . }}"
+  namespace: {{ .Release.Namespace }}
+{{- end -}}

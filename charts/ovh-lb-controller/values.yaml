@@ -1,0 +1,54 @@
+# Default values for ovh-lb-controller.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: moveax/ovh-lb-controller
+  tag: latest
+  pullPolicy: IfNotPresent
+
+  args: 
+   - --verbose
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+secrets:
+  openstack:
+    configb64: Y2xvdWRzOgogICAgICBvdmg6CiAgICAgICAgYXV0aDoKICAgICAgICAgIGF1dGhfdXJsOiBodHRwczovL2F1dGguY2xvdWQub3ZoLm5ldC92MwogICAgICAgICAgcHJvamVjdF9uYW1lOiAKICAgICAgICAgIHByb2plY3RfaWQ6IAogICAgICAgICAgdXNlcm5hbWU6IAogICAgICAgICAgdXNlcl9kb21haW5fbmFtZTogZGVmYXVsdAogICAgICAgICAgcHJvamVjdF9kb21haW5fbmFtZTogZGVmYXVsdCAgICAgIAogICAgICAgICAgcGFzc3dvcmQ6IAogICAgICAgIHJlZ2lvbl9uYW1lOiBHUkE3
+
+serviceAccount:
+  create: true
+rbac:
+  create: true 
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
