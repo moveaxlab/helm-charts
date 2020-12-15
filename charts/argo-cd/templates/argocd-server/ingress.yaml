@@ -29,10 +29,6 @@ spec:
     - host: {{ $host }}
       http:
         paths:
-          - path: /*
-            backend:
-              serviceName: ssl-redirect 
-              servicePort: use-annotation
   {{- range $p := $paths }}
           - path: {{ $p }}
             backend:
