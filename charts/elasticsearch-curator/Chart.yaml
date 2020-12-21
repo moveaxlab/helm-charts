@@ -7,12 +7,12 @@ keywords:
 - elasticsearch
 - elasticsearch-curator
 maintainers:
+- email: cedric.dsm@gmail.com
+  name: desaintmartin
 - email: gianrubio@gmail.com
   name: gianrubio
-- email: adam.hamsik@lablabs.io
-  name: haad
 name: elasticsearch-curator
 sources:
 - https://github.com/kubernetes/charts/elasticsearch-curator
 - https://github.com/pires/docker-elasticsearch-curator
-version: 2.2.1
+version: 2.1.5
