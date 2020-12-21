@@ -1,7 +1,7 @@
 language: python
 env:
   global:
-  - HELM_URL=https://storage.googleapis.com/kubernetes-helm
+  - HELM_URL=https://moveaxlab.github.io/helm-charts/
   - HELM_TGZ=helm-v2.12.1-linux-amd64.tar.gz
   - TARGET_BR=gh-pages
   - REPO_DIR=/home/travis/build/moveaxlab/helm-charts
