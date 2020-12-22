@@ -63,20 +63,20 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8081
               protocol: TCP
         {{- if .Values.livenessProbe }}
           livenessProbe:
             httpGet:
               path: /misc/ping
-              port: 80
+              port: 8081
             {{- .Values.livenessProbe | toYaml | nindent 12 }}
         {{- end }}
         {{- if .Values.readinessProbe }}
           readinessProbe:
             httpGet:
               path: /misc/ping
-              port: 80
+              port: 8081
             {{- .Values.readinessProbe | toYaml | nindent 12 }}
         {{- end }}
           env:
