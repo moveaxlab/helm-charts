@@ -37,9 +37,10 @@ spec:
 {{- with .Values.image.args }}
 {{ toYaml . | indent 10 }}
 {{- end }}      
-          volumeMounts:
-          - name: openstack
-            mountPath: "/etc/openstack"
+          envFrom:
+          - secretRef:
+              name: {{ include "ovh-lb-controller.fullname" . }}-secret
+
           livenessProbe:
             httpGet:
               path: /healthz
@@ -50,10 +51,6 @@ spec:
               port: 8080
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      volumes:
-      - name: openstack
-        secret:
-          secretName: {{ include "ovh-lb-controller.fullname" . }}-secret
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

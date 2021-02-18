@@ -16,8 +16,24 @@ nameOverride: ""
 fullnameOverride: ""
 
 secrets:
-  openstack:
-    configb64: Y2xvdWRzOgogICAgICBvdmg6CiAgICAgICAgYXV0aDoKICAgICAgICAgIGF1dGhfdXJsOiBodHRwczovL2F1dGguY2xvdWQub3ZoLm5ldC92MwogICAgICAgICAgcHJvamVjdF9uYW1lOiAKICAgICAgICAgIHByb2plY3RfaWQ6IAogICAgICAgICAgdXNlcm5hbWU6IAogICAgICAgICAgdXNlcl9kb21haW5fbmFtZTogZGVmYXVsdAogICAgICAgICAgcHJvamVjdF9kb21haW5fbmFtZTogZGVmYXVsdCAgICAgIAogICAgICAgICAgcGFzc3dvcmQ6IAogICAgICAgIHJlZ2lvbl9uYW1lOiBHUkE3
+  OVH_ENDPOINT : secret
+  OVH_APPLICATION_KEY : secret
+  OVH_APPLICATION_SECRET : secret
+  OVH_CONSUMER_KEY : secret
+  OVH_SERVICE_NAME : secret
+  REGION_NAME : secret
+  OS_CLOUD_NAME : secret
+# OpenStack
+  OS_PROJECT_NAME: secret
+  OS_PROJECT_ID: secret
+  OS_USERNAME: secret
+  OS_PASSWORD : secret
+  OS_AUTH_URL: secret
+  OS_USER_DOMAIN_NAME: secret
+  OS_PROJECT_DOMAIN_NAME: secret
+  OS_TENANT_ID: secret
+  OS_TENANT_NAME: secret
+
 
 serviceAccount:
   create: true
