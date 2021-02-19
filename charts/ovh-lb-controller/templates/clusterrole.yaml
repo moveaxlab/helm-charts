@@ -21,10 +21,9 @@ rules:
   - patch
   - update
   - watch
-- apiGroups:
-  - extensions
   resources:
   - ingresses
+  - ingresses/status
   verbs:
   - create
   - delete
