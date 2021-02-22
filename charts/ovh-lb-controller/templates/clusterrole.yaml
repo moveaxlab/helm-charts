@@ -9,28 +9,10 @@ metadata:
     heritage: {{ .Release.Service | quote }}
   name: {{ template "ovh-lb-controller.fullname" . }}
 rules:
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingresses
-  - ingresses/status
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-  resources:
-  - ingresses
-  - ingresses/status
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["services", "service", "services/status"]
+  verbs: ["get", "watch", "list", "patch", "update", "create", "delete" ]
+- apiGroups: [""]
+  resources: ["events", "event"]
+  verbs: [ "create", "patch", "watch", "update" ]
 {{- end -}}

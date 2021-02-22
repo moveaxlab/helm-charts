@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: moveax/ovh-lb-controller
-  tag: latest
+  tag: 0.1
   pullPolicy: IfNotPresent
 
   args: 
