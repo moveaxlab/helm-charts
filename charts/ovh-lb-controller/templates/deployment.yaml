@@ -18,7 +18,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      serviceAccountName: {{ if .Values.rbac.create }}{{ template "ovh-lb-controller.fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+      serviceAccountName: "{{ template "ovh-lb-controller.fullname" . }}"
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
 
