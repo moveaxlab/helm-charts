@@ -1,0 +1,35 @@
+# Default values for cassandra-operator.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: gcr.io/cassandra-operator/cassandra-operator
+  tag: latest
+  pullPolicy: Always
+
+#imagePullSecrets: "regcred"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 100Mi
+  requests:
+    cpu: 100m
+    memory: 50Mi
+
+nodeSelector: {}
+
+rbacEnable: true
+
+pspEnable: true
+
+tolerations: []
+
+affinity: {}
+
+# Which namespace to watch for Cassandra objects.
+# use:
+# - <namespace-name>
+# - empty string "" is all namespaces
+# - 'self' is the namespace that the operator is installed in.
+watch_namespace: "self"
