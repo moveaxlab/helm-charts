@@ -1,0 +1,6 @@
+dependencies:
+- name: k8ssandra-common
+  repository: file://../k8ssandra-common
+  version: 0.27.0
+digest: sha256:58d63218d418079f22d02732025c7048a33de5afe998501f8af68c4b15f0d952
+generated: "2021-01-29T12:33:10.705707-05:00"
