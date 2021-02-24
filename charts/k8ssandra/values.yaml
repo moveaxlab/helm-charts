@@ -36,7 +36,7 @@ cassandra:
     # enables/disables JMX authentication. Note that if Reaper is enabled JMX
     # authentication will still be enabled even if auth is disabled here. This
     # is because Reaper requires remote JMX access.
-    enabled: true
+    enabled: false
 
     # -- If neither superuser.secret nor superuser.username are set, then
     # k8ssandra falls back to cass-operator's default behavior. cass-operator
@@ -98,7 +98,7 @@ cassandra:
     # -- GC configuration for the CMS collector.
     cms: {}
       # -- Enables the CMS garbage collector
-      # enabled: true
+      # enabled: false
 
       # -- Controls the size of the two survivor spaces in the heap's young
       # generation.
@@ -118,7 +118,7 @@ cassandra:
     # -- GC configuration for the G1 collector.
     g1: {}
       # -- Enabled the G1 garbage collector.
-      # enabled: true
+      # enabled: false
 
       # -- Determines the percentage of total garbage collection time that
       # should be spent in the Update RS phase updating any remaining
@@ -194,7 +194,7 @@ cassandra:
       # -- Optional GC configuration for the CMS collector
       cms: {}
         # -- Enables the CMS garbage collector
-        # enabled: true
+        # enabled: false
 
         # -- Controls the size of the two survivor spaces in the heap's young
         # generation.
@@ -214,7 +214,7 @@ cassandra:
       # -- Optional GC configuration for the G1 collector
       g1: {}
         # -- Enabled the G1 garbage collector.
-        # enabled: true
+        # enabled: false
 
         # -- Determines the percentage of total garbage collection time that
         # should be spent in the Update RS phase updating any remaining
@@ -265,7 +265,7 @@ cassandra:
 
 stargate:
   # -- Enable Stargate resources as part of this release
-  enabled: true
+  enabled: false
 
   # -- version of Stargate to deploy
   version: "1.0.8"
@@ -325,7 +325,7 @@ stargate:
 
     auth:
       # -- Enables Stargate authentication ingress. Note: stargate.ingress.enabled must also be true.
-      enabled: true
+      enabled: false
       # -- Optional hostname used to match requests, overriding stargate.ingress.host if set
       host:
       # tls:
@@ -337,7 +337,7 @@ stargate:
 
     rest:
       # -- Enables Stargate REST ingress. Note: stargate.ingress.enabled must also be true.
-      enabled: true
+      enabled: false
       # -- Optional hostname used to match requests, overriding stargate.ingress.host if set
       host:
       # tls:
@@ -349,7 +349,7 @@ stargate:
 
     graphql:
       # -- Enables Stargate GraphQL API ingress. Note: stargate.ingress.enabled must also be true.
-      enabled: true
+      enabled: false
       # -- Optional hostname used to match requests, overriding stargate.ingress.host if set
       host:
       # tls:
@@ -360,11 +360,11 @@ stargate:
       #   secretName: my-secret
       playground:
         # -- Enables GraphQL playground ingress.  Note: stargate.ingress.enabled and stargate.ingress.graphql.enabled must also be true.
-        enabled: true
+        enabled: false
 
     cassandra:
       # -- Enables C* native protocol ingress with Traefik. Note that this is mutually exclusive with cassandra.ingress.enabled, and stargate.ingress.enabled must also be true.
-      enabled: true
+      enabled: false
       # -- Determines which TCP-based ingress custom resources to template out. Currently only `traefik` is supported
       method: traefik
 
@@ -402,7 +402,7 @@ reaper:
   # will also be configured to allow remote JMX access. JMX authentication
   # will be configured in Cassandra with credentials only created for Reaper
   # in order to limit access.
-  enabled: true
+  enabled: false
 
   # Configures the Reaper container image to use.
   image:
@@ -532,12 +532,12 @@ cleaner:
 cass-operator:
   # -- Enables the cass-operator as part of this release. If this setting is
   # disabled no Cassandra resources will be deployed.
-  enabled: true
+  enabled: false
 
 reaper-operator:
   # -- Enables the reaper-operator as part of this release. If this setting is
   # disabled no repair resources will be deployed.
-  enabled: true
+  enabled: false
 
 # Configuration values for the kube-prometheus-stack chart. Not all values are
 # provided here for an exhaustive list see:
@@ -546,7 +546,7 @@ kube-prometheus-stack:
   # -- Controls whether the kube-prometheus-stack chart is used at all.
   # Disabling this parameter prevents all monitoring components from being
   # installed.
-  enabled: true
+  enabled: false
 
   # Disable default service monitors
   coreDns:
@@ -579,7 +579,7 @@ kube-prometheus-stack:
   prometheusOperator:
     # Installs the Prometheus Operator, omitting this parameter will result in
     # resources not being deployed.
-    enabled: true
+    enabled: false
 
     # -- Locks Prometheus operator to this namespace. Changing this setting may
     # result in a non-namespace scoped deployment.
@@ -593,7 +593,7 @@ kube-prometheus-stack:
 
   prometheus:
     # -- Provisions an instance of Prometheus as part of this release
-    enabled: true
+    enabled: false
 
     # -- Allows for tweaking of the Prometheus installation's configuration.
     # Common parameters include `externalUrl: http://localhost:9090/prometheus`
@@ -622,7 +622,7 @@ kube-prometheus-stack:
   grafana:
     # -- Provisions an instance of Grafana and wires it up with a DataSource
     # referencing this Prometheus installation
-    enabled: true
+    enabled: false
     ingress:
       # -- Generates ingress resources for the Grafana instance
       enabled: false
