@@ -36,7 +36,7 @@ cassandra:
     # enables/disables JMX authentication. Note that if Reaper is enabled JMX
     # authentication will still be enabled even if auth is disabled here. This
     # is because Reaper requires remote JMX access.
-    enabled: false
+    enabled: true
 
     # -- If neither superuser.secret nor superuser.username are set, then
     # k8ssandra falls back to cass-operator's default behavior. cass-operator
@@ -98,7 +98,7 @@ cassandra:
     # -- GC configuration for the CMS collector.
     cms: {}
       # -- Enables the CMS garbage collector
-      # enabled: false
+      # enabled: true
 
       # -- Controls the size of the two survivor spaces in the heap's young
       # generation.
@@ -118,7 +118,7 @@ cassandra:
     # -- GC configuration for the G1 collector.
     g1: {}
       # -- Enabled the G1 garbage collector.
-      # enabled: false
+      # enabled: true
 
       # -- Determines the percentage of total garbage collection time that
       # should be spent in the Update RS phase updating any remaining
@@ -194,7 +194,7 @@ cassandra:
       # -- Optional GC configuration for the CMS collector
       cms: {}
         # -- Enables the CMS garbage collector
-        # enabled: false
+        # enabled: true
 
         # -- Controls the size of the two survivor spaces in the heap's young
         # generation.
@@ -214,7 +214,7 @@ cassandra:
       # -- Optional GC configuration for the G1 collector
       g1: {}
         # -- Enabled the G1 garbage collector.
-        # enabled: false
+        # enabled: true
 
         # -- Determines the percentage of total garbage collection time that
         # should be spent in the Update RS phase updating any remaining
@@ -267,8 +267,9 @@ stargate:
   # -- Enable Stargate resources as part of this release
   enabled: false
 
-  # -- version of Stargate to deploy
-  version: "1.0.8"
+  # -- version of Stargate to deploy. This is used in conjunction with cassandra.version to select the Stargate container image.
+  # If stargate.image is set, this value has no effect.
+  version: "1.0.9"
 
   # -- Number of Stargate instances to deploy. This value may be scaled independently of
   # Cassandra cluster nodes. Each instance handles API and coordination tasks
@@ -282,11 +283,6 @@ stargate:
 
   # -- Sets the imagePullPolicy used by the Stargate pods
   imagePullPolicy: IfNotPresent
-
-  # -- Sets the CLUSTER_VERSION environment variable provided to the Stargate containers.
-  # This value must be compatible with the value provided for stargate.image. If left blank (recommended),
-  # k8ssandra will derive an appropriate image based on cassandra.clusterVersion.
-  clusterVersion:
 
   # -- Sets the heap size Stargate will use in megabytes. Memory request and
   # limit for the pod will be set to this value x2 and x4, respectively.
@@ -337,7 +333,7 @@ stargate:
 
     rest:
       # -- Enables Stargate REST ingress. Note: stargate.ingress.enabled must also be true.
-      enabled: false
+      enabled: true
       # -- Optional hostname used to match requests, overriding stargate.ingress.host if set
       host:
       # tls:
@@ -349,7 +345,7 @@ stargate:
 
     graphql:
       # -- Enables Stargate GraphQL API ingress. Note: stargate.ingress.enabled must also be true.
-      enabled: false
+      enabled: true
       # -- Optional hostname used to match requests, overriding stargate.ingress.host if set
       host:
       # tls:
@@ -360,7 +356,7 @@ stargate:
       #   secretName: my-secret
       playground:
         # -- Enables GraphQL playground ingress.  Note: stargate.ingress.enabled and stargate.ingress.graphql.enabled must also be true.
-        enabled: false
+        enabled: true
 
     cassandra:
       # -- Enables C* native protocol ingress with Traefik. Note that this is mutually exclusive with cassandra.ingress.enabled, and stargate.ingress.enabled must also be true.
@@ -409,7 +405,7 @@ reaper:
     # -- Specifies the container repository for cassandra-reaper
     repository: docker.io/thelastpickle/cassandra-reaper
     # -- Tag of an image within the specified repository
-    tag: 2.2.0
+    tag: 2.2.1
 
   # -- Configures the Cassandra user used by Reaper when authentication is
   # enabled. If neither cassandraUser.secret nor casandraUser.username are
@@ -465,7 +461,7 @@ medusa:
     # -- Specifies the container repository for Medusa
     repository: docker.io/k8ssandra/medusa
     # -- Tag of an image within the specified repository
-    tag: 2c63ed5c
+    tag: 0.9.0
     # -- The image pull policy
     pullPolicy: IfNotPresent
 
@@ -532,7 +528,7 @@ cleaner:
 cass-operator:
   # -- Enables the cass-operator as part of this release. If this setting is
   # disabled no Cassandra resources will be deployed.
-  enabled: false
+  enabled: true
 
 reaper-operator:
   # -- Enables the reaper-operator as part of this release. If this setting is
