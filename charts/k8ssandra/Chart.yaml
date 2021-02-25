@@ -16,10 +16,6 @@ dependencies:
 - name: k8ssandra-common
   repository: file://../k8ssandra-common
   version: 0.28.0
-- condition: kube-prometheus-stack.enabled
-  name: kube-prometheus-stack
-  repository: https://prometheus-community.github.io/helm-charts
-  version: 12.11.3
 description: |
   Provisions and configures an instance of the entire K8ssandra stack. This includes Apache Cassandra, Stargate, Reaper, Medusa, Prometheus, and Grafana.
 home: https://k8ssandra.io/
