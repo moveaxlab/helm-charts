@@ -30,13 +30,23 @@ spec:
           - name: POSTGRES_USER
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.fullname" . }}
-                  key: POSTGRES_USER 
+                {{if .Values.externalSecret -}}
+                name:  {{ .Values.externalSecret.secret_name }}
+                key: {{ .Values.externalSecret.rootUserKey }}
+                {{ else -}}
+                name:  {{ include "postgresql.fullname" . }}
+                key: POSTGRES_USER
+                {{- end}}
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                  name:  {{ include "postgresql.fullname" . }}
-                  key: POSTGRES_PASSWORD 
+                {{if .Values.externalSecret -}}
+                name:  {{ .Values.externalSecret.secret_name }}
+                key: {{ .Values.externalSecret.rootPasswordKey }}
+                {{ else -}}
+                name:  {{ include "postgresql.fullname" . }}
+                key: POSTGRES_PASSWORD
+                {{- end}}
         envFrom:
           - configMapRef:
               name: {{ include "postgresql.fullname" . }}
