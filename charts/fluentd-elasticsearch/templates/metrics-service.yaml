@@ -1,14 +1,10 @@
-{{- if .Values.serviceMonitor.enabled }}
----
+{{- if or (.Values.serviceMonitor.enabled) (.Values.serviceMetric.enabled) }}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "fluentd-elasticsearch.fullname" $ }}-metrics
   labels:
-{{ include "fluentd-elasticsearch.labels" . | indent 4 }}
-    {{- if semverCompare "> 1.6" .Capabilities.KubeVersion.GitVersion }}
-    kubernetes.io/cluster-service: "true"
-    {{- end }}
+    {{- include "fluentd-elasticsearch.labels" . | nindent 4 }}
     addonmanager.kubernetes.io/mode: Reconcile
 spec:
   type: {{ .Values.serviceMonitor.type }}
@@ -17,6 +13,5 @@ spec:
       port: {{ .Values.serviceMonitor.port }}
       targetPort: {{ .Values.serviceMonitor.port }}
   selector:
-    app.kubernetes.io/name: {{ include "fluentd-elasticsearch.name" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- include "fluentd-elasticsearch.selectorLabels" . | nindent 4 }}
 {{- end }}

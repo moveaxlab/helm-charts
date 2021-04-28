@@ -1,13 +1,10 @@
 {{- if .Values.podSecurityPolicy.enabled }}
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: {{ template "fluentd-elasticsearch.fullname" . }}
   labels:
-{{ include "fluentd-elasticsearch.labels" . | indent 4 }}
-    {{- if semverCompare "> 1.6" .Capabilities.KubeVersion.GitVersion }}
-    kubernetes.io/cluster-service: "true"
-    {{- end }}
+    {{- include "fluentd-elasticsearch.labels" . | nindent 4 }}
     addonmanager.kubernetes.io/mode: Reconcile
   annotations:
 {{- if .Values.podSecurityPolicy.annotations }}
