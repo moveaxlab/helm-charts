@@ -27,6 +27,10 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          {{- range $key, $value := .Values.env }}
+            {{ $key }}: {{ $value }}
+          {{- end }}
           envFrom:
           - secretRef:
               name: {{ include "mongodb-express.fullname" . }}-secrets

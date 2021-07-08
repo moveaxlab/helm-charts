@@ -50,6 +50,13 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+env:
+  ME_CONFIG_MONGODB_SERVER: mongo.example.com
+  ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  ME_CONFIG_MONGODB_PORT: 27017
+secrets:
+  ME_CONFIG_MONGODB_ADMINPASSWORD: password
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
