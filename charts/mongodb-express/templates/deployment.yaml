@@ -4,6 +4,16 @@ metadata:
   name: {{ include "mongodb-express.fullname" . }}
   labels:
     {{- include "mongodb-express.labels" . | nindent 4 }}
+  {{- if .Values.authProxy.enabled }}
+  annotations:
+    authproxy.stakater.com/source-service-name: "{{ .Values.service.name }}"
+    authproxy.stakater.com/target-port: "{{ .Values.authProxy.targetPort }}"
+    authproxy.stakater.com/listen: "0.0.0.0:{{ .Values.authProxy.targetPort }}"
+    authproxy.stakater.com/redirection-url: "http://{{ .Values.service.hostname }}/"
+    {{- range $key, $value := .Values.authProxy.deploymentAnnotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}    
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -30,7 +40,7 @@ spec:
           env:
           {{- range $key, $value := .Values.env }}
           - name: {{ $key }}
-            value: {{ $value }}
+            value: "{{ $value }}"
           {{- end }}
           envFrom:
           - secretRef:
