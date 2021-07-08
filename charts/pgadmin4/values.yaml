@@ -37,18 +37,16 @@ strategy: {}
 serverDefinitions:
   ## If true, server definitions will be created
   ##
-  enabled: false
+  enabled: true
 
-  servers: |-
-  #  "1": {
-  #    "Name": "Minimally Defined Server",
-  #    "Group": "Servers",
-  #    "Port": 5432,
-  #    "Username": "postgres",
-  #    "Host": "localhost",
-  #    "SSLMode": "prefer",
-  #    "MaintenanceDB": "postgres"
-  #  }
+  servers:
+    - Name: "RDS"
+      Group: "itTaxi"
+      Port: 5432
+      Username: "root"
+      Host: "sit-aurora-cluster.cluster-cq9nv6eysnyh.eu-central-1.rds.amazonaws.com"
+      SSLMode: "prefer"
+      MaintenanceDB: "postgres"
 
 networkPolicy:
   enabled: false
