@@ -41,10 +41,10 @@ serverDefinitions:
 
   servers:
     - Name: "RDS"
-      Group: "itTaxi"
+      Group: "server"
       Port: 5432
       Username: "root"
-      Host: "sit-aurora-cluster.cluster-cq9nv6eysnyh.eu-central-1.rds.amazonaws.com"
+      Host: "test-server"
       SSLMode: "prefer"
       MaintenanceDB: "postgres"
 
