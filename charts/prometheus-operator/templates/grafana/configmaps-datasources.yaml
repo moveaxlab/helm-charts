@@ -22,6 +22,9 @@ data:
       url: http://{{ template "prometheus-operator.fullname" . }}-prometheus:{{ .Values.prometheus.service.port }}/{{ trimPrefix "/" .Values.prometheus.prometheusSpec.routePrefix }}
       access: proxy
       isDefault: true
+{{- if .Values.grafana.sidecar.datasources.defaultDatasourceAdditionalOptions }}
+{{ toYaml .Values.grafana.sidecar.datasources.defaultDatasourceAdditionalOptions | indent 6}}
+{{- end }}
 {{- if .Values.grafana.sidecar.datasources.createPrometheusReplicasDatasources }}
 {{- range until (int .Values.prometheus.prometheusSpec.replicas) }}
     - name: Prometheus-{{ . }}

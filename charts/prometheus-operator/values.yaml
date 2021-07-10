@@ -520,6 +520,10 @@ grafana:
     datasources:
       enabled: true
       defaultDatasourceEnabled: true
+      
+      defaultDatasourceAdditionalOptions:
+        jsonData:
+          timeInterval: 30s
 
       ## Annotations for Grafana datasource configmaps
       ##
