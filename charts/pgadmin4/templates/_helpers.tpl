@@ -58,10 +58,11 @@ Defines a JSON file containing server definitions. This allows connection inform
 {
   "Servers": {
     {{- range $index, $server := .Values.serverDefinitions.servers }}
-    "{{$index | add1 }}": {
-      {{ toJson $server | indent 6 }}
-    },
-    {{- end }}
+    "{{$index | add1 }}": {{ toJson $server }}
+    {{- if not (eq ($.Values.serverDefinitions.servers | len) ($index | add1)) -}}
+    ,
+    {{- end -}}
+    {{- end }} 
   }
 }
 {{- end -}}
