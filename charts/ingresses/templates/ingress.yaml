@@ -1,7 +1,7 @@
 {{- range .Values.ingresses }}
 ---
-{{- $svcName := .nginxServiceName -}}
-{{- $svcPort := .nginxServicePort -}}
+{{- $svcName := .ServiceName -}}
+{{- $svcPort := .ServicePort -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

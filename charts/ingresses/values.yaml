@@ -8,8 +8,8 @@
 
 ingresses :
 - name: test
-  nginxServiceName: nginx
-  nginxServicePort: 80
+  ServiceName: nginx
+  ServicePort: 80
   annotations: 
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
@@ -31,8 +31,8 @@ ingresses :
     - host: google5.com
     - host: google6.com
 - name: staging-nginx-ingress
-  nginxServiceName: nginx-staging
-  nginxServicePort: 80
+  ServiceName: nginx-staging
+  ServicePort: 80
   annotations: 
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
