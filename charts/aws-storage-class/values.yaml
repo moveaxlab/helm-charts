@@ -1,0 +1,13 @@
+gp2:
+  enabled: true
+  default: true
+  volumeBindingMode: WaitForFirstConsumer
+  allowVolumeExpansion: true
+io1_10:
+  enabled: false
+  default: false
+  volumeBindingMode: WaitForFirstConsumer
+io1_20:
+  enabled: false
+  default: false
+  volumeBindingMode: WaitForFirstConsumer
