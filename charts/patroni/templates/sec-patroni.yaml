@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "patroni.fullname" . }}
+  labels:
+    app: {{ template "patroni.fullname" . }}
+    chart: {{ template "patroni.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+type: Opaque
+data:
+  password-superuser: {{ .Values.secrets.superuser | b64enc }}
+  password-admin: {{ .Values.secrets.admin | b64enc }}
+  password-standby: {{ .Values.secrets.standby | b64enc }}
+  aws_access_key_id: {{ .Values.secrets.aws_access_key_id | b64enc }}
+  aws_secret_access_key: {{ .Values.secrets.aws_secret_access_key | b64enc }}

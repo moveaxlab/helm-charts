@@ -6,5 +6,3 @@ index.yaml
 _site
 deploy_key
 deploy_key.pub
-
-charts/patroni
