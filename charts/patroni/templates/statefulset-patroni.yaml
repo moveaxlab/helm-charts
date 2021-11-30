@@ -27,6 +27,8 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
+        - name: PGVERSION
+          value: {{ .Values.postgres.version | quote }}
         - name: PGPASSWORD_SUPERUSER
           valueFrom:
             secretKeyRef:
@@ -55,10 +57,10 @@ spec:
             secretKeyRef:
               name: {{ template "patroni.fullname" . }}
               key: aws_secret_access_key
-        # - name: AWS_ACCESS_KEY_ID
-        #   value: {{ .Values.secrets.aws_access_key_id }}
-        # - name: AWS_SECRET_ACCESS_KEY
-        #   value: {{ .Values.secrets.aws_secret_access_key }}
+        - name: AWS_REGION
+          value: {{ .Values.walE.s3Region }}
+        - name: USE_WALG_RESTORE
+          value: "true"
         {{else if .Values.walE.gcsBucket }}
         - name: WAL_GCS_BUCKET
           value: {{ .Values.walE.gcsBucket | quote }}

@@ -3,17 +3,13 @@ replicaCount: 3
 image:
   # Image was built from
   # https://github.com/zalando/spilo/tree/master/postgres-appliance
-  repository: registry.opensource.zalan.do/acid/spilo-10
-  tag: 1.5-p5
+  repository: registry.opensource.zalan.do/acid/spilo-14
+  tag: 2.1-p3
   pullPolicy: IfNotPresent
 
-# Credentials used by Patroni
-# https://github.com/zalando/patroni/blob/master/docs/SETTINGS.rst#postgresql
-# https://github.com/zalando/spilo/blob/master/ENVIRONMENT.rst
-credentials:
-  superuser: tea
-  admin: cola
-  standby: pinacolada
+postgres:
+  # Specifies the version of postgreSQL to reference in the bin_dir variable (/usr/lib/postgresql/PGVERSION/bin)
+  version: 13
 
 # Distribution Configuration stores
 # Please note that only one of the following stores should be enabled.
@@ -52,6 +48,8 @@ walE:
   scheduleCronJob: 00 01 * * *
   # Amount of base backups to retain
   retainBackups: 2
+  # AWS Region where s3Bucket is located
+  s3Region: eu-central-1
   # Path to the S3 or GCS bucket used for WAL-E base backups
   s3Bucket: "spilo-backup"
   gcsBucket:

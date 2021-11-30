@@ -1,8 +1,8 @@
 apiVersion: v1
 name: patroni
-description: 'DEPRECATED Highly available elephant herd: HA PostgreSQL cluster.'
-version: 0.16.3
-appVersion: 1.5-p5
+description: 'HA PostgreSQL cluster.'
+version: 1.0.0
+appVersion: 2.1-p3
 home: https://github.com/zalando/patroni
 sources:
 - https://github.com/zalando/patroni
