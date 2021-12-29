@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: readonly-cluster-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "configmaps", "endpoints", "persistentvolumeclaims", "persistentvolumeclaims/status", "replicationcontrollers", "replicationcontrollers/scale", "serviceaccounts", "services", "services/status", "pods/log", "pods/status"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: [""]
+  resources: ["controllerrevisions", "daemonsets", "daemonsets/status", "deployments", "deployments/scale", "deployments/status", "replicasets", "replicasets/scale", "replicasets/status", "statefulsets", "statefulsets/scale", "statefulsets/status"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: [""]
+  resources: ["cronjobs", "cronjobs/status", "jobs", "jobs/status"]
+  verbs: ["get", "watch", "list"]
