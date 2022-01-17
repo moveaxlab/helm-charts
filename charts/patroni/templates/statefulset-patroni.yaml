@@ -29,6 +29,8 @@ spec:
         env:
         - name: PGVERSION
           value: {{ .Values.postgres.version | quote }}
+        - name: PATH
+          value: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/{{ .Values.postgres.version }}/bin"
         - name: PGPASSWORD_SUPERUSER
           valueFrom:
             secretKeyRef:

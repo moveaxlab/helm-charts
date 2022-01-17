@@ -123,3 +123,10 @@ serviceAccount:
   # The name of the ServiceAccount to use.
   # If not set and create is true, a name is generated using the fullname template
   name:
+
+secrets:
+  aws_access_key_id: "abcdefghilmnopqrstuvz"
+  aws_secret_access_key: "abcdefghilmnopqrstuvz"
+  superuser: tea
+  admin: cola
+  standby: pinacolada
