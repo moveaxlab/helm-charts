@@ -27,7 +27,7 @@ def change_style(style, representer):
 charts = [
     {
         'source': 'https://raw.githubusercontent.com/somaliz/grafana-k8s-dashboards/master/dashboards/cluster.json',
-        'destination': '../templates/grafana/dashboards ',
+        'destination': '../templates/grafana/dashboards',
         'type': 'json',
         'min_kubernetes': '1.14.0-0',
         'max_kubernetes': '1.18.0-0'
