@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         name: istio-operator
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: {{ .Values.safeToEvict | quote }}
     spec:
       serviceAccountName: istio-operator
       containers:
