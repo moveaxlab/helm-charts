@@ -41,5 +41,10 @@ resources:
     cpu: 50m
     memory: 64Mi  
 
+podDisruptionBudget:
+  # https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  enabled: false
+  minAvailable:
+  maxUnavailable:
 
 nodeSelector: {}
