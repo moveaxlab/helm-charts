@@ -18,6 +18,8 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "kube-resource-report.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
     spec:
       serviceAccount: {{ include "kube-resource-report.fullname" . }}
       containers:
