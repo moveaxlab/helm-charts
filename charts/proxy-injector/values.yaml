@@ -41,6 +41,8 @@ resources:
     cpu: 50m
     memory: 64Mi  
 
+safeToEvict: false
+
 podDisruptionBudget:
   # https://kubernetes.io/docs/tasks/run-application/configure-pdb/
   enabled: false
