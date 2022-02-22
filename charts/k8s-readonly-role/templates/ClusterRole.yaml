@@ -4,7 +4,7 @@ metadata:
   name: readonly-cluster-role
 rules:
 - apiGroups: [""]
-  resources: ["pods", "configmaps", "endpoints", "persistentvolumeclaims", "persistentvolumeclaims/status", "replicationcontrollers", "replicationcontrollers/scale", "serviceaccounts", "services", "services/status", "pods/log", "pods/status"]
+  resources: ["pods", "configmaps", "endpoints", "persistentvolumeclaims", "persistentvolumeclaims/status", "replicationcontrollers", "replicationcontrollers/scale", "serviceaccounts", "services", "services/status", "pods/log", "pods/status", "pods/portforward"]
   verbs: ["get", "watch", "list"]
 - apiGroups: [""]
   resources: ["namespaces"]
