@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "fullname" . }}
+rules:
+{{- range $group := .Values.rules }}
+  - apiGroups: {{ $group.apiGroups | toJson }}
+    resources: {{ $group.resources | toJson }}
+    verbs: {{ $group.verbs | toJson }}
+{{- end }}
