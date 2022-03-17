@@ -22,9 +22,9 @@ spec:
         sidecar.istio.io/inject: "false"
     spec:
       containers:
-      - name: postgres  
+      - name: postgres
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        args: 
+        args:
         {{- toYaml .Values.args | nindent 10 }}
         env:
           - name: POSTGRES_USER
@@ -47,6 +47,7 @@ spec:
                 name:  {{ include "postgresql.fullname" . }}
                 key: POSTGRES_PASSWORD
                 {{- end}}
+        resources: {{- toYaml .Values.resources | nindent 10 }}
         envFrom:
           - configMapRef:
               name: {{ include "postgresql.fullname" . }}

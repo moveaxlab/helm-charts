@@ -1,0 +1,51 @@
+# Default values for postgresql.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: debezium/postgres
+  tag: 12
+pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: "postgres"
+
+args: []
+  # - -c
+  # - 'max_connections=500'
+  # - '-c'
+  # - 'max_wal_senders=50'
+  # - '-c'
+  # - 'max_replication_slots=50'
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name:
+
+secrets:
+  postgresUser: "changeme"
+  postgresPassword: "changeme"
+
+storage: 20Gi
+
+resources: {}
+  # requests:
+  #   cpu: 300m
+  #   memory: 512Mi
+  # limits:
+  #   memory: 1.2Gi
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
