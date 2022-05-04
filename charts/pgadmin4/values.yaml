@@ -47,6 +47,10 @@ serverDefinitions:
       Host: "test-server"
       SSLMode: "prefer"
       MaintenanceDB: "postgres"
+      
+podLifecycleHook:
+  enabled: false
+  lifecycle: {}
 
 networkPolicy:
   enabled: false
