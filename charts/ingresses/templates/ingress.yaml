@@ -30,8 +30,8 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service: 
-                name: {{ $svcName }}
+                name: {{ .service.name }}
                 port:
-                  name: {{ $svcPort }}
+                  number: {{ .service.port }}
   {{- end }}
 {{- end }}
