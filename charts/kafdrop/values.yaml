@@ -34,12 +34,18 @@ service:
   type: ClusterIP
   port: 9000
 
-ingress:
+authProxy:
   enabled: false
+
+ingress:
+  enabled: true
   annotations: {}
-  path: /
-  hosts: []
-  tls: []
+  paths:
+    - path: /*
+      service:
+        name: ssl-redirect
+        port:
+          name: use-annotation
 
 resources:
   # limits:
