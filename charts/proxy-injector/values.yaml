@@ -13,9 +13,9 @@ proxyinjector:
     pullPolicy: IfNotPresent
 
   data:
-    config.yml: |-
+    config: |-
       proxyconfig:
-        gatekeeper-image: "moveax/keycloak-gatekeeper:latest" 
+        gatekeeper-image: "moveax/keycloak-gatekeeper:latest"
         enable-default-deny: true
         secure-cookie: true
         verbose: true
@@ -29,17 +29,17 @@ proxyinjector:
         - uri: '/*'
 
 
-  # Set to false if you want to only watch its own namespace 
-  watchGlobally: true 
+  # Set to false if you want to only watch its own namespace
+  watchGlobally: true
   configFilePath: /etc/ProxyInjector
-  
+
 resources:
   limits:
     cpu: 100m
     memory: 128Mi
   requests:
     cpu: 50m
-    memory: 64Mi  
+    memory: 64Mi
 
 safeToEvict: false
 
