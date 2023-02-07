@@ -36,7 +36,7 @@ ingress:
   namespace: istio-system
   paths:
     - path: /*
-      serviceName: ssl-redirect 
+      serviceName: ssl-redirect
       servicePort: use-annotation
     - path: /*
       serviceName: istio-ingressgateway
@@ -187,12 +187,13 @@ postgresql:
   # line below:
   postgresqlPasswordSecret: "sonarqube-postgres-secret"
   postgresUser: "sonar"
-  # postgresPassword: ""
   postgresDatabase: "sonarDB"
   # Specify the TCP port that PostgreSQL should use
   service:
     port: 5432
 
+secrets:
+  postgresPassword: ""
 ## Configuration values for the mysql dependency
 ## ref: https://github.com/kubernetes/charts/blob/master/stable/mysql/README.md
 ##

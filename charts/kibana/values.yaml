@@ -89,6 +89,9 @@ maxUnavailable: 1
 updateStrategy:
   type: "Recreate"
 
+authProxy:
+  enabled: false
+
 service:
   type: ClusterIP
   port: 5601
@@ -108,12 +111,12 @@ ingress:
   namespace: istio-system
   paths:
     - path: /*
-      serviceName: ssl-redirect 
+      serviceName: ssl-redirect
       servicePort: use-annotation
     - path: /*
       serviceName: istio-ingressgateway
       servicePort: 80
-  annotations: 
+  annotations:
     #definition for inbound CIDRs are defined in Ops/ingress-merge
     merge.ingress.kubernetes.io/config: ops-ingress
     alb.ingress.kubernetes.io/tags: environment=stg

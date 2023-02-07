@@ -8,9 +8,7 @@
 
 ingresses :
 - name: test
-  ServiceName: nginx
-  ServicePort: 80
-  annotations: 
+  annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig":
@@ -21,19 +19,14 @@ ingresses :
     alb.ingress.kubernetes.io/target-type: ip
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/healthcheck-path: "/"
-    alb.ingress.kubernetes.io/success-codes: "200,404"    
+    alb.ingress.kubernetes.io/success-codes: "200,404"
   hosts:
     - host: chart-example.local
-    - host: google.com
-    - host: google1.com
-    - host: google2.com
-    - host: google4.com
-    - host: google5.com
-    - host: google6.com
+      service:
+        name: nginx
+        port: 80
 - name: staging-nginx-ingress
-  ServiceName: nginx-staging
-  ServicePort: 80
-  annotations: 
+  annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig":
@@ -44,12 +37,9 @@ ingresses :
     alb.ingress.kubernetes.io/target-type: ip
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/healthcheck-path: "/"
-    alb.ingress.kubernetes.io/success-codes: "200,404"    
+    alb.ingress.kubernetes.io/success-codes: "200,404"
   hosts:
-    - host: chart-example.local
     - host: amazon.com
-    - host: amazon1.com
-    - host: amazon2.com
-    - host: amazon4.com
-    - host: amazon5.com
-    - host: amazon6.com
+      service:
+        name: nginx-staging
+        port: 80

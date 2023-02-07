@@ -1,0 +1,42 @@
+dependencies:
+- name: sidecarInjectorWebhook
+  repository: ""
+  version: 1.3.8
+- name: security
+  repository: ""
+  version: 1.3.8
+- name: gateways
+  repository: ""
+  version: 1.3.8
+- name: mixer
+  repository: ""
+  version: 1.3.8
+- name: nodeagent
+  repository: ""
+  version: 1.3.8
+- name: pilot
+  repository: ""
+  version: 1.3.8
+- name: grafana
+  repository: ""
+  version: 1.3.8
+- name: prometheus
+  repository: ""
+  version: 1.3.8
+- name: tracing
+  repository: ""
+  version: 1.3.8
+- name: galley
+  repository: ""
+  version: 1.3.8
+- name: kiali
+  repository: ""
+  version: 1.3.8
+- name: istiocoredns
+  repository: ""
+  version: 1.3.8
+- name: certmanager
+  repository: ""
+  version: 1.3.8
+digest: sha256:372775c20546b3dc7d449385cba6281cf1130a544baeef6ea77ccec1fe8cdae0
+generated: "2023-02-07T17:47:15.859463667+01:00"

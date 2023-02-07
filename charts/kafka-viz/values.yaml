@@ -45,12 +45,15 @@ service:
   hostname: kafkaviz.dev
   istioIngressName: ingressgateway
 
+authProxy:
+  enabled: false
+
 ingress:
   enabled: true
   namespace: istio-system
   paths:
     - path: /*
-      serviceName: ssl-redirect 
+      serviceName: ssl-redirect
       servicePort: use-annotation
     - path: /*
       serviceName: istio-ingressgateway
