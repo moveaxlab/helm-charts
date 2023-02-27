@@ -44,18 +44,21 @@ service:
 ingress:
   enabled: true
   namespace: istio-system
-  paths:
-    - path: /*
-      serviceName: ssl-redirect 
-      servicePort: use-annotation
-    - path: /*
-      serviceName: istio-ingressgateway
-      servicePort: 80
   annotations:
     merge.ingress.kubernetes.io/config: ingress
     alb.ingress.kubernetes.io/tags: environment=env
+  paths:
+    - path: /*
+      service:
+        name: ssl-redirect
+        port:
+          name: use-annotation
+    - path: /*
+      service:
+        name: istio-ingressgateway
+        port:
+          name: 80
 
-    
 
 authProxy:
   enabled: true
