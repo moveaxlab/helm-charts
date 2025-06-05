@@ -6,7 +6,10 @@ image:
   pullPolicy: Always
 
 kafka:
-  brokerConnect: kafka-headless:9092
+  brokerConnect:
+    existingConfigMapRef:
+    existingConfigMapKey:
+    value: kafka-headless:9092
   properties: ""
   truststore: ""
   keystore: ""
