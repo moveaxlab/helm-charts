@@ -39,7 +39,14 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: KAFKA_BROKERCONNECT
-            value: "{{ .Values.kafka.brokerConnect }}"
+            {{- if .Values.kafka.brokerConnect.existingConfigMapRef }}
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.kafka.brokerConnect.existingConfigMapRef }}
+                key: {{ .Values.kafka.brokerConnect.existingConfigMapKey }}
+            {{- else }}
+            value: "{{ .Values.kafka.brokerConnect.value}}"
+            {{- end}}
           - name: KAFKA_PROPERTIES
             value: "{{ .Values.kafka.properties }}"
           - name: KAFKA_TRUSTSTORE
