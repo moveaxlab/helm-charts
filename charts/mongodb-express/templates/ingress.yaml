@@ -10,8 +10,6 @@ metadata:
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: {{ .Values.service.hostname }}
 spec:
   rules:
     - host: {{ .Values.service.hostname | quote }}
