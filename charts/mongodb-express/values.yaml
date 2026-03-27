@@ -44,9 +44,7 @@ service:
 ingress:
   enabled: true
   namespace: istio-system
-  annotations:
-    merge.ingress.kubernetes.io/config: ingress
-    alb.ingress.kubernetes.io/tags: environment=env
+  annotations: {}
   paths:
     - path: /*
       service:
