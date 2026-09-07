@@ -88,9 +88,9 @@ entries:
   aws-alb-ingress-controller:
   - apiVersion: v1
     appVersion: v1.1.5
-    created: "2026-03-27T08:02:57.206283909Z"
+    created: "2026-09-07T12:40:23.49418744Z"
     description: A Helm chart for AWS ALB Ingress Controller
-    digest: 44a0442dbdf34086b4c0761a70906fb771b5bf728be8a3f43c959d035b4c3bd0
+    digest: beadda03404c07fae2637be209446d5c624e1ffb03e66fe19233de0889d37265
     home: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
     keywords:
     - aws
@@ -108,9 +108,9 @@ entries:
     version: 0.1.13
   aws-storage-class:
   - apiVersion: v1
-    created: "2026-03-27T08:02:57.206522096Z"
+    created: "2026-09-07T12:40:23.494500313Z"
     description: 'Creates a StorageClass. From here: https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/storage-class/aws/default.yaml'
-    digest: e84b1e69877e05d4c47e36bc5b8f302fd4bbbdbf75334050c1134a11fa6f8961
+    digest: 9c1ef3f28e79cd5ab1a5d8ee5bd589a38f04e4233dc21c88a6c2f77115bab4f9
     home: https://github.com/deliveryhero/helm-charts
     maintainers:
     - email: no-reply@deliveryhero.com
@@ -144,9 +144,9 @@ entries:
   cluster-autoscaler:
   - apiVersion: v1
     appVersion: 1.18.0
-    created: "2026-03-27T08:02:57.208112441Z"
+    created: "2026-09-07T12:40:23.495270172Z"
     description: Scales worker nodes within autoscaling groups.
-    digest: 6b5aef754284db965c48ba27a5d468d04477d345fdb0805d2b731f8bdbc70ecc
+    digest: 3bae8bd1ea2f8d816ffca52646e292bc77a69635af31af821043d317c9feb41e
     home: https://github.com/kubernetes/autoscaler
     icon: https://github.com/kubernetes/kubernetes/blob/master/logo/logo.png
     maintainers:
@@ -164,9 +164,9 @@ entries:
   cole-alerts:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-03-27T08:02:57.208484539Z"
+    created: "2026-09-07T12:40:23.495593671Z"
     description: A Helm chart for Kubernetes
-    digest: 3a5d6fa7af11b54ae9a0c19806f2b386dfa33d3e45f93519a938627745d0afd4
+    digest: c0ad6e8550b4281cece5e629cfdd851d2616617a95cd9044b2432a3e2302db40
     name: cole-alerts
     type: application
     urls:
@@ -197,9 +197,9 @@ entries:
     version: 2.2.1
   - apiVersion: v1
     appVersion: 5.7.6
-    created: "2026-03-27T08:02:57.209051501Z"
+    created: "2026-09-07T12:40:23.496100091Z"
     description: A Helm chart for Elasticsearch Curator
-    digest: ae2076d639f4e963d5b1526534e33a0a8c15b3a5aee160ed6ad072a77bde5448
+    digest: 8e937b2140a8fc1b3d24750c1ac8c274cb71637674db823a4b3f4336ad0ccddf
     home: https://github.com/elastic/curator
     keywords:
     - curator
@@ -220,9 +220,9 @@ entries:
   fluentd-elasticsearch:
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2026-03-27T08:02:57.210114043Z"
+    created: "2026-09-07T12:40:23.497142144Z"
     description: A Fluentd Helm chart for Kubernetes with Elasticsearch output
-    digest: d90b28d4d5aeaaacade8a087b4b25510501f7edfc63bfdabdac84b5ad9207d7c
+    digest: b150ff30212d31c169616e8c24234d31535925b0f4050db6f5288f172b7050a4
     home: https://www.fluentd.org/
     icon: https://raw.githubusercontent.com/fluent/fluentd-docs/master/public/logo/Fluentd_square.png
     keywords:
@@ -275,10 +275,10 @@ entries:
     version: 4.8.5
   ingress-merge:
   - apiVersion: v1
-    created: "2026-03-27T08:02:57.210380453Z"
+    created: "2026-09-07T12:40:23.497407016Z"
     description: Merge Ingress Controller combines multiple ingress resorces into
       a new one.
-    digest: f24ec594403fcbc8ac96307c008f33b2d189e9771ffba629fa47b94ba1830aab
+    digest: 38406be5a62d2f58f8816bc2ee99473bf2cf03e0bad885c471eff10245f9a122
     home: https://github.com/jakubkulhan/ingress-merge
     keywords:
     - ingress
@@ -292,10 +292,10 @@ entries:
   ingresses:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-03-27T08:02:57.210680986Z"
+    created: "2026-09-07T12:40:23.497658308Z"
     description: A Helm chart that creates Ingresses only (Used with AWS-ALB-INGRESS-CONTROLLER
       & NGINX-INGRESS-CONTROLLER)
-    digest: 48fb4741680e0fdcfc4911c8200c60ef08cf3162a6b9ff2c33aefa96bc60f734
+    digest: 500fa1b6e15b0e84a83e72afad531c8bf5cc28d15237f7b9c63b109012f622bb
     name: ingresses
     type: application
     urls:
@@ -334,7 +334,7 @@ entries:
   istio:
   - apiVersion: v1
     appVersion: 1.3.8
-    created: "2026-03-27T08:02:57.217334406Z"
+    created: "2026-09-07T12:40:23.504277146Z"
     dependencies:
     - condition: sidecarInjectorWebhook.enabled
       name: sidecarInjectorWebhook
@@ -389,7 +389,7 @@ entries:
       repository: ""
       version: 1.3.8
     description: Helm chart for all istio components
-    digest: 313805b972e641d16efe10a40d265e7406d5aaad9b1be0e1bf7d40ebe7c0233a
+    digest: 0c58ac03a1f6ceb4d36601d9a9967897dcc32c5a3268f7e5cff20caa74fb06b7
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
     - istio
@@ -428,9 +428,9 @@ entries:
   istio-init:
   - apiVersion: v1
     appVersion: 1.3.8
-    created: "2026-03-27T08:02:57.217693449Z"
+    created: "2026-09-07T12:40:23.504633233Z"
     description: Helm chart to initialize Istio CRDs
-    digest: 1ce2491d25c0fc51d5b960ebabcdcef8884ef9829d8320c336287a43e3544240
+    digest: 1edccde35c41e7b19f215eda1f7da06b44b731a349de3cc2b195d103f315bfd8
     icon: https://istio.io/favicons/android-192x192.png
     keywords:
     - istio
@@ -477,9 +477,9 @@ entries:
     version: 1.3.3-init
   istio-operator:
   - apiVersion: v1
-    created: "2026-03-27T08:02:57.217968375Z"
+    created: "2026-09-07T12:40:23.504852889Z"
     description: Helm chart for deploying Istio operator
-    digest: 1ef3ac25251ed4412c4e6c63243e63fd97b309e7cb318243d30337467465545e
+    digest: b7aed1a35a134c36535b9705af3675ebdd6f2eb6374e9600c0eb6323e6a31ea6
     icon: https://istio.io/latest/favicons/android-192x192.png
     keywords:
     - istio
@@ -492,8 +492,8 @@ entries:
     version: 1.7.0
   k8s-cluster-role:
   - apiVersion: v1
-    created: "2026-03-27T08:02:57.218219695Z"
-    digest: 5f0316a4e1ad5ae11ee557f8719ab0e9dd9af810865100751d2e069c4c41bb11
+    created: "2026-09-07T12:40:23.505102288Z"
+    digest: a91a7dea6010e5772e359aae4c9de86a17eaa3ef899484a750b9c0a83eb0a7e9
     name: k8s-cluster-role
     sources:
     - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
@@ -502,9 +502,9 @@ entries:
     version: 1.0.0
   k8s-readonly-role:
   - apiVersion: v1
-    created: "2026-03-27T08:02:57.218359217Z"
+    created: "2026-09-07T12:40:23.505225771Z"
     description: Create readonly cluster role and associated role binding
-    digest: 8a028da55e1784e84a820d13504b2f48db9a192b2da64ee3a463e248af642dbb
+    digest: e13810a007c5edb68e4d12cc3bbc87e2ac48a48b41679202c5a9d0e06fc2a57a
     name: k8s-readonly-role
     sources:
     - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
@@ -569,6 +569,15 @@ entries:
     - https://moveaxlab.github.io/helm-charts/k8ssandra-0.55.0.tgz
     version: 0.55.0
   kafdrop:
+  - apiVersion: v1
+    appVersion: 3.x
+    created: "2026-09-07T12:40:23.505599824Z"
+    description: A Helm chart for Kafdrop
+    digest: d79f6e3aa398f8f71a0f782500bdb1c42bf2b41ede4065eb7b6e216fef0769cf
+    name: kafdrop
+    urls:
+    - https://moveaxlab.github.io/helm-charts/kafdrop-1.3.0.tgz
+    version: 1.3.0
   - apiVersion: v1
     appVersion: 3.x
     created: "2026-03-27T08:02:57.218700086Z"
@@ -644,9 +653,9 @@ entries:
   kafka-viz:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2026-03-27T08:02:57.219052717Z"
+    created: "2026-09-07T12:40:23.505913939Z"
     description: Kafka Vizualizer Helm chart for Kubernetes
-    digest: d2d4fe5098184be4c965fd0f5d6030170e5fc3dd9e69b671b3ee71e8dd017d5f
+    digest: bb0aee4afac58e0c4515789f22daf5080c6fab1b09a35bc718dc54222f4dbf5b
     name: kafka-viz
     urls:
     - https://moveaxlab.github.io/helm-charts/kafka-viz-0.2.1.tgz
@@ -672,7 +681,7 @@ entries:
   keycloak:
   - apiVersion: v1
     appVersion: 8.0.2
-    created: "2026-03-27T08:02:57.222785605Z"
+    created: "2026-09-07T12:40:23.509860256Z"
     dependencies:
     - condition: keycloak.persistence.deployPostgres
       name: postgresql
@@ -680,7 +689,7 @@ entries:
       version: 6.3.13
     description: Open Source Identity and Access Management For Modern Applications
       and Services
-    digest: 3ea8efe8e63b57aeb59c00983975d15b5f78b5b92aff51a202e1fcf79f4550bc
+    digest: c042b844a0a65cf45108f7d4d79d0d09bc80085436ab297f76abb9139ed554aa
     home: https://www.keycloak.org/
     icon: https://www.keycloak.org/resources/images/keycloak_logo_480x108.png
     keywords:
@@ -705,9 +714,9 @@ entries:
   keycloak-init:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2026-03-27T08:02:57.223453912Z"
+    created: "2026-09-07T12:40:23.510095955Z"
     description: job for populating oidc secrets from keycloak
-    digest: b67094386f6ce46148123c5507b713a4f87af2fa503cd18082b63a83257904ed
+    digest: e7ac36f091681434490e704e453f66b61906a087d37abf594020d3a861d42fbc
     name: keycloak-init
     urls:
     - https://moveaxlab.github.io/helm-charts/keycloak-init-0.1.1.tgz
@@ -715,9 +724,9 @@ entries:
   kibana:
   - apiVersion: v1
     appVersion: 7.3.0
-    created: "2026-03-27T08:02:57.224254012Z"
+    created: "2026-09-07T12:40:23.510633531Z"
     description: Official Elastic helm chart for Kibana
-    digest: 3f58138925c6d111858b59d04f21c4d50ae95d05eef49ba6f3183567fb168d2f
+    digest: 70312e2bb5c168d5992101e34a7103f39ff491b4af8574c8828e56e27881963a
     home: https://github.com/elastic/helm-charts
     icon: https://helm.elastic.co/icons/kibana.png
     maintainers:
@@ -780,9 +789,9 @@ entries:
   kube-downscaler:
   - apiVersion: v1
     appVersion: 0.5.1
-    created: "2026-03-27T08:02:57.225342673Z"
+    created: "2026-09-07T12:40:23.511711517Z"
     description: A Helm chart for kube-downscaler
-    digest: 9ca72c699f5261feaae6bd7876d5b425d66b2d5438ec76418b6a9be34aa51747
+    digest: fe0628ed8699df2d660a843d8148190f49fa60f513285de0aebc185d2c9c7c5e
     keywords:
     - k8s pods scheduler
     - scheduled lifecycle
@@ -795,10 +804,10 @@ entries:
   kube-resource-report:
   - apiVersion: v1
     appVersion: 21.10.0
-    created: "2026-03-27T08:02:57.22577853Z"
+    created: "2026-09-07T12:40:23.51213271Z"
     description: Report Kubernetes cluster and pod resource requests vs usage and
       generate static HTML
-    digest: f1f9515d6088bb3d484588e55422ec72bf8524c7c5fd43926b9d4a61bf62e2ca
+    digest: 53dd302aec13f5300141d5d0fe950948f668c10fd2385cd276151d8a00136f8a
     home: https://github.com/hjacobs/kube-resource-report.git
     name: kube-resource-report
     urls:
@@ -818,9 +827,9 @@ entries:
   metrics-server:
   - apiVersion: v1
     appVersion: 0.3.6
-    created: "2026-03-27T08:02:57.226482981Z"
+    created: "2026-09-07T12:40:23.512623948Z"
     description: Metrics Server is a cluster-wide aggregator of resource usage data.
-    digest: 216c4eba9bc0fba6a120da72b4bb4777e4338deeca6ed944905380bcfa09accc
+    digest: b9cbcb8b049a44baa07e2bb619cbb0185959aefa799ea5f6102261e23be21b32
     home: https://github.com/kubernetes-incubator/metrics-server
     keywords:
     - metrics-server
@@ -838,9 +847,9 @@ entries:
   mongodb-express:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-03-27T08:02:57.226944947Z"
+    created: "2026-09-07T12:40:23.513003379Z"
     description: A MongoDB Express UI Helm chart for Kubernetes
-    digest: 28ff22a785aed4067e84a69680f1bfe29f166b4058ab14d3693e59967ff347c6
+    digest: 7960bd9e29e535e17f59eedcf06dd08ed0efbf5094b8ecf71fc9e64f7c608bb6
     name: mongodb-express
     type: application
     urls:
@@ -914,10 +923,10 @@ entries:
   nginx-ingress:
   - apiVersion: v1
     appVersion: 0.28.0
-    created: "2026-03-27T08:02:57.228496766Z"
+    created: "2026-09-07T12:40:23.514564971Z"
     description: An nginx Ingress controller that uses ConfigMap to store the nginx
       configuration.
-    digest: 309301361d9b4f56ea1b9997f35a23bd2a71ac510e37e7ad332bd374c919b590
+    digest: 6e941b6733bb9e8bc814ed7633228685686a975cc08da9f825bf002e8f4b2b53
     home: https://github.com/kubernetes/ingress-nginx
     icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
     keywords:
@@ -937,9 +946,9 @@ entries:
   ovh-lb-controller:
   - apiVersion: v2
     appVersion: "0.1"
-    created: "2026-03-27T08:02:57.228857532Z"
+    created: "2026-09-07T12:40:23.514876252Z"
     description: A Helm chart for OVH Managed Kubernetes Service
-    digest: 00cbc148178f97d8d3aa9c67c3bd4c797b93f1c0e9b5c37cc558a4b6f6e19c1f
+    digest: 72ca092a652ccf3ff25a87dc40fc6f1919a34b1a82385c9a715d1bdd4efb3501
     name: ovh-lb-controller
     type: application
     urls:
@@ -966,9 +975,9 @@ entries:
   patroni:
   - apiVersion: v1
     appVersion: 2.1-p3
-    created: "2026-03-27T08:02:57.22943748Z"
+    created: "2026-09-07T12:40:23.51617885Z"
     description: HA PostgreSQL cluster.
-    digest: 48fba6932b91c5f0aab3e11715276ac81f92fc8566badd881ae5932f9143d67c
+    digest: 4323bcc5ef9ac4555df87eb521dd2b93bc7e73901961ad81307b77f54d0c2968
     home: https://github.com/zalando/patroni
     name: patroni
     sources:
@@ -1006,9 +1015,9 @@ entries:
   pgadmin4:
   - apiVersion: v1
     appVersion: 4.29.0
-    created: "2026-03-27T08:02:57.230201272Z"
+    created: "2026-09-07T12:40:23.516953918Z"
     description: pgAdmin4 is a web based administration tool for PostgreSQL database
-    digest: 4a1a5529b9751aed5ebc0ad3427226284d9065c8b9af75f1d6c2212588533e02
+    digest: 2120de4b970263039a1f9252fa10d4d16306724ccd543011a6a162912f8cd7c6
     home: https://www.pgadmin.org/
     icon: https://wiki.postgresql.org/images/3/30/PostgreSQL_logo.3colors.120x120.png
     keywords:
@@ -1159,9 +1168,9 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: 1.16.1
-    created: "2026-03-27T08:02:57.230485404Z"
+    created: "2026-09-07T12:40:23.517217267Z"
     description: A Helm chart for Kubernetes
-    digest: a00a6f81d30f68d5edffa1dde94e71a928ef2e48bba2f1bdf7149520f622caac
+    digest: 6cad43786dbd23fda3553c5caf943678fb8cc0c0c53ce3352a4625a5cb6e1ac2
     name: postgresql
     type: application
     urls:
@@ -1242,7 +1251,7 @@ entries:
   prometheus-operator:
   - apiVersion: v1
     appVersion: 0.38.1
-    created: "2026-03-27T08:02:57.248662558Z"
+    created: "2026-09-07T12:40:23.535169534Z"
     dependencies:
     - condition: kubeStateMetrics.enabled
       name: kube-state-metrics
@@ -1258,7 +1267,7 @@ entries:
       version: 5.1.*
     description: Provides easy monitoring definitions for Kubernetes services, and
       deployment and management of Prometheus instances.
-    digest: 43a05ac835eea37b7dff1a75ef874dd34c39388738d1b8cac2d0d08947f6f894
+    digest: 43f6dbc36e4a743b27711c365b7cccbbf43dbdcefde96c2a5d2f703290b08e2e
     home: https://github.com/coreos/prometheus-operator
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -1462,9 +1471,9 @@ entries:
   proxy-injector:
   - apiVersion: v1
     appVersion: v0.0.23
-    created: "2026-03-27T08:02:57.249006432Z"
+    created: "2026-09-07T12:40:23.535483709Z"
     description: ProxyInjector chart that runs on kubernetes
-    digest: 99df60ac616fc32960167c035c2a36851d81a6d6305211b31e5166431b46cbed
+    digest: c911e2f70344e22d6dcfe604a1cb432cf392aeb7ba89f3e87f689fd4215ae657
     home: https://github.com/stakater/ProxyInjector
     keywords:
     - Proxy
@@ -1531,9 +1540,9 @@ entries:
   secrets:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2026-03-27T08:02:57.249133571Z"
+    created: "2026-09-07T12:40:23.535595745Z"
     description: Chart for templating secrets
-    digest: b0a8c967c41bc805e07ac7b3e3ae7409f8656bca22cfb005512aea895c79611c
+    digest: 7c15006f9d25f5be76f1673da264e906092572e0a87bf588703a545578c03846
     name: secrets
     type: application
     urls:
@@ -1573,11 +1582,11 @@ entries:
         - url: https://artifacthub.io/packages/helm/piraeus-charts/snapshot-validation-webhook
     apiVersion: v2
     appVersion: v4.2.1
-    created: "2026-03-27T08:02:57.249588243Z"
+    created: "2026-09-07T12:40:23.536027474Z"
     description: 'Deploys a Snapshot Controller in a cluster. Snapshot Controllers
       are often bundled with the Kubernetes distribution, this chart is meant for
       cases where it is not. '
-    digest: a9b782f34c07f26e1518103ed954fd336e2697b5518bb7081608a2d0028856ba
+    digest: d11316c7f757f04e9967ed8b661b2901ab0d845474be259a2b2a43fe8ef9fc10
     home: https://github.com/piraeusdatastore/helm-charts
     icon: https://raw.githubusercontent.com/piraeusdatastore/piraeus/master/artwork/sandbox-artwork/icon/color.svg
     keywords:
@@ -1620,7 +1629,7 @@ entries:
   sonarqube:
   - apiVersion: v1
     appVersion: "8.1"
-    created: "2026-03-27T08:02:57.251803035Z"
+    created: "2026-09-07T12:40:23.538089647Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -1631,7 +1640,7 @@ entries:
       repository: https://charts.helm.sh/stable/
       version: 0.6.0
     description: Sonarqube is an open sourced code quality scanning tool
-    digest: 1a61405fef5a990d3244771a753d9d05643732b7f28b4e25cd318b5d25c8d88f
+    digest: 4c79c31d884d0d2226e2532d7738d9a109075361a6a34b4d3a2a97be4ffd9565
     home: https://www.sonarqube.org/
     icon: https://www.sonarqube.org/assets/logo-31ad3115b1b4b120f3d1efd63e6b13ac9f1f89437f0cf6881cc4d8b5603a52b4.svg
     keywords:
@@ -1650,4 +1659,4 @@ entries:
     urls:
     - https://moveaxlab.github.io/helm-charts/sonarqube-2.2.3.tgz
     version: 2.2.3
-generated: "2026-03-27T08:02:57.205607792Z"
+generated: "2026-09-07T12:40:23.493545639Z"
