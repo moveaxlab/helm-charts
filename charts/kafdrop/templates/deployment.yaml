@@ -33,6 +33,10 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}        
     spec:
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -84,6 +88,10 @@ spec:
             initialDelaySeconds: 20
             periodSeconds: 5
             timeoutSeconds: 10
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
